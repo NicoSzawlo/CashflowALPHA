@@ -1,13 +1,16 @@
+
 namespace CashflowALPHA
 {
     public partial class MainForm : Form
     {
+        WinFormsHelper winFormsHelper = new WinFormsHelper();
         public MainForm()
         {
             InitializeComponent();
+            winFormsHelper.LoadAccTableAsync(dgv_accounts);
         }
        
-    //Windows Forms navigation buttons
+    //Navigation buttons
         private void navbtn_ovrvw_Click(object sender, EventArgs e)
         {
             ResetNavbtnBackColor();
@@ -22,6 +25,14 @@ namespace CashflowALPHA
             this.pnl_acc.BringToFront();
         }
 
+
+        //Page buttons
+        private void btn_add_stmt_Click(object sender, EventArgs e)
+        {
+            
+            winFormsHelper.OpenFD("c:\\", "txt files (*.txt)|*.txt|All files (*.*)|*.*");
+        }
+
         //UI Helper functions
         private void ResetNavbtnBackColor()
         {
@@ -34,6 +45,9 @@ namespace CashflowALPHA
             this.navbtn_res.BackColor = Color.LightGray;
         }
 
-        
+        private void btn_add_acc_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

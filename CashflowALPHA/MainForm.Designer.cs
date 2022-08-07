@@ -37,10 +37,10 @@
             this.navtbn_inv = new System.Windows.Forms.Button();
             this.navbtn_res = new System.Windows.Forms.Button();
             this.pnl_acc = new System.Windows.Forms.Panel();
-            this.pnl_ovrvw = new System.Windows.Forms.Panel();
-            this.dgv_accounts = new System.Windows.Forms.DataGridView();
-            this.btn_add_acc = new System.Windows.Forms.Button();
             this.btn_add_stmt = new System.Windows.Forms.Button();
+            this.btn_add_acc = new System.Windows.Forms.Button();
+            this.dgv_accounts = new System.Windows.Forms.DataGridView();
+            this.pnl_ovrvw = new System.Windows.Forms.Panel();
             this.pnl_nav.SuspendLayout();
             this.pnl_acc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_accounts)).BeginInit();
@@ -55,7 +55,7 @@
             this.pnl_nav.Controls.Add(this.navbtn_acc);
             this.pnl_nav.Controls.Add(this.navtbn_inv);
             this.pnl_nav.Controls.Add(this.navbtn_res);
-            this.pnl_nav.Location = new System.Drawing.Point(11, 0);
+            this.pnl_nav.Location = new System.Drawing.Point(10, 6);
             this.pnl_nav.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_nav.Name = "pnl_nav";
             this.pnl_nav.Size = new System.Drawing.Size(1255, 91);
@@ -154,18 +154,30 @@
             this.pnl_acc.Controls.Add(this.btn_add_stmt);
             this.pnl_acc.Controls.Add(this.btn_add_acc);
             this.pnl_acc.Controls.Add(this.dgv_accounts);
-            this.pnl_acc.Location = new System.Drawing.Point(12, 83);
+            this.pnl_acc.Location = new System.Drawing.Point(12, 89);
             this.pnl_acc.Name = "pnl_acc";
             this.pnl_acc.Size = new System.Drawing.Size(1255, 595);
             this.pnl_acc.TabIndex = 1;
             // 
-            // pnl_ovrvw
+            // btn_add_stmt
             // 
-            this.pnl_ovrvw.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnl_ovrvw.Location = new System.Drawing.Point(12, 83);
-            this.pnl_ovrvw.Name = "pnl_ovrvw";
-            this.pnl_ovrvw.Size = new System.Drawing.Size(1255, 595);
-            this.pnl_ovrvw.TabIndex = 2;
+            this.btn_add_stmt.Location = new System.Drawing.Point(1069, 455);
+            this.btn_add_stmt.Name = "btn_add_stmt";
+            this.btn_add_stmt.Size = new System.Drawing.Size(166, 57);
+            this.btn_add_stmt.TabIndex = 2;
+            this.btn_add_stmt.Text = "ADD STATEMENT";
+            this.btn_add_stmt.UseVisualStyleBackColor = true;
+            this.btn_add_stmt.Click += new System.EventHandler(this.btn_add_stmt_Click);
+            // 
+            // btn_add_acc
+            // 
+            this.btn_add_acc.Location = new System.Drawing.Point(1069, 518);
+            this.btn_add_acc.Name = "btn_add_acc";
+            this.btn_add_acc.Size = new System.Drawing.Size(166, 57);
+            this.btn_add_acc.TabIndex = 1;
+            this.btn_add_acc.Text = "ADD ACCOUNT";
+            this.btn_add_acc.UseVisualStyleBackColor = true;
+            this.btn_add_acc.Click += new System.EventHandler(this.btn_add_acc_Click);
             // 
             // dgv_accounts
             // 
@@ -176,26 +188,17 @@
             this.dgv_accounts.Name = "dgv_accounts";
             this.dgv_accounts.ReadOnly = true;
             this.dgv_accounts.RowTemplate.Height = 29;
-            this.dgv_accounts.Size = new System.Drawing.Size(463, 555);
+            this.dgv_accounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_accounts.Size = new System.Drawing.Size(632, 555);
             this.dgv_accounts.TabIndex = 0;
             // 
-            // btn_add_acc
+            // pnl_ovrvw
             // 
-            this.btn_add_acc.Location = new System.Drawing.Point(1069, 518);
-            this.btn_add_acc.Name = "btn_add_acc";
-            this.btn_add_acc.Size = new System.Drawing.Size(166, 57);
-            this.btn_add_acc.TabIndex = 1;
-            this.btn_add_acc.Text = "ADD ACCOUNT";
-            this.btn_add_acc.UseVisualStyleBackColor = true;
-            // 
-            // btn_add_stmt
-            // 
-            this.btn_add_stmt.Location = new System.Drawing.Point(1069, 455);
-            this.btn_add_stmt.Name = "btn_add_stmt";
-            this.btn_add_stmt.Size = new System.Drawing.Size(166, 57);
-            this.btn_add_stmt.TabIndex = 2;
-            this.btn_add_stmt.Text = "ADD STATEMENT";
-            this.btn_add_stmt.UseVisualStyleBackColor = true;
+            this.pnl_ovrvw.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnl_ovrvw.Location = new System.Drawing.Point(12, 89);
+            this.pnl_ovrvw.Name = "pnl_ovrvw";
+            this.pnl_ovrvw.Size = new System.Drawing.Size(1255, 595);
+            this.pnl_ovrvw.TabIndex = 2;
             // 
             // MainForm
             // 
