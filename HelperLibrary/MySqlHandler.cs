@@ -34,11 +34,22 @@ namespace HelperLibrary
 
         }
 
-        //private async Task Insert(string table, string columns, string value)
-        //{
-        //    MySqlCommand cmd = Connect();
-        //    cmd.CommandText = "INSERT INTO ";
-        //}
+        private async Task InsertInto(string table, string columns, string value)
+        {
+            MySqlCommand cmd = Connect();
+            cmd.CommandText = "INSERT INTO "+table+"("+columns+") VALUES ("+value+");";
+            try
+            {
+                var result = await Task.Run(() => cmd.ExecuteNonQuery());
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+            
+        }
 
         public MySqlCommand Connect()
         {
