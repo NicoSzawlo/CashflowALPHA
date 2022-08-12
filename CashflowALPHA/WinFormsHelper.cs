@@ -11,6 +11,7 @@ namespace CashflowALPHA
 {
     public class WinFormsHelper
     {
+        private MySqlHandler mySqlHandler;
         public string OpenFD( string initDir, string filter)
         {
             string filepath;
@@ -26,9 +27,14 @@ namespace CashflowALPHA
 
         public async void LoadAccTableAsync(DataGridView dgv)
         {
-            MySqlHandler mySqlHandler = new MySqlHandler();
             DataTable dt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts"));
             dgv.DataSource = dt;
         }
+
+        public async Task InsertIntoTableAsync(DataGridView dgv)
+        {
+
+        }
+            
     }
 }

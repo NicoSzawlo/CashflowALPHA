@@ -34,10 +34,14 @@ namespace HelperLibrary
 
         }
 
-        private async Task InsertInto(string table, string columns, string value)
+        private async Task InsertInto(string table, IEnumerable<string> columns, IEnumerable<string> values)
         {
             MySqlCommand cmd = Connect();
-            cmd.CommandText = "INSERT INTO "+table+"("+columns+") VALUES ("+value+");";
+            cmd.CommandText = "INSERT INTO @table (@columns) VALUES (@values);";
+            cmd.Parameters.AddWithValue("@table", table);
+            cmd = AddColumnsValues(cmd, columns, values);
+
+
             try
             {
                 var result = await Task.Run(() => cmd.ExecuteNonQuery());
@@ -65,6 +69,18 @@ namespace HelperLibrary
             cmd.Connection.Close();
         }
 
-        
+        //Function to add data in multiple columns
+        private MySqlCommand AddColumnsValues(MySqlCommand cmd, IEnumerable<string> columns, IEnumerable<string> values)
+        {
+            IEnumerator<string> column = columns.GetEnumerator();
+            IEnumerator<string> value = values.GetEnumerator();
+            while(column.MoveNext() && value.MoveNext())
+            {
+                cmd.Parameters.AddWithValue(column.Current, value.Current); 
+            }
+            return cmd;
+        }
     }
+
+    
 }
