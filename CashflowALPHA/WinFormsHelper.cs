@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace CashflowALPHA
 {
     public class WinFormsHelper
     {
-        private MySqlHandler mySqlHandler;
+        private MySqlHandler mySqlHandler = new MySqlHandler();
         public string OpenFD( string initDir, string filter)
         {
             string filepath;
@@ -31,10 +32,31 @@ namespace CashflowALPHA
             dgv.DataSource = dt;
         }
 
-        public async Task InsertIntoTableAsync(DataGridView dgv)
+        public async Task InsertAccAsync()
         {
-
+            List<Task> tasks = new List<Task>();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            for (int i = 0; i < 1000; i++)
+            {
+                tasks.Add(Task.Run(() => mySqlHandler.InsertIntoAccount(i.ToString(), "test", "Test", 1)));
+            }
+            await Task.WhenAll(tasks);
+            watch.Stop();
+            Debug.WriteLine("Duration was:");
+            Debug.WriteLine(watch.ElapsedMilliseconds);
         }
-            
+
+        public void InsertAccSync()
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            for (int i = 2000; i < 3000; i++)
+            {
+                mySqlHandler.InsertIntoAccount(i.ToString(), "test2", "Test2", 1);
+            }
+            watch.Stop();
+            Debug.WriteLine("Duration was:");
+            Debug.WriteLine(watch.ElapsedMilliseconds);
+        }
+
     }
 }

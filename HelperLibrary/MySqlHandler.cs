@@ -34,17 +34,19 @@ namespace HelperLibrary
 
         }
 
-        private async Task InsertInto(string table, IEnumerable<string> columns, IEnumerable<string> values)
+        public void InsertIntoAccount(string name, string iban, string bic, int type)
         {
             MySqlCommand cmd = Connect();
-            cmd.CommandText = "INSERT INTO @table (@columns) VALUES (@values);";
-            cmd.Parameters.AddWithValue("@table", table);
-            cmd = AddColumnsValues(cmd, columns, values);
 
+            cmd.CommandText = "INSERT INTO tab_accounts (name, iban, bic, type) VALUES (@name, @iban, @bic, @type)";
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@iban", iban);
+            cmd.Parameters.AddWithValue("@bic", bic);
+            cmd.Parameters.AddWithValue("@type", type);
 
             try
             {
-                var result = await Task.Run(() => cmd.ExecuteNonQuery());
+                var result = cmd.ExecuteNonQuery();
                 Console.WriteLine(result);
             }
             catch (Exception ex)
@@ -59,8 +61,7 @@ namespace HelperLibrary
         {
             MySqlConnection conn = new MySqlConnection(connStr);
             MySqlCommand cmd = conn.CreateCommand();
-            conn.Open();
-            cmd.Connection.Close();
+            cmd.Connection.Open();
             return cmd;
         }
 

@@ -33,6 +33,10 @@ namespace CashflowALPHA
             winFormsHelper.OpenFD("c:\\", "txt files (*.txt)|*.txt|All files (*.*)|*.*");
         }
 
+        private async void btn_add_acc_Click(object sender, EventArgs e)
+        {
+            await winFormsHelper.InsertAccAsync();
+        }
         //UI Helper functions
         private void ResetNavbtnBackColor()
         {
@@ -45,9 +49,9 @@ namespace CashflowALPHA
             this.navbtn_res.BackColor = Color.LightGray;
         }
 
-        private void btn_add_acc_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            
+            winFormsHelper.InsertAccSync();
         }
     }
 }
