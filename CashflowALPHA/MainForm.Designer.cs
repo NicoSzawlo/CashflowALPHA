@@ -41,7 +41,6 @@
             this.btn_add_acc = new System.Windows.Forms.Button();
             this.dgv_accounts = new System.Windows.Forms.DataGridView();
             this.pnl_ovrvw = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnl_nav.SuspendLayout();
             this.pnl_acc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_accounts)).BeginInit();
@@ -152,7 +151,6 @@
             // pnl_acc
             // 
             this.pnl_acc.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnl_acc.Controls.Add(this.button1);
             this.pnl_acc.Controls.Add(this.btn_add_stmt);
             this.pnl_acc.Controls.Add(this.btn_add_acc);
             this.pnl_acc.Controls.Add(this.dgv_accounts);
@@ -207,17 +205,6 @@
             this.pnl_ovrvw.Size = new System.Drawing.Size(1098, 446);
             this.pnl_ovrvw.TabIndex = 2;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(773, 388);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 43);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "ADD ACCOUNT";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -252,6 +239,5 @@
         private Button btn_add_stmt;
         private Button btn_add_acc;
         private DataGridView dgv_accounts;
-        private Button button1;
     }
 }

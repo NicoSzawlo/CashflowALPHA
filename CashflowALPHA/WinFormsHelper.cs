@@ -12,6 +12,7 @@ namespace CashflowALPHA
 {
     public class WinFormsHelper
     {
+        private CsvProcessor csvProcessor = new CsvProcessor();
         private MySqlHandler mySqlHandler = new MySqlHandler();
         public string OpenFD( string initDir, string filter)
         {
@@ -22,6 +23,7 @@ namespace CashflowALPHA
             ofd.ShowDialog();
             filepath = ofd.FileName;
 
+            csvProcessor.CsvToTable(filepath);
 
             return filepath;
         }

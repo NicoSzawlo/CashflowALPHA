@@ -30,7 +30,7 @@ namespace CashflowALPHA
         private void btn_add_stmt_Click(object sender, EventArgs e)
         {
             
-            winFormsHelper.OpenFD("c:\\", "txt files (*.txt)|*.txt|All files (*.*)|*.*");
+            winFormsHelper.OpenFD("D:\\MeineDateien\\ftxcsv", "csv files (*.csv)|*.csv|All files (*.*)|*.*");
         }
 
         private async void btn_add_acc_Click(object sender, EventArgs e)
@@ -47,11 +47,6 @@ namespace CashflowALPHA
             this.navbtn_trx.BackColor = Color.LightGray;            
             this.navtbn_inv.BackColor = Color.LightGray;
             this.navbtn_res.BackColor = Color.LightGray;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            winFormsHelper.InsertAccSync();
         }
     }
 }
