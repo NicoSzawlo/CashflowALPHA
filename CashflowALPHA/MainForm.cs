@@ -33,9 +33,9 @@ namespace CashflowALPHA
             winFormsHelper.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*");
         }
 
-        private async void btn_add_acc_Click(object sender, EventArgs e)
+        private void btn_add_acc_Click(object sender, EventArgs e)
         {
-            await winFormsHelper.InsertAccAsync();
+       
         }
         //UI Helper functions
         private void ResetNavbtnBackColor()
@@ -47,6 +47,11 @@ namespace CashflowALPHA
             this.navbtn_trx.BackColor = Color.LightGray;            
             this.navtbn_inv.BackColor = Color.LightGray;
             this.navbtn_res.BackColor = Color.LightGray;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

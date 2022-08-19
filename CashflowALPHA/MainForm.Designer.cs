@@ -37,8 +37,19 @@
             this.navtbn_inv = new System.Windows.Forms.Button();
             this.navbtn_res = new System.Windows.Forms.Button();
             this.pnl_acc = new System.Windows.Forms.Panel();
-            this.btn_add_stmt = new System.Windows.Forms.Button();
-            this.btn_add_acc = new System.Windows.Forms.Button();
+            this.btnAccUpdate = new System.Windows.Forms.Button();
+            this.comboAccType = new System.Windows.Forms.ComboBox();
+            this.txtAccBalance = new System.Windows.Forms.TextBox();
+            this.txtAccBic = new System.Windows.Forms.TextBox();
+            this.txtAccIban = new System.Windows.Forms.TextBox();
+            this.txtAccName = new System.Windows.Forms.TextBox();
+            this.lblAccName = new System.Windows.Forms.Label();
+            this.lblAccBalance = new System.Windows.Forms.Label();
+            this.lblAccIban = new System.Windows.Forms.Label();
+            this.btnAccAdd = new System.Windows.Forms.Button();
+            this.lblAccType = new System.Windows.Forms.Label();
+            this.btnAccStmtAdd = new System.Windows.Forms.Button();
+            this.lblAccBic = new System.Windows.Forms.Label();
             this.dgv_accounts = new System.Windows.Forms.DataGridView();
             this.pnl_ovrvw = new System.Windows.Forms.Panel();
             this.pnl_nav.SuspendLayout();
@@ -151,33 +162,142 @@
             // pnl_acc
             // 
             this.pnl_acc.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnl_acc.Controls.Add(this.btn_add_stmt);
-            this.pnl_acc.Controls.Add(this.btn_add_acc);
+            this.pnl_acc.Controls.Add(this.btnAccUpdate);
+            this.pnl_acc.Controls.Add(this.comboAccType);
+            this.pnl_acc.Controls.Add(this.txtAccBalance);
+            this.pnl_acc.Controls.Add(this.txtAccBic);
+            this.pnl_acc.Controls.Add(this.txtAccIban);
+            this.pnl_acc.Controls.Add(this.txtAccName);
+            this.pnl_acc.Controls.Add(this.lblAccName);
+            this.pnl_acc.Controls.Add(this.lblAccBalance);
+            this.pnl_acc.Controls.Add(this.lblAccIban);
+            this.pnl_acc.Controls.Add(this.btnAccAdd);
+            this.pnl_acc.Controls.Add(this.lblAccType);
+            this.pnl_acc.Controls.Add(this.btnAccStmtAdd);
+            this.pnl_acc.Controls.Add(this.lblAccBic);
             this.pnl_acc.Controls.Add(this.dgv_accounts);
             this.pnl_acc.Location = new System.Drawing.Point(11, 89);
             this.pnl_acc.Name = "pnl_acc";
             this.pnl_acc.Size = new System.Drawing.Size(1255, 595);
             this.pnl_acc.TabIndex = 1;
             // 
-            // btn_add_stmt
+            // btnAccUpdate
             // 
-            this.btn_add_stmt.Location = new System.Drawing.Point(1069, 455);
-            this.btn_add_stmt.Name = "btn_add_stmt";
-            this.btn_add_stmt.Size = new System.Drawing.Size(166, 57);
-            this.btn_add_stmt.TabIndex = 2;
-            this.btn_add_stmt.Text = "ADD STATEMENT";
-            this.btn_add_stmt.UseVisualStyleBackColor = true;
-            this.btn_add_stmt.Click += new System.EventHandler(this.btn_add_stmt_Click);
+            this.btnAccUpdate.Location = new System.Drawing.Point(785, 429);
+            this.btnAccUpdate.Name = "btnAccUpdate";
+            this.btnAccUpdate.Size = new System.Drawing.Size(166, 57);
+            this.btnAccUpdate.TabIndex = 14;
+            this.btnAccUpdate.Text = "ADD ACCOUNT";
+            this.btnAccUpdate.UseVisualStyleBackColor = true;
             // 
-            // btn_add_acc
+            // comboAccType
             // 
-            this.btn_add_acc.Location = new System.Drawing.Point(1069, 517);
-            this.btn_add_acc.Name = "btn_add_acc";
-            this.btn_add_acc.Size = new System.Drawing.Size(166, 57);
-            this.btn_add_acc.TabIndex = 1;
-            this.btn_add_acc.Text = "ADD ACCOUNT";
-            this.btn_add_acc.UseVisualStyleBackColor = true;
-            this.btn_add_acc.Click += new System.EventHandler(this.btn_add_acc_Click);
+            this.comboAccType.FormattingEnabled = true;
+            this.comboAccType.Location = new System.Drawing.Point(717, 227);
+            this.comboAccType.Name = "comboAccType";
+            this.comboAccType.Size = new System.Drawing.Size(215, 28);
+            this.comboAccType.TabIndex = 13;
+            // 
+            // txtAccBalance
+            // 
+            this.txtAccBalance.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtAccBalance.Location = new System.Drawing.Point(717, 312);
+            this.txtAccBalance.Name = "txtAccBalance";
+            this.txtAccBalance.Size = new System.Drawing.Size(215, 33);
+            this.txtAccBalance.TabIndex = 12;
+            // 
+            // txtAccBic
+            // 
+            this.txtAccBic.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtAccBic.Location = new System.Drawing.Point(985, 137);
+            this.txtAccBic.Name = "txtAccBic";
+            this.txtAccBic.Size = new System.Drawing.Size(215, 33);
+            this.txtAccBic.TabIndex = 11;
+            // 
+            // txtAccIban
+            // 
+            this.txtAccIban.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtAccIban.Location = new System.Drawing.Point(717, 137);
+            this.txtAccIban.Name = "txtAccIban";
+            this.txtAccIban.Size = new System.Drawing.Size(215, 33);
+            this.txtAccIban.TabIndex = 10;
+            // 
+            // txtAccName
+            // 
+            this.txtAccName.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtAccName.Location = new System.Drawing.Point(717, 52);
+            this.txtAccName.Name = "txtAccName";
+            this.txtAccName.Size = new System.Drawing.Size(215, 33);
+            this.txtAccName.TabIndex = 9;
+            // 
+            // lblAccName
+            // 
+            this.lblAccName.AutoSize = true;
+            this.lblAccName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAccName.Location = new System.Drawing.Point(689, 19);
+            this.lblAccName.Name = "lblAccName";
+            this.lblAccName.Size = new System.Drawing.Size(83, 30);
+            this.lblAccName.TabIndex = 4;
+            this.lblAccName.Text = "Name :";
+            // 
+            // lblAccBalance
+            // 
+            this.lblAccBalance.AutoSize = true;
+            this.lblAccBalance.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAccBalance.Location = new System.Drawing.Point(689, 279);
+            this.lblAccBalance.Name = "lblAccBalance";
+            this.lblAccBalance.Size = new System.Drawing.Size(94, 30);
+            this.lblAccBalance.TabIndex = 8;
+            this.lblAccBalance.Text = "Balance:";
+            // 
+            // lblAccIban
+            // 
+            this.lblAccIban.AutoSize = true;
+            this.lblAccIban.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAccIban.Location = new System.Drawing.Point(689, 104);
+            this.lblAccIban.Name = "lblAccIban";
+            this.lblAccIban.Size = new System.Drawing.Size(77, 30);
+            this.lblAccIban.TabIndex = 5;
+            this.lblAccIban.Text = "IBAN :";
+            // 
+            // btnAccAdd
+            // 
+            this.btnAccAdd.Location = new System.Drawing.Point(785, 366);
+            this.btnAccAdd.Name = "btnAccAdd";
+            this.btnAccAdd.Size = new System.Drawing.Size(166, 57);
+            this.btnAccAdd.TabIndex = 3;
+            this.btnAccAdd.Text = "ADD ACCOUNT";
+            this.btnAccAdd.UseVisualStyleBackColor = true;
+            // 
+            // lblAccType
+            // 
+            this.lblAccType.AutoSize = true;
+            this.lblAccType.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAccType.Location = new System.Drawing.Point(689, 194);
+            this.lblAccType.Name = "lblAccType";
+            this.lblAccType.Size = new System.Drawing.Size(153, 30);
+            this.lblAccType.TabIndex = 7;
+            this.lblAccType.Text = "Account Type:";
+            // 
+            // btnAccStmtAdd
+            // 
+            this.btnAccStmtAdd.Location = new System.Drawing.Point(957, 429);
+            this.btnAccStmtAdd.Name = "btnAccStmtAdd";
+            this.btnAccStmtAdd.Size = new System.Drawing.Size(166, 57);
+            this.btnAccStmtAdd.TabIndex = 2;
+            this.btnAccStmtAdd.Text = "ADD STATEMENT";
+            this.btnAccStmtAdd.UseVisualStyleBackColor = true;
+            this.btnAccStmtAdd.Click += new System.EventHandler(this.btn_add_stmt_Click);
+            // 
+            // lblAccBic
+            // 
+            this.lblAccBic.AutoSize = true;
+            this.lblAccBic.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAccBic.Location = new System.Drawing.Point(957, 104);
+            this.lblAccBic.Name = "lblAccBic";
+            this.lblAccBic.Size = new System.Drawing.Size(58, 30);
+            this.lblAccBic.TabIndex = 6;
+            this.lblAccBic.Text = "BIC :";
             // 
             // dgv_accounts
             // 
@@ -206,13 +326,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1285, 691);
-            this.Controls.Add(this.pnl_acc);
             this.Controls.Add(this.pnl_nav);
+            this.Controls.Add(this.pnl_acc);
             this.Controls.Add(this.pnl_ovrvw);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnl_nav.ResumeLayout(false);
             this.pnl_acc.ResumeLayout(false);
+            this.pnl_acc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_accounts)).EndInit();
             this.ResumeLayout(false);
 
@@ -230,8 +352,19 @@
         private Button navbtn_res;
         private Panel pnl_acc;
         private Panel pnl_ovrvw;
-        private Button btn_add_stmt;
-        private Button btn_add_acc;
+        private Button btnAccStmtAdd;
         private DataGridView dgv_accounts;
+        private Button btnAccAdd;
+        private Button btnAccUpdate;
+        private ComboBox comboAccType;
+        private TextBox txtAccBalance;
+        private TextBox txtAccBic;
+        private TextBox txtAccIban;
+        private TextBox txtAccName;
+        private Label lblAccName;
+        private Label lblAccBalance;
+        private Label lblAccIban;
+        private Label lblAccType;
+        private Label lblAccBic;
     }
 }
