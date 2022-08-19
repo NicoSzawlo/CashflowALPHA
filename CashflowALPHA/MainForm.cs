@@ -30,7 +30,7 @@ namespace CashflowALPHA
         private void btn_add_stmt_Click(object sender, EventArgs e)
         {
             
-            winFormsHelper.OpenFD("D:\\MeineDateien\\ftxcsv", "csv files (*.csv)|*.csv|All files (*.*)|*.*");
+            winFormsHelper.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*");
         }
 
         private async void btn_add_acc_Click(object sender, EventArgs e)

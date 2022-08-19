@@ -15,7 +15,7 @@ namespace HelperLibrary
 
             string content = ReadFile(filepath);
             string linebreak = "\n";
-
+            string templine = "";
             string[] lines = null;
             string[] columns = null;
             char separator = ';';
@@ -35,6 +35,7 @@ namespace HelperLibrary
                 {
                     dt.Columns.Add(item.Trim('"'));
                 }
+                
                 lines = lines.Skip(1).ToArray();
             }
             else
@@ -47,7 +48,9 @@ namespace HelperLibrary
 
             foreach(string line in lines)
             {
-                columns = line.Split(separator);
+                templine = TrimSemicolon(line);
+                columns = templine.Split(separator);
+
                 columns = TrimQuotes(columns);
 
                 dt.Rows.Add(columns);
@@ -77,6 +80,7 @@ namespace HelperLibrary
             return content;
         }
 
+        //Trimming Quotes from array of single strings
         private string[] TrimQuotes(string[] array)
         {
             string[] strings = new string[array.Length];
@@ -86,5 +90,45 @@ namespace HelperLibrary
             }
             return strings;
         }
+
+        //George Statement csv has every Field separated with ; and
+        //every content "xxx" so we can filter out semicolon in text 
+        private string TrimSemicolon(string row)
+        {
+            string trimmedRow = "";
+            char[] chars = row.ToCharArray();
+
+            bool quoteOpen = false;
+            try
+            {
+                for (int i = 0; i < chars.Length; i++)
+                {
+                    if (chars[i] == '"' && !quoteOpen)
+                    {
+                        quoteOpen = true;
+                    }
+                    if(chars[i] == '"' && quoteOpen)
+                    {
+                        quoteOpen = false;
+                    }
+                    if (quoteOpen&& chars[i] == ';')
+                    {
+                        chars[i] = ' ';
+                    }
+                }
+
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            trimmedRow = chars.ToString();
+
+
+            return trimmedRow; 
+        }
+
     }
 }
