@@ -7,7 +7,7 @@ namespace CashflowALPHA
         public MainForm()
         {
             InitializeComponent();
-            winFormsHelper.LoadAccTableAsync(dgv_accounts);
+            
         }
        
     //Navigation buttons

@@ -25,10 +25,11 @@ namespace CashflowALPHA
             return filepath;
         }
 
-        public async void LoadAccTableAsync(DataGridView dgv)
+        public async Task<DataTable> LoadTableAsync(DataGridView dgv, string table)
         {
-            DataTable dt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts"));
+            DataTable dt = await Task.Run(() => mySqlHandler.Select("*", table));
             dgv.DataSource = dt;
+            return dt;
         }
 
         public async Task InsertIntoTableAsync(DataGridView dgv)
