@@ -35,7 +35,7 @@ namespace HelperLibrary
                 {
                     dt.Columns.Add(item.Trim('"'));
                 }
-                
+
                 lines = lines.Skip(1).ToArray();
             }
             else
@@ -46,7 +46,7 @@ namespace HelperLibrary
                 }
             }
 
-            foreach(string line in lines)
+            foreach (string line in lines)
             {
                 templine = TrimSemicolon(line);
                 columns = templine.Split(separator);
@@ -107,19 +107,19 @@ namespace HelperLibrary
                     {
                         quoteOpen = true;
                     }
-                    if(chars[i] == '"' && quoteOpen)
+                    if (chars[i] == '"' && quoteOpen)
                     {
                         quoteOpen = false;
                     }
-                    if (quoteOpen&& chars[i] == ';')
+                    if (quoteOpen && chars[i] == ';')
                     {
                         chars[i] = ' ';
                     }
                 }
 
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -127,7 +127,7 @@ namespace HelperLibrary
             trimmedRow = chars.ToString();
 
 
-            return trimmedRow; 
+            return trimmedRow;
         }
 
     }

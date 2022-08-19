@@ -55,10 +55,10 @@
             this.pnl_nav.Controls.Add(this.navbtn_acc);
             this.pnl_nav.Controls.Add(this.navtbn_inv);
             this.pnl_nav.Controls.Add(this.navbtn_res);
-            this.pnl_nav.Location = new System.Drawing.Point(9, 4);
+            this.pnl_nav.Location = new System.Drawing.Point(10, 5);
             this.pnl_nav.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_nav.Name = "pnl_nav";
-            this.pnl_nav.Size = new System.Drawing.Size(1098, 68);
+            this.pnl_nav.Size = new System.Drawing.Size(1255, 91);
             this.pnl_nav.TabIndex = 0;
             // 
             // navbtn_ovrvw
@@ -66,10 +66,10 @@
             this.navbtn_ovrvw.BackColor = System.Drawing.Color.WhiteSmoke;
             this.navbtn_ovrvw.FlatAppearance.BorderSize = 0;
             this.navbtn_ovrvw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_ovrvw.Location = new System.Drawing.Point(2, 2);
-            this.navbtn_ovrvw.Margin = new System.Windows.Forms.Padding(2);
+            this.navbtn_ovrvw.Location = new System.Drawing.Point(2, 3);
+            this.navbtn_ovrvw.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.navbtn_ovrvw.Name = "navbtn_ovrvw";
-            this.navbtn_ovrvw.Size = new System.Drawing.Size(140, 68);
+            this.navbtn_ovrvw.Size = new System.Drawing.Size(160, 91);
             this.navbtn_ovrvw.TabIndex = 0;
             this.navbtn_ovrvw.Text = " Overview";
             this.navbtn_ovrvw.UseVisualStyleBackColor = false;
@@ -79,10 +79,10 @@
             // 
             this.navbtn_trx.BackColor = System.Drawing.Color.LightGray;
             this.navbtn_trx.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_trx.Location = new System.Drawing.Point(146, 2);
-            this.navbtn_trx.Margin = new System.Windows.Forms.Padding(2);
+            this.navbtn_trx.Location = new System.Drawing.Point(166, 3);
+            this.navbtn_trx.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.navbtn_trx.Name = "navbtn_trx";
-            this.navbtn_trx.Size = new System.Drawing.Size(140, 68);
+            this.navbtn_trx.Size = new System.Drawing.Size(160, 91);
             this.navbtn_trx.TabIndex = 1;
             this.navbtn_trx.Text = " Transactions";
             this.navbtn_trx.UseVisualStyleBackColor = false;
@@ -91,10 +91,10 @@
             // 
             this.navbtn_partners.BackColor = System.Drawing.Color.LightGray;
             this.navbtn_partners.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_partners.Location = new System.Drawing.Point(290, 2);
-            this.navbtn_partners.Margin = new System.Windows.Forms.Padding(2);
+            this.navbtn_partners.Location = new System.Drawing.Point(330, 3);
+            this.navbtn_partners.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.navbtn_partners.Name = "navbtn_partners";
-            this.navbtn_partners.Size = new System.Drawing.Size(140, 68);
+            this.navbtn_partners.Size = new System.Drawing.Size(160, 91);
             this.navbtn_partners.TabIndex = 2;
             this.navbtn_partners.Text = " Partners";
             this.navbtn_partners.UseVisualStyleBackColor = false;
@@ -103,10 +103,10 @@
             // 
             this.navbtn_budget.BackColor = System.Drawing.Color.LightGray;
             this.navbtn_budget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_budget.Location = new System.Drawing.Point(434, 2);
-            this.navbtn_budget.Margin = new System.Windows.Forms.Padding(2);
+            this.navbtn_budget.Location = new System.Drawing.Point(494, 3);
+            this.navbtn_budget.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.navbtn_budget.Name = "navbtn_budget";
-            this.navbtn_budget.Size = new System.Drawing.Size(140, 68);
+            this.navbtn_budget.Size = new System.Drawing.Size(160, 91);
             this.navbtn_budget.TabIndex = 3;
             this.navbtn_budget.Text = " Budgets";
             this.navbtn_budget.UseVisualStyleBackColor = false;
@@ -115,10 +115,10 @@
             // 
             this.navbtn_acc.BackColor = System.Drawing.Color.LightGray;
             this.navbtn_acc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_acc.Location = new System.Drawing.Point(578, 2);
-            this.navbtn_acc.Margin = new System.Windows.Forms.Padding(2);
+            this.navbtn_acc.Location = new System.Drawing.Point(658, 3);
+            this.navbtn_acc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.navbtn_acc.Name = "navbtn_acc";
-            this.navbtn_acc.Size = new System.Drawing.Size(140, 68);
+            this.navbtn_acc.Size = new System.Drawing.Size(160, 91);
             this.navbtn_acc.TabIndex = 4;
             this.navbtn_acc.Text = " Accounts";
             this.navbtn_acc.UseVisualStyleBackColor = false;
@@ -128,10 +128,10 @@
             // 
             this.navtbn_inv.BackColor = System.Drawing.Color.LightGray;
             this.navtbn_inv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navtbn_inv.Location = new System.Drawing.Point(722, 2);
-            this.navtbn_inv.Margin = new System.Windows.Forms.Padding(2);
+            this.navtbn_inv.Location = new System.Drawing.Point(822, 3);
+            this.navtbn_inv.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.navtbn_inv.Name = "navtbn_inv";
-            this.navtbn_inv.Size = new System.Drawing.Size(140, 68);
+            this.navtbn_inv.Size = new System.Drawing.Size(160, 91);
             this.navtbn_inv.TabIndex = 5;
             this.navtbn_inv.Text = " Investments";
             this.navtbn_inv.UseVisualStyleBackColor = false;
@@ -140,10 +140,10 @@
             // 
             this.navbtn_res.BackColor = System.Drawing.Color.LightGray;
             this.navbtn_res.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_res.Location = new System.Drawing.Point(866, 2);
-            this.navbtn_res.Margin = new System.Windows.Forms.Padding(2);
+            this.navbtn_res.Location = new System.Drawing.Point(986, 3);
+            this.navbtn_res.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.navbtn_res.Name = "navbtn_res";
-            this.navbtn_res.Size = new System.Drawing.Size(140, 68);
+            this.navbtn_res.Size = new System.Drawing.Size(160, 91);
             this.navbtn_res.TabIndex = 6;
             this.navbtn_res.Text = " ";
             this.navbtn_res.UseVisualStyleBackColor = false;
@@ -154,18 +154,16 @@
             this.pnl_acc.Controls.Add(this.btn_add_stmt);
             this.pnl_acc.Controls.Add(this.btn_add_acc);
             this.pnl_acc.Controls.Add(this.dgv_accounts);
-            this.pnl_acc.Location = new System.Drawing.Point(10, 67);
-            this.pnl_acc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnl_acc.Location = new System.Drawing.Point(11, 89);
             this.pnl_acc.Name = "pnl_acc";
-            this.pnl_acc.Size = new System.Drawing.Size(1098, 446);
+            this.pnl_acc.Size = new System.Drawing.Size(1255, 595);
             this.pnl_acc.TabIndex = 1;
             // 
             // btn_add_stmt
             // 
-            this.btn_add_stmt.Location = new System.Drawing.Point(935, 341);
-            this.btn_add_stmt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_add_stmt.Location = new System.Drawing.Point(1069, 455);
             this.btn_add_stmt.Name = "btn_add_stmt";
-            this.btn_add_stmt.Size = new System.Drawing.Size(145, 43);
+            this.btn_add_stmt.Size = new System.Drawing.Size(166, 57);
             this.btn_add_stmt.TabIndex = 2;
             this.btn_add_stmt.Text = "ADD STATEMENT";
             this.btn_add_stmt.UseVisualStyleBackColor = true;
@@ -173,10 +171,9 @@
             // 
             // btn_add_acc
             // 
-            this.btn_add_acc.Location = new System.Drawing.Point(935, 388);
-            this.btn_add_acc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_add_acc.Location = new System.Drawing.Point(1069, 517);
             this.btn_add_acc.Name = "btn_add_acc";
-            this.btn_add_acc.Size = new System.Drawing.Size(145, 43);
+            this.btn_add_acc.Size = new System.Drawing.Size(166, 57);
             this.btn_add_acc.TabIndex = 1;
             this.btn_add_acc.Text = "ADD ACCOUNT";
             this.btn_add_acc.UseVisualStyleBackColor = true;
@@ -187,34 +184,31 @@
             this.dgv_accounts.AllowUserToAddRows = false;
             this.dgv_accounts.AllowUserToDeleteRows = false;
             this.dgv_accounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_accounts.Location = new System.Drawing.Point(18, 15);
-            this.dgv_accounts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgv_accounts.Location = new System.Drawing.Point(21, 19);
             this.dgv_accounts.Name = "dgv_accounts";
             this.dgv_accounts.ReadOnly = true;
             this.dgv_accounts.RowTemplate.Height = 29;
             this.dgv_accounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_accounts.Size = new System.Drawing.Size(553, 416);
+            this.dgv_accounts.Size = new System.Drawing.Size(632, 555);
             this.dgv_accounts.TabIndex = 0;
             // 
             // pnl_ovrvw
             // 
             this.pnl_ovrvw.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnl_ovrvw.Location = new System.Drawing.Point(10, 67);
-            this.pnl_ovrvw.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnl_ovrvw.Location = new System.Drawing.Point(11, 89);
             this.pnl_ovrvw.Name = "pnl_ovrvw";
-            this.pnl_ovrvw.Size = new System.Drawing.Size(1098, 446);
+            this.pnl_ovrvw.Size = new System.Drawing.Size(1255, 595);
             this.pnl_ovrvw.TabIndex = 2;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(1124, 518);
+            this.ClientSize = new System.Drawing.Size(1285, 691);
             this.Controls.Add(this.pnl_acc);
             this.Controls.Add(this.pnl_nav);
             this.Controls.Add(this.pnl_ovrvw);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.pnl_nav.ResumeLayout(false);

@@ -48,17 +48,5 @@ namespace CashflowALPHA
             Debug.WriteLine(watch.ElapsedMilliseconds);
         }
 
-        public void InsertAccSync()
-        {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-            for (int i = 2000; i < 3000; i++)
-            {
-                mySqlHandler.InsertIntoAccount(i.ToString(), "test2", "Test2", 1);
-            }
-            watch.Stop();
-            Debug.WriteLine("Duration was:");
-            Debug.WriteLine(watch.ElapsedMilliseconds);
-        }
-
     }
 }
