@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelperLibrary.DataLayer
 {
-    internal class Partner
+    public class Partner
     {
         int ID { get; set; }
         string Name { get; set; }

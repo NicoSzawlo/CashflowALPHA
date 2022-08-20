@@ -11,7 +11,11 @@ namespace HelperLibrary
 {
     public class MySqlHandler
     {
+        //Connection string for MySqlDb
         private string connStr = "Server=localhost;Database=cashflow_alpha;Uid=root;Pwd=root;";
+
+        //Select from Mysql database 
+        //Select item from table
         public async Task<DataTable> Select(string item, string table)
         {
             DataTable result = new DataTable();
@@ -33,6 +37,7 @@ namespace HelperLibrary
             return result;
 
         }
+        //Select item from table where param = value
         public async Task<DataTable> Select(string item, string table, string whereparam, string whereval)
         {
             DataTable result = new DataTable();
@@ -57,6 +62,7 @@ namespace HelperLibrary
 
         }
 
+        //Insert into account table
         public void InsertIntoAccount(string name, string iban, string bic, int type)
         {
             MySqlCommand cmd = Connect();
@@ -80,6 +86,7 @@ namespace HelperLibrary
             
         }
 
+        //Open Mysql server connection on command handle
         public MySqlCommand Connect()
         {
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -88,21 +95,10 @@ namespace HelperLibrary
             return cmd;
         }
 
+        //Close Mysql server connection on command
         public void Disconnect(MySqlCommand cmd)
         {
             cmd.Connection.Close();
-        }
-
-        //Function to add data in multiple columns
-        private MySqlCommand AddColumnsValues(MySqlCommand cmd, IEnumerable<string> columns, IEnumerable<string> values)
-        {
-            IEnumerator<string> column = columns.GetEnumerator();
-            IEnumerator<string> value = values.GetEnumerator();
-            while(column.MoveNext() && value.MoveNext())
-            {
-                cmd.Parameters.AddWithValue(column.Current, value.Current); 
-            }
-            return cmd;
         }
     }
 

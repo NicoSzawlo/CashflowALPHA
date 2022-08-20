@@ -13,8 +13,11 @@ namespace CashflowALPHA
 {
     public class WinFormsHelper
     {
+        //Calling instances of other handling classes
         private CsvProcessor csvProcessor = new CsvProcessor();
         private MySqlHandler mySqlHandler = new MySqlHandler();
+
+        //Opens file dialog and reads file
         public string OpenFD( string initDir, string filter)
         {
             string filepath;
@@ -29,32 +32,43 @@ namespace CashflowALPHA
             return filepath;
         }
 
+        //Loads content for accounts panel datagridview
         public async void LoadAccTableAsync(DataGridView dgv)
         {
             DataTable dt = await Task.Run(() => mySqlHandler.Select("*", "view_accounts"));
             dgv.DataSource = dt;
         }
 
+        //Loads Account table entry for Textboxes to add/edit accounts
         public async void LoadAccEntryAsync(TextBox name, TextBox iban, TextBox bic, ComboBox type, TextBox balance)
         {
+
+            //Load Account table and select single account
             DataTable accdt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts", "acc_name", "Sparkasse"));
             Account accentry = new Account();
             accentry.GetValuesFromTable(accdt.Rows[0]);
 
+            //Set Textbox info for account
             name.Text = accentry.Name;
             iban.Text = accentry.Iban;
             bic.Text = accentry.Bic;
-
-            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_acctypes"));
-            List<AccountType> typelist = new List<AccountType>();
-            for (int i = 0; i < acctypedt.Rows.Count; i++)
-            {
-                DataRow row = acctypedt.Rows[i];
-                //typelist.Add()
-            }
             balance.Text = accentry.Balance.ToString();
-        }
 
+            //Load Account type Table for Combobox
+            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_acctypes"));
+            List<AccountType> typelist = AccountType.GetObjectList(acctypedt);
+
+            //Add Account type list to Combobox
+            foreach(var item in typelist){
+                type.Items.Add(item.Name);
+                if(item.ID == accentry.Type)
+                {
+                    type.Text = item.Name;
+                }
+            }
+            
+        }
+        //Inserts an Account asynchronous
         public async Task InsertAccAsync()
         {
             List<Task> tasks = new List<Task>();

@@ -12,28 +12,36 @@ namespace HelperLibrary.DataLayer
         public int? ID { get; set; }
         public string? Name { get; set; }
 
-        public void GetValuesFromTable(DataRow row)
+        public AccountType GetValuesFromRow(DataRow row)
         {
-
+            AccountType accountType = new AccountType();
             try
             {
-                this.ID = int.Parse(row["acctype_id"].ToString());
-                this.Name = row["acctype_name"].ToString();
+                accountType.ID = int.Parse(row["acctype_id"].ToString());
+                accountType.Name = row["acctype_name"].ToString();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+            return accountType;
 
         }
-        public List<AccountType> GetObjectList(DataTable dt)
+        public static List<AccountType> GetObjectList(DataTable dt)
         {
             List<AccountType> list = new List<AccountType>();
-            
-            foreach(DataRow dr in dt.Rows)
+            try
             {
-                list.Add(new AccountType { ID = int.Parse(dr["acctype_id"].ToString()), Name = dr["acctype_name"].ToString() });
+                foreach (DataRow dr in dt.Rows)
+                {
+                    list.Add(new AccountType { ID = int.Parse(dr["acctype_id"].ToString()), Name = dr["acctype_name"].ToString() });
+                }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
             return list;
         }
     }

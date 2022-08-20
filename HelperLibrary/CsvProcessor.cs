@@ -9,6 +9,8 @@ namespace HelperLibrary
 {
     public class CsvProcessor
     {
+
+        //Process filestring to Datatable
         public DataTable CsvToTable(string filepath)
         {
             DataTable dt = new DataTable();
@@ -59,6 +61,7 @@ namespace HelperLibrary
             return dt;
         }
 
+        //Read raw file string
         private string ReadFile(string filepath)
         {
             string content = "";
@@ -79,6 +82,7 @@ namespace HelperLibrary
             }
             return content;
         }
+
 
         //Trimming Quotes from array of single strings
         private string[] TrimQuotes(string[] array)

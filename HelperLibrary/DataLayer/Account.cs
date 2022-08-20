@@ -13,7 +13,7 @@ namespace HelperLibrary.DataLayer
         public string? Name { get; set; }
         public string? Iban { get; set; }
         public string? Bic { get; set; }
-        public string? Type { get; set; }
+        public int? Type { get; set; }
         public decimal? Balance { get; set; }
 
         public void GetValuesFromTable(DataRow row)
@@ -24,7 +24,7 @@ namespace HelperLibrary.DataLayer
                 this.Name = row["acc_name"].ToString();
                 this.Iban = row["acc_iban"].ToString();
                 this.Bic = row["acc_bic"].ToString();
-                this.Type = row["acc_acctype_id"].ToString();
+                this.Type = int.Parse(row["acc_acctype_id"].ToString());
                 this.Balance = decimal.Parse(row["acc_balance"].ToString());
             }
             catch(Exception ex)

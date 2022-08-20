@@ -3,14 +3,16 @@ namespace CashflowALPHA
 {
     public partial class MainForm : Form
     {
+
         WinFormsHelper winFormsHelper = new WinFormsHelper();
         public MainForm()
         {
             InitializeComponent();
-            winFormsHelper.LoadAccTableAsync(dgv_accounts);
+            startupAcc();
         }
-       
-    //Navigation buttons
+
+        //Navigation buttons
+        //##############################
         private void navbtn_ovrvw_Click(object sender, EventArgs e)
         {
             ResetNavbtnBackColor();
@@ -25,8 +27,12 @@ namespace CashflowALPHA
             this.pnl_acc.BringToFront();
         }
 
+        //############################################################
+        //PAGES
+        //############################################################
 
-        //Page buttons
+        //ACCOUNTS PANEL
+        //##############################
         private void btn_add_stmt_Click(object sender, EventArgs e)
         {
             
@@ -41,8 +47,20 @@ namespace CashflowALPHA
         {
 
         }
+        //Init routine for accounts panel
+        private void startupAcc()
+        {
+            winFormsHelper.LoadAccTableAsync(dgv_accounts);
+
+        }
+
+        //OVERVIEW PANEL
+        //##############################
+
+
 
         //UI Helper functions
+        //##############################
         private void ResetNavbtnBackColor()
         {
             this.navbtn_acc.BackColor = Color.LightGray;
