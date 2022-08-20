@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HelperLibrary;
+using HelperLibrary.DataLayer;
 
 namespace CashflowALPHA
 {
@@ -30,8 +31,14 @@ namespace CashflowALPHA
 
         public async void LoadAccTableAsync(DataGridView dgv)
         {
-            DataTable dt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts"));
+            DataTable dt = await Task.Run(() => mySqlHandler.Select("*", "view_accounts"));
             dgv.DataSource = dt;
+        }
+
+        public async void LoadAccEntryAsync(TextBox name, TextBox iban, TextBox bic, ComboBox type, TextBox balance)
+        {
+            DataSet dt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts", "acc_name", "Sparkasse"));
+            Account accentry = new Account();
         }
 
         public async Task InsertAccAsync()

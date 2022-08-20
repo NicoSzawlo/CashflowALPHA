@@ -23,9 +23,34 @@ namespace HelperLibrary
                 cmd.ExecuteNonQuery();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 await adapter.FillAsync(result);
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+            return result;
+
+        }
+        public async Task<DataSet> Select(string item, string table, string whereparam, string whereval)
+        {
+            DataSet result = new DataSet();
+            MySqlCommand cmd = Connect();
+            
+            cmd.CommandText = "SELECT " + item + " FROM " + table + " WHERE " + whereparam +" = @whereval;";
+            cmd.Parameters.AddWithValue("@whereval", whereval);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.TableMappings.Add("Account", "Data");
+
+                await adapter.FillAsync(result);
+
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

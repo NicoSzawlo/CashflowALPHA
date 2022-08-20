@@ -187,8 +187,9 @@
             this.btnAccUpdate.Name = "btnAccUpdate";
             this.btnAccUpdate.Size = new System.Drawing.Size(166, 57);
             this.btnAccUpdate.TabIndex = 14;
-            this.btnAccUpdate.Text = "ADD ACCOUNT";
+            this.btnAccUpdate.Text = "UPDATE ACCOUNT";
             this.btnAccUpdate.UseVisualStyleBackColor = true;
+            this.btnAccUpdate.Click += new System.EventHandler(this.btnAccUpdate_Click);
             // 
             // comboAccType
             // 
@@ -268,6 +269,7 @@
             this.btnAccAdd.TabIndex = 3;
             this.btnAccAdd.Text = "ADD ACCOUNT";
             this.btnAccAdd.UseVisualStyleBackColor = true;
+            this.btnAccAdd.Click += new System.EventHandler(this.btnAccAdd_Click);
             // 
             // lblAccType
             // 

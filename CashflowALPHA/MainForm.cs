@@ -32,11 +32,16 @@ namespace CashflowALPHA
             
             winFormsHelper.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*");
         }
-
-        private void btn_add_acc_Click(object sender, EventArgs e)
+        private void btnAccUpdate_Click(object sender, EventArgs e)
         {
-       
+            winFormsHelper.LoadAccEntryAsync(txtAccName, txtAccIban, txtAccBic, comboAccType, txtAccBalance);
         }
+
+        private void btnAccAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //UI Helper functions
         private void ResetNavbtnBackColor()
         {
@@ -53,5 +58,7 @@ namespace CashflowALPHA
         {
 
         }
+
+        
     }
 }

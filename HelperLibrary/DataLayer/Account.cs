@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HelperLibrary.DataLayer
 {
-    internal class Account
+    public class Account
     {
-        int ID { get; set; }
-        string Name { get; set; }
-        string Iban { get; set; }
-        string Bic { get; set; }
-        string Type { get; set; }
-        decimal Balance { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Iban { get; set; }
+        public string Bic { get; set; }
+        public string Type { get; set; }
+        public decimal Balance { get; set; }
+
+        public void GetValuesFromTable(DataTable dt)
+        {
+            //ITableMapping mapping = new ITableMapping();
+            //mapping.Add
+        } 
     }
 }
