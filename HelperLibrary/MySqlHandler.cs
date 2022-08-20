@@ -33,9 +33,9 @@ namespace HelperLibrary
             return result;
 
         }
-        public async Task<DataSet> Select(string item, string table, string whereparam, string whereval)
+        public async Task<DataTable> Select(string item, string table, string whereparam, string whereval)
         {
-            DataSet result = new DataSet();
+            DataTable result = new DataTable();
             MySqlCommand cmd = Connect();
             
             cmd.CommandText = "SELECT " + item + " FROM " + table + " WHERE " + whereparam +" = @whereval;";
@@ -45,8 +45,6 @@ namespace HelperLibrary
             {
                 cmd.ExecuteNonQuery();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                adapter.TableMappings.Add("Account", "Data");
-
                 await adapter.FillAsync(result);
 
             }

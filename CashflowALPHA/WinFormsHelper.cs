@@ -37,8 +37,22 @@ namespace CashflowALPHA
 
         public async void LoadAccEntryAsync(TextBox name, TextBox iban, TextBox bic, ComboBox type, TextBox balance)
         {
-            DataSet dt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts", "acc_name", "Sparkasse"));
+            DataTable accdt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts", "acc_name", "Sparkasse"));
             Account accentry = new Account();
+            accentry.GetValuesFromTable(accdt.Rows[0]);
+
+            name.Text = accentry.Name;
+            iban.Text = accentry.Iban;
+            bic.Text = accentry.Bic;
+
+            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_acctypes"));
+            List<AccountType> typelist = new List<AccountType>();
+            for (int i = 0; i < acctypedt.Rows.Count; i++)
+            {
+                DataRow row = acctypedt.Rows[i];
+                //typelist.Add()
+            }
+            balance.Text = accentry.Balance.ToString();
         }
 
         public async Task InsertAccAsync()
