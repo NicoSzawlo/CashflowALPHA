@@ -107,6 +107,7 @@ namespace HelperLibrary
             }
             catch (Exception ex)
             {
+                Console.WriteLine(cmd.ToString());
                 Console.WriteLine(ex.Message);
             }
             Disconnect(cmd);

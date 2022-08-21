@@ -52,19 +52,21 @@ namespace HelperLibrary.DataLayer
         //Function to push objectlist into db
         public static async void InsertObjectListDbAsync(List<Partner> list)
         {
+            int i = 0;
             List<Task> tasks = new List<Task>();
             foreach(Partner partn in list)
             {
-                tasks.Add(Task.Run(() => MySqlHandler.InsertIntoPartners(partn)));
+                //tasks.Add(Task.Run(() => MySqlHandler.InsertIntoPartners(partn)));
+                //i++;
+                await Task.Run(() => MySqlHandler.InsertIntoPartners(partn));
             }
-            await Task.WhenAll(tasks);
+            //await Task.WhenAll(tasks);
         }
 
 
         //Async task extracting all partners from file
         public static async Task<List<Partner>> GetObjectListStmtAsync(DataTable stmt)
         {
-
             List<Partner> list = await Task.Run(() => FileToList(stmt));
             return list;
         }
