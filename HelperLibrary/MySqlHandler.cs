@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HelperLibrary.DataLayer;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -85,6 +86,31 @@ namespace HelperLibrary
             }
             Disconnect(cmd);
             
+        }
+
+        //Insert into partner table
+        public static void InsertIntoPartners(Partner partn)
+        {
+            MySqlCommand cmd = Connect();
+
+            cmd.CommandText = "INSERT INTO tab_partners (partn_name, partn_iban, partn_bic,partn_bankcode, partn_trxtype_id) VALUES (@name, @iban, @bic, @bankcode, @type)";
+            cmd.Parameters.AddWithValue("@name", partn.Name);
+            cmd.Parameters.AddWithValue("@iban", partn.Iban);
+            cmd.Parameters.AddWithValue("@bic", partn.Bic);
+            cmd.Parameters.AddWithValue("@bankcode", partn.Bankcode);
+            cmd.Parameters.AddWithValue("@type", partn.UsualTrxType);
+
+            try
+            {
+                var result = cmd.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+
         }
 
         //Open Mysql server connection on command handle

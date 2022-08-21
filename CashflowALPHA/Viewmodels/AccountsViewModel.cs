@@ -11,13 +11,10 @@ using HelperLibrary.DataLayer;
 
 namespace CashflowALPHA
 {
-    public class WinFormsHelper
+    public class AccountsViewModel
     {
-        //Calling instances of other handling classes
-        private CsvProcessor csvProcessor = new CsvProcessor();
-
         //Opens file dialog and reads file
-        public string OpenFD( string initDir, string filter)
+        public async void OpenFD( string initDir, string filter)
         {
             string filepath;
             OpenFileDialog ofd = new OpenFileDialog();
@@ -26,9 +23,10 @@ namespace CashflowALPHA
             ofd.ShowDialog();
             filepath = ofd.FileName;
 
-            CsvProcessor.CsvToTable(filepath);
-
-            return filepath;
+            DataTable dt = CsvProcessor.CsvToTable(filepath);
+            List<Partner> partners = await Task.Run(() => Partner.GetObjectListStmtAsync(dt));
+            partners = Partner.GetDistinctObjectList(partners);
+            Partner.InsertObjectListDbAsync(partners);
         }
 
         //Loads content for accounts panel datagridview from mysql view_ac

@@ -128,8 +128,7 @@ namespace HelperLibrary
                 Console.WriteLine(ex.Message);
             }
 
-            trimmedRow = chars.ToString();
-
+            trimmedRow = new string(chars);
 
             return trimmedRow;
         }

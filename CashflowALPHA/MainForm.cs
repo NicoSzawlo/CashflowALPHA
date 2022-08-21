@@ -4,7 +4,7 @@ namespace CashflowALPHA
     public partial class MainForm : Form
     {
 
-        WinFormsHelper winFormsHelper = new WinFormsHelper();
+        AccountsViewModel winFormsHelper = new AccountsViewModel();
         public MainForm()
         {
             InitializeComponent();
