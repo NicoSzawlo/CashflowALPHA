@@ -12,7 +12,7 @@ namespace HelperLibrary.DataLayer
         public int? ID { get; set; }
         public string? Name { get; set; }
 
-        public static async Task<AccountType> GetObjectAsync(string name)
+        public static async Task<AccountType> GetObjectDbAsync(string name)
         {
             AccountType accountType = new AccountType();
             MySqlHandler mySqlHandler = new MySqlHandler();
@@ -30,7 +30,7 @@ namespace HelperLibrary.DataLayer
             return accountType;
 
         }
-        public static async Task<List<AccountType>> GetObjectListAsync()
+        public static async Task<List<AccountType>> GetObjectListDbAsync()
         {
             List<AccountType> list = new List<AccountType>();
             MySqlHandler mySqlHandler = new MySqlHandler();

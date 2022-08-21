@@ -17,7 +17,7 @@ namespace HelperLibrary.DataLayer
         public decimal? Balance { get; set; }
 
         //Function to asynchronously load mysqldata into Object
-        public static async Task<Account> GetObjectAsync(string name)
+        public static async Task<Account> GetObjectDbAsync(string name)
         {
             Account acc = new Account();
             MySqlHandler mySqlHandler = new MySqlHandler();
@@ -40,7 +40,7 @@ namespace HelperLibrary.DataLayer
             return acc;
         }
         //Function to asynchronously load mysql data into object list
-        public static async Task<List<Account>> GetObjectListAsync()
+        public static async Task<List<Account>> GetObjectListDbAsync()
         {
             List<Account> list = new List<Account>();
             MySqlHandler mySqlHandler = new MySqlHandler();

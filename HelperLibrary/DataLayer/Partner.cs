@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Google.Protobuf.Collections;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace HelperLibrary.DataLayer
 {
@@ -18,7 +20,7 @@ namespace HelperLibrary.DataLayer
 
 
         //Function to asynchronously load mysqldata into Object
-        public static async Task<Partner> GetObjectAsync(string name)
+        public static async Task<Partner> GetObjectDbAsync(string name)
         {
             Partner partn = new Partner();
             MySqlHandler mySqlHandler = new MySqlHandler();
@@ -41,31 +43,56 @@ namespace HelperLibrary.DataLayer
             return partn;
         }
         //Function to asynchronously load mysql data into object list
-        public static async Task<List<Partner>> GetObjectListAsync()
+        public static async Task<List<Partner>> GetObjectListDbAsync()
         {
-            List<Partner> list = new List<Partner>();
             MySqlHandler mySqlHandler = new MySqlHandler();
             DataTable partnerdt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts"));
-            try
-            {
-                foreach (DataRow dr in partnerdt.Rows)
-                {
-                    list.Add(new Partner
-                    {
-                        ID = int.Parse(dr["acc_id"].ToString()),
-                        Name = dr["acc_name"].ToString(),
-                        Iban = dr["acc_iban"].ToString(),
-                        Bic = dr["acc_bic"].ToString(),
-                        Bankcode = dr["acc_balance"].ToString(),
-                        UsualTrxType = int.Parse(dr["acc_acctype_id"].ToString())                        
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            List<Partner> list = await Task.Run(() => DbToList(partnerdt));
 
+            return list;
+        }
+
+        //Async task extracting all partners from file
+        public static async Task<List<Partner>> GetObjectListStmtAsync(DataTable stmt)
+        {
+
+            List<Partner> list = await Task.Run(() => FileToList(stmt));
+            return list;
+        }
+
+        //Adding all george statement partners to objectlist
+        private static List<Partner> FileToList(DataTable stmt)
+        {
+            List<Partner> list = new List<Partner>();
+            foreach (DataRow dr in stmt.Rows)
+            {
+                list.Add(new Partner
+                {
+                    Name = dr["Partner Name"].ToString(),
+                    Iban = dr["Partner IBAN"].ToString(),
+                    Bic = dr["BIC/SWIFT"].ToString(),
+                    Bankcode = dr["Bank code"].ToString()
+                });
+            }
+            return list;
+        }
+
+        //Adding all database entries to objectlist
+        private static List<Partner> DbToList(DataTable db)
+        {
+            List<Partner> list = new List<Partner>();
+            foreach (DataRow dr in db.Rows)
+            {
+                list.Add(new Partner
+                {
+                    ID = int.Parse(dr["acc_id"].ToString()),
+                    Name = dr["acc_name"].ToString(),
+                    Iban = dr["acc_iban"].ToString(),
+                    Bic = dr["acc_bic"].ToString(),
+                    Bankcode = dr["acc_balance"].ToString(),
+                    UsualTrxType = int.Parse(dr["acc_acctype_id"].ToString())
+                });
+            }
             return list;
         }
     }

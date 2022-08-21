@@ -12,11 +12,11 @@ namespace HelperLibrary
     public class MySqlHandler
     {
         //Connection string for MySqlDb
-        private string connStr = "Server=localhost;Database=cashflow_alpha;Uid=root;Pwd=root;";
+        static string connStr = "Server=localhost;Database=cashflow_alpha;Uid=root;Pwd=root;";
 
         //Select from Mysql database 
         //Select item from table
-        public async Task<DataTable> Select(string item, string table)
+        public static async Task<DataTable> Select(string item, string table)
         {
             DataTable result = new DataTable();
             MySqlCommand cmd = Connect();
@@ -39,7 +39,7 @@ namespace HelperLibrary
         }
         //Overload 1:
         //Select item from table where param = value
-        public async Task<DataTable> Select(string item, string table, string whereparam, string whereval)
+        public static async Task<DataTable> Select(string item, string table, string whereparam, string whereval)
         {
             DataTable result = new DataTable();
             MySqlCommand cmd = Connect();
@@ -88,7 +88,7 @@ namespace HelperLibrary
         }
 
         //Open Mysql server connection on command handle
-        public MySqlCommand Connect()
+        public static MySqlCommand Connect()
         {
             MySqlConnection conn = new MySqlConnection(connStr);
             MySqlCommand cmd = conn.CreateCommand();
@@ -97,7 +97,7 @@ namespace HelperLibrary
         }
 
         //Close Mysql server connection on command
-        public void Disconnect(MySqlCommand cmd)
+        public static void Disconnect(MySqlCommand cmd)
         {
             cmd.Connection.Close();
         }

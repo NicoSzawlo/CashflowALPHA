@@ -11,7 +11,7 @@ namespace HelperLibrary
     {
 
         //Process filestring to Datatable
-        public DataTable CsvToTable(string filepath)
+        public static DataTable CsvToTable(string filepath)
         {
             DataTable dt = new DataTable();
 
@@ -62,7 +62,7 @@ namespace HelperLibrary
         }
 
         //Read raw file string
-        private string ReadFile(string filepath)
+        private static string ReadFile(string filepath)
         {
             string content = "";
             try

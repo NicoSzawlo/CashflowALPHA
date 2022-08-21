@@ -15,7 +15,6 @@ namespace CashflowALPHA
     {
         //Calling instances of other handling classes
         private CsvProcessor csvProcessor = new CsvProcessor();
-        private MySqlHandler mySqlHandler = new MySqlHandler();
 
         //Opens file dialog and reads file
         public string OpenFD( string initDir, string filter)
@@ -27,7 +26,7 @@ namespace CashflowALPHA
             ofd.ShowDialog();
             filepath = ofd.FileName;
 
-            csvProcessor.CsvToTable(filepath);
+            CsvProcessor.CsvToTable(filepath);
 
             return filepath;
         }
@@ -35,7 +34,7 @@ namespace CashflowALPHA
         //Loads content for accounts panel datagridview from mysql view_ac
         public async void LoadAccTableAsync(DataGridView dgv)
         {
-            DataTable dt = await Task.Run(() => mySqlHandler.Select("*", "view_accounts"));
+            DataTable dt = await Task.Run(() => MySqlHandler.Select("*", "view_accounts"));
             dgv.DataSource = dt;
         }
 
@@ -44,9 +43,9 @@ namespace CashflowALPHA
         {
 
             //Load Account table and select single account
-            Account accentry = await Task.Run(() => Account.GetObjectAsync("Sparkasse"));
+            Account accentry = await Task.Run(() => Account.GetObjectDbAsync("Sparkasse"));
             //Load Account type Table for Combobox
-            List<AccountType> typelist = await Task.Run(() => AccountType.GetObjectListAsync());
+            List<AccountType> typelist = await Task.Run(() => AccountType.GetObjectListDbAsync());
 
             //Set Textbox info for account
             name.Text = accentry.Name;
@@ -66,16 +65,16 @@ namespace CashflowALPHA
         //Inserts an Account asynchronous
         public async Task InsertAccAsync()
         {
-            List<Task> tasks = new List<Task>();
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-            for (int i = 0; i < 1000; i++)
-            {
-                tasks.Add(Task.Run(() => mySqlHandler.InsertIntoAccount(i.ToString(), "test", "Test", 1)));
-            }
-            await Task.WhenAll(tasks);
-            watch.Stop();
-            Debug.WriteLine("Duration was:");
-            Debug.WriteLine(watch.ElapsedMilliseconds);
+            //List<Task> tasks = new List<Task>();
+            //var watch = System.Diagnostics.Stopwatch.StartNew();
+            //for (int i = 0; i < 1000; i++)
+            //{
+            //    tasks.Add(Task.Run(() => mySqlHandler.InsertIntoAccount(i.ToString(), "test", "Test", 1)));
+            //}
+            //await Task.WhenAll(tasks);
+            //watch.Stop();
+            //Debug.WriteLine("Duration was:");
+            //Debug.WriteLine(watch.ElapsedMilliseconds);
         }
 
     }
