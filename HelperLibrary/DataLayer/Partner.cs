@@ -23,8 +23,7 @@ namespace HelperLibrary.DataLayer
         public static async Task<Partner> GetObjectDbAsync(string name)
         {
             Partner partn = new Partner();
-            MySqlHandler mySqlHandler = new MySqlHandler();
-            DataTable partnerdt = await Task.Run(() => mySqlHandler.Select("*", "tab_partners", "partn_name", name));
+            DataTable partnerdt = await Task.Run(() => MySqlHandler.Select("*", "tab_partners", "partn_name", name));
             DataRow row = partnerdt.Rows[0];
 
             try
@@ -45,8 +44,7 @@ namespace HelperLibrary.DataLayer
         //Function to asynchronously load mysql data into object list
         public static async Task<List<Partner>> GetObjectListDbAsync()
         {
-            MySqlHandler mySqlHandler = new MySqlHandler();
-            DataTable partnerdt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts"));
+            DataTable partnerdt = await Task.Run(() => MySqlHandler.Select("*", "tab_accounts"));
             List<Partner> list = await Task.Run(() => DbToList(partnerdt));
 
             return list;

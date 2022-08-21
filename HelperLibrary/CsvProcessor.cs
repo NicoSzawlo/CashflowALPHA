@@ -85,7 +85,7 @@ namespace HelperLibrary
 
 
         //Trimming Quotes from array of single strings
-        private string[] TrimQuotes(string[] array)
+        private static string[] TrimQuotes(string[] array)
         {
             string[] strings = new string[array.Length];
             for (int i = 0; i < array.Length; i++)
@@ -97,7 +97,7 @@ namespace HelperLibrary
 
         //George Statement csv has every Field separated with ; and
         //every content "xxx" so we can filter out semicolon in text 
-        private string TrimSemicolon(string row)
+        private static string TrimSemicolon(string row)
         {
             string trimmedRow = "";
             char[] chars = row.ToCharArray();

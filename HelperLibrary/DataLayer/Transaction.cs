@@ -48,8 +48,7 @@ namespace HelperLibrary.DataLayer
         public static async Task<List<Transaction>> GetObjectListAsync()
         {
             List<Transaction> list = new List<Transaction>();
-            MySqlHandler mySqlHandler = new MySqlHandler();
-            DataTable trxdt = await Task.Run(() => mySqlHandler.Select("*", "tab_trx"));
+            DataTable trxdt = await Task.Run(() => MySqlHandler.Select("*", "tab_trx"));
             try
             {
                 foreach (DataRow dr in trxdt.Rows)

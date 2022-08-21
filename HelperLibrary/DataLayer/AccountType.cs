@@ -15,8 +15,7 @@ namespace HelperLibrary.DataLayer
         public static async Task<AccountType> GetObjectDbAsync(string name)
         {
             AccountType accountType = new AccountType();
-            MySqlHandler mySqlHandler = new MySqlHandler();
-            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_acctypes", "acctype_name", name));
+            DataTable acctypedt = await Task.Run(() => MySqlHandler.Select("*", "tab_acctypes", "acctype_name", name));
             DataRow row = acctypedt.Rows[0];
             try
             {
@@ -33,8 +32,7 @@ namespace HelperLibrary.DataLayer
         public static async Task<List<AccountType>> GetObjectListDbAsync()
         {
             List<AccountType> list = new List<AccountType>();
-            MySqlHandler mySqlHandler = new MySqlHandler();
-            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_acctypes"));
+            DataTable acctypedt = await Task.Run(() => MySqlHandler.Select("*", "tab_acctypes"));
             try
             {
                 foreach (DataRow dr in acctypedt.Rows)

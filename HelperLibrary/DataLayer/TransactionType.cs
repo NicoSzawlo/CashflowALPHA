@@ -17,8 +17,7 @@ namespace HelperLibrary.DataLayer
         public static async Task<List<TransactionType>> GetObjectListAsync()
         {
             List<TransactionType> list = new List<TransactionType>();
-            MySqlHandler mySqlHandler = new MySqlHandler();
-            DataTable trxtypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_trxtype"));
+            DataTable trxtypedt = await Task.Run(() => MySqlHandler.Select("*", "tab_trxtype"));
             try
             {
                 foreach (DataRow dr in trxtypedt.Rows)
