@@ -32,7 +32,7 @@ namespace CashflowALPHA
             return filepath;
         }
 
-        //Loads content for accounts panel datagridview
+        //Loads content for accounts panel datagridview from mysql view_ac
         public async void LoadAccTableAsync(DataGridView dgv)
         {
             DataTable dt = await Task.Run(() => mySqlHandler.Select("*", "view_accounts"));
@@ -44,21 +44,16 @@ namespace CashflowALPHA
         {
 
             //Load Account table and select single account
-            DataTable accdt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts", "acc_name", "Sparkasse"));
-            Account accentry = new Account();
-            accentry.GetValuesFromTable(accdt.Rows[0]);
+            Account accentry = await Task.Run(() => Account.GetObjectAsync("Sparkasse"));
+            //Load Account type Table for Combobox
+            List<AccountType> typelist = await Task.Run(() => AccountType.GetObjectListAsync());
 
             //Set Textbox info for account
             name.Text = accentry.Name;
             iban.Text = accentry.Iban;
             bic.Text = accentry.Bic;
             balance.Text = accentry.Balance.ToString();
-
-            //Load Account type Table for Combobox
-            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_acctypes"));
-            List<AccountType> typelist = AccountType.GetObjectList(acctypedt);
-
-            //Add Account type list to Combobox
+            //Add Account type list to Combobox and set current type
             foreach(var item in typelist){
                 type.Items.Add(item.Name);
                 if(item.ID == accentry.Type)

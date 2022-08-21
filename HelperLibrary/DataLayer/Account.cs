@@ -16,22 +16,55 @@ namespace HelperLibrary.DataLayer
         public int? Type { get; set; }
         public decimal? Balance { get; set; }
 
-        public void GetValuesFromTable(DataRow row)
+        //Function to asynchronously load mysqldata into Object
+        public static async Task<Account> GetObjectAsync(string name)
         {
+            Account acc = new Account();
+            MySqlHandler mySqlHandler = new MySqlHandler();
+            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts", "acc_name", name));
+            DataRow row = acctypedt.Rows[0];
+
             try
             {
-                this.ID = int.Parse(row["acc_id"].ToString());
-                this.Name = row["acc_name"].ToString();
-                this.Iban = row["acc_iban"].ToString();
-                this.Bic = row["acc_bic"].ToString();
-                this.Type = int.Parse(row["acc_acctype_id"].ToString());
-                this.Balance = decimal.Parse(row["acc_balance"].ToString());
+                acc.ID = int.Parse(row["acc_id"].ToString());
+                acc.Name = row["acc_name"].ToString();
+                acc.Iban = row["acc_iban"].ToString();
+                acc.Bic = row["acc_bic"].ToString();
+                acc.Type = int.Parse(row["acc_acctype_id"].ToString());
+                acc.Balance = decimal.Parse(row["acc_balance"].ToString());
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            
-        } 
+            return acc;
+        }
+        //Function to asynchronously load mysql data into object list
+        public static async Task<List<Account>> GetObjectListAsync()
+        {
+            List<Account> list = new List<Account>();
+            MySqlHandler mySqlHandler = new MySqlHandler();
+            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_accounts"));
+            try
+            {
+                foreach (DataRow dr in acctypedt.Rows)
+                {
+                    list.Add(new Account { 
+                        ID = int.Parse(dr["acc_id"].ToString()), 
+                        Name = dr["acc_name"].ToString(), 
+                        Iban = dr["acc_iban"].ToString(), 
+                        Bic = dr["acc_bic"].ToString(), 
+                        Type = int.Parse(dr["acc_acctype_id" ].ToString()), 
+                        Balance = decimal.Parse(dr["acc_balance"].ToString()) 
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return list;
+        }
     }
 }

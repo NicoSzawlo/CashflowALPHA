@@ -37,6 +37,7 @@ namespace HelperLibrary
             return result;
 
         }
+        //Overload 1:
         //Select item from table where param = value
         public async Task<DataTable> Select(string item, string table, string whereparam, string whereval)
         {

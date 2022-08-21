@@ -12,9 +12,12 @@ namespace HelperLibrary.DataLayer
         public int? ID { get; set; }
         public string? Name { get; set; }
 
-        public AccountType GetValuesFromRow(DataRow row)
+        public static async Task<AccountType> GetObjectAsync(string name)
         {
             AccountType accountType = new AccountType();
+            MySqlHandler mySqlHandler = new MySqlHandler();
+            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_acctypes", "acctype_name", name));
+            DataRow row = acctypedt.Rows[0];
             try
             {
                 accountType.ID = int.Parse(row["acctype_id"].ToString());
@@ -27,12 +30,14 @@ namespace HelperLibrary.DataLayer
             return accountType;
 
         }
-        public static List<AccountType> GetObjectList(DataTable dt)
+        public static async Task<List<AccountType>> GetObjectListAsync()
         {
             List<AccountType> list = new List<AccountType>();
+            MySqlHandler mySqlHandler = new MySqlHandler();
+            DataTable acctypedt = await Task.Run(() => mySqlHandler.Select("*", "tab_acctypes"));
             try
             {
-                foreach (DataRow dr in dt.Rows)
+                foreach (DataRow dr in acctypedt.Rows)
                 {
                     list.Add(new AccountType { ID = int.Parse(dr["acctype_id"].ToString()), Name = dr["acctype_name"].ToString() });
                 }
