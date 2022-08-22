@@ -16,7 +16,7 @@ namespace HelperLibrary.DataLayer
         public int? TypeID { get; set; }
         public decimal? Balance { get; set; }
 
-        //Function to asynchronously load mysqldata into Object
+        //Function to load mysqldata into Object
         public static Account GetObjectDb(string name)
         {
             Account acc = new Account();

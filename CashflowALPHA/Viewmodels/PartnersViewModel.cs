@@ -16,6 +16,12 @@ namespace CashflowALPHA.Viewmodels
             dgv.DataSource = dt;
         }
 
+        public static async void LoadTrxTypeTableAsync(DataGridView dgv)
+        {
+            DataTable dt = await Task.Run(() => MySqlHandler.Select("*", "view_trxtypes"));
+            dgv.DataSource = dt;
+        }
+
 
     }
 }

@@ -10,10 +10,28 @@ namespace HelperLibrary.DataLayer
 {
     public class TransactionType
     {
-        int ID { get; set; }
-        string Name { get; set; }
-        decimal Budget { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public decimal Budget { get; set; }
 
+        public static TransactionType GetObjectDb(string name)
+        {
+            TransactionType trxtype = new TransactionType();
+            DataTable trxtypedt = MySqlHandler.Select("*", "tab_accounts", "acc_name", name);
+            DataRow row = trxtypedt.Rows[0];
+
+            try
+            {
+                trxtype.ID = int.Parse(row["trxtype_id"].ToString());
+                trxtype.Name = row["trxtype_name"].ToString();
+                trxtype.Budget = decimal.Parse(row["trxtype_budget"].ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return trxtype;
+        }
         public static async Task<List<TransactionType>> GetObjectListAsync()
         {
             List<TransactionType> list = new List<TransactionType>();
@@ -36,6 +54,17 @@ namespace HelperLibrary.DataLayer
             }
 
             return list;
+        }
+
+        public static int GetObjectId(string name)
+        {
+            TransactionType trxtype = GetObjectDb(name);
+            int id = (int)trxtype.ID;
+            return id;
+        }
+        public static void InsertObjectDb(TransactionType trxtype)
+        {
+            MySqlHandler.InsertIntoTrxTypes(trxtype);
         }
     }
 }

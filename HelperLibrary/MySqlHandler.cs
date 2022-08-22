@@ -64,6 +64,8 @@ namespace HelperLibrary
 
         }
 
+        //Accounts table
+        //#######################################################
         //Insert into account table
         public static void InsertIntoAccount(Account acc)
         {
@@ -115,6 +117,9 @@ namespace HelperLibrary
             Disconnect(cmd);
         }
 
+
+        //Partners table
+        //#######################################################
         //Insert into partner table
         public static void InsertIntoPartners(Partner partn)
         {
@@ -141,6 +146,31 @@ namespace HelperLibrary
 
         }
 
+
+        //Transactiontypes table
+        //#######################################################
+        public static void InsertIntoTrxTypes(TransactionType trxtype)
+        {
+            MySqlCommand cmd = Connect();
+
+            cmd.CommandText = "INSERT INTO tab_trxtypes (trxtype_name, trxtype_budget) VALUES (@name, @budget)";
+            cmd.Parameters.AddWithValue("@name", trxtype.Name);
+            cmd.Parameters.AddWithValue("@budget", trxtype.Budget);
+
+            try
+            {
+                var result = cmd.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(cmd.ToString());
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+        }
+        //General methods
+        //#######################################################
         //Open Mysql server connection on command handle
         private static MySqlCommand Connect()
         {

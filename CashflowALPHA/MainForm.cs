@@ -81,7 +81,9 @@ namespace CashflowALPHA
         {
             AccountsViewModel.LoadAccTableAsync(dgvAccounts);
             PartnersViewModel.LoadPartnersTableAsync(dgvPartners);
-
+            PartnersViewModel.LoadTrxTypeTableAsync(dgvPartnerTypes);
+            TrxTypesViewModel.LoadTrxTypeTableAsync(dgvTransactionTypes);
+            
         }
 
         //OVERVIEW PANEL
@@ -89,7 +91,11 @@ namespace CashflowALPHA
 
         //TRANSACTIONTYPES PANEL
         //##############################
-
+        private void btnAddTrxType_Click(object sender, EventArgs e)
+        {
+            TrxTypesViewModel.InsertTrxType(txtTryTypeName.Text, decimal.Parse(txtTrxTypeBudget.Text));
+            TrxTypesViewModel.LoadTrxTypeTableAsync(dgvTransactionTypes);
+        }
         //PARTNERS PANEL
         //##############################
 
