@@ -12,10 +12,10 @@ namespace HelperLibrary.DataLayer
         public int? ID { get; set; }
         public string? Name { get; set; }
 
-        public static async Task<AccountType> GetObjectDbAsync(string name)
+        public static AccountType GetObjectDb(string name)
         {
             AccountType accountType = new AccountType();
-            DataTable acctypedt = await Task.Run(() => MySqlHandler.Select("*", "tab_acctypes", "acctype_name", name));
+            DataTable acctypedt = MySqlHandler.Select("*", "tab_acctypes", "acctype_name", name);
             DataRow row = acctypedt.Rows[0];
             try
             {
@@ -46,6 +46,12 @@ namespace HelperLibrary.DataLayer
             }
             
             return list;
+        }
+        public static int GetObjectId(string name)
+        {
+            AccountType acctype =  GetObjectDb(name);
+            int id = (int)acctype.ID;
+            return id;
         }
     }
 }

@@ -117,10 +117,10 @@ namespace HelperLibrary.DataLayer
 
 
         //Checking Object instance in Db for dupe
-        private static async Task<bool> CheckDbEntry(Partner partn)
+        private static bool CheckDbEntry(Partner partn)
         {
             bool dupe = false;
-            DataTable result = await MySqlHandler.Select("*", "tab_partners", "partn_name", partn.Name);
+            DataTable result = MySqlHandler.Select("*", "tab_partners", "partn_name", partn.Name);
             if(result != null)
             {
                 dupe = true;

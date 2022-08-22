@@ -17,10 +17,10 @@ namespace HelperLibrary.DataLayer
         public decimal? Balance { get; set; }
 
         //Function to asynchronously load mysqldata into Object
-        public static async Task<Account> GetObjectDbAsync(string name)
+        public static Account GetObjectDb(string name)
         {
             Account acc = new Account();
-            DataTable acctypedt = await Task.Run(() => MySqlHandler.Select("*", "tab_accounts", "acc_name", name));
+            DataTable acctypedt = MySqlHandler.Select("*", "tab_accounts", "acc_name", name);
             DataRow row = acctypedt.Rows[0];
 
             try
@@ -65,6 +65,13 @@ namespace HelperLibrary.DataLayer
             return list;
         }
 
+        public static int GetObjectId(string name)
+        {
+            Account account = GetObjectDb(name);
+            int id = (int)account.ID;
+            return id;
+        }
+
         //Method for updating account data
         public static  async void InsertObjectListDbAsync(List<Account> list)
         {
@@ -72,7 +79,7 @@ namespace HelperLibrary.DataLayer
             List<Task> tasks = new List<Task>();
             foreach (Account acc in list)
             {
-                await Task.Run(() => MySqlHandler.InsertIntoPartners(acc));
+                await Task.Run(() => MySqlHandler.InsertIntoAccount(acc));
             }
         }
     }

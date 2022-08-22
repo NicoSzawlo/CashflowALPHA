@@ -43,7 +43,7 @@ namespace CashflowALPHA
         {
 
             //Load Account table and select single account
-            Account accentry = await Task.Run(() => Account.GetObjectDbAsync(accountname));
+            Account accentry = await Task.Run(() => Account.GetObjectDb(accountname));
             //Load Account type Table for Combobox
             List<AccountType> typelist = await Task.Run(() => AccountType.GetObjectListDbAsync());
 
@@ -61,6 +61,24 @@ namespace CashflowALPHA
                 }
             }
             
+        }
+
+        //Updates account in db with data from textboxes
+        public static void UpdateAccEntryAsync(string name, string iban, string bic, string type, decimal balance)
+        {
+            int accid = Account.GetObjectId(name);
+            int acctypeid = AccountType.GetObjectId(type);
+
+            Account acc = new Account
+            {
+                ID = accid,
+                Name = name,
+                Iban = iban,
+                Bic = bic,
+                TypeID = acctypeid,
+                Balance = balance
+            };
+            AccountsViewModel.UpdateAccAsync(acc);
         }
         //Inserts an Account asynchronous
         public async Task InsertAccAsync()

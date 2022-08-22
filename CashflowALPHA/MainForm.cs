@@ -1,6 +1,7 @@
 
 using CashflowALPHA.Viewmodels;
 using HelperLibrary.DataLayer;
+using System.Xml.Linq;
 
 namespace CashflowALPHA
 {
@@ -56,19 +57,9 @@ namespace CashflowALPHA
             
             AccountsViewModel.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*");
         }
-        private async void btnAccUpdate_Click(object sender, EventArgs e)
+        private void btnAccUpdate_Click(object sender, EventArgs e)
         {
-            Account acc = new Account
-            {
-                Name = txtAccName.Text,
-                Iban = txtAccIban.Text,
-                Bic = txtAccBic.Text,
-                TypeID = comboAccType.SelectedIndex,
-                Balance = decimal.Parse(txtAccBalance.Text)
-            };
-            await AccountsViewModel.UpdateAccAsync(acc);
-                
-
+            AccountsViewModel.UpdateAccEntryAsync(txtAccName.Text, txtAccIban.Text, txtAccBic.Text, comboAccType.Text, Decimal.Parse(txtAccBalance.Text));
         }
 
         private void btnAccAdd_Click(object sender, EventArgs e)

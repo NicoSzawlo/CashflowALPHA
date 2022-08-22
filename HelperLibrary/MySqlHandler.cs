@@ -41,7 +41,7 @@ namespace HelperLibrary
         }
         //Overload 1:
         //Select item from table where param = value
-        public static async Task<DataTable> Select(string item, string table, string whereparam, string whereval)
+        public static DataTable Select(string item, string table, string whereparam, string whereval)
         {
             DataTable result = new DataTable();
             MySqlCommand cmd = Connect();
@@ -53,8 +53,7 @@ namespace HelperLibrary
             {
                 cmd.ExecuteNonQuery();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                await adapter.FillAsync(result);
-
+                adapter.FillAsync(result);
             }
             catch (Exception ex)
             {
@@ -66,7 +65,7 @@ namespace HelperLibrary
         }
 
         //Insert into account table
-        public void InsertIntoAccount(Account acc)
+        public static void InsertIntoAccount(Account acc)
         {
             MySqlCommand cmd = Connect();
 
@@ -95,7 +94,7 @@ namespace HelperLibrary
         {
             MySqlCommand cmd = Connect();
 
-            cmd.CommandText = "UPDATE tab_accounts SET acc_name = @name,acc_iban = @iban, acc_bic = @bic,acc_acctype_id = @type,acc_balance = @balance) WHERE acc_id = @id";
+            cmd.CommandText = "UPDATE tab_accounts SET acc_name = @name,acc_iban = @iban, acc_bic = @bic,acc_acctype_id = @type,acc_balance = @balance WHERE acc_id = @id";
             
             cmd.Parameters.AddWithValue("@name", acc.Name);
             cmd.Parameters.AddWithValue("@iban", acc.Iban);
