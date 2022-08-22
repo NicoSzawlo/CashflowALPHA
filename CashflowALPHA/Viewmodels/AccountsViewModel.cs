@@ -14,7 +14,7 @@ namespace CashflowALPHA
     public class AccountsViewModel
     {
         //Opens file dialog and reads file
-        public async void OpenFD( string initDir, string filter)
+        public static async void OpenFD( string initDir, string filter)
         {
             string filepath;
             OpenFileDialog ofd = new OpenFileDialog();
@@ -32,18 +32,18 @@ namespace CashflowALPHA
         }
 
         //Loads content for accounts panel datagridview from mysql view_ac
-        public async void LoadAccTableAsync(DataGridView dgv)
+        public static async void LoadAccTableAsync(DataGridView dgv)
         {
             DataTable dt = await Task.Run(() => MySqlHandler.Select("*", "view_accounts"));
             dgv.DataSource = dt;
         }
 
         //Loads Account table entry for Textboxes to add/edit accounts
-        public async void LoadAccEntryAsync(TextBox name, TextBox iban, TextBox bic, ComboBox type, TextBox balance)
+        public static async void LoadAccEntryAsync(TextBox name, TextBox iban, TextBox bic, ComboBox type, TextBox balance, string accountname)
         {
 
             //Load Account table and select single account
-            Account accentry = await Task.Run(() => Account.GetObjectDbAsync("Sparkasse"));
+            Account accentry = await Task.Run(() => Account.GetObjectDbAsync(accountname));
             //Load Account type Table for Combobox
             List<AccountType> typelist = await Task.Run(() => AccountType.GetObjectListDbAsync());
 

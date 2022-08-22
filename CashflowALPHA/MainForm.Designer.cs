@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.pnl_nav = new System.Windows.Forms.FlowLayoutPanel();
-            this.navbtn_ovrvw = new System.Windows.Forms.Button();
-            this.navbtn_trx = new System.Windows.Forms.Button();
-            this.navbtn_partners = new System.Windows.Forms.Button();
-            this.navbtn_budget = new System.Windows.Forms.Button();
-            this.navbtn_acc = new System.Windows.Forms.Button();
-            this.navtbn_inv = new System.Windows.Forms.Button();
-            this.navbtn_res = new System.Windows.Forms.Button();
-            this.pnl_acc = new System.Windows.Forms.Panel();
+            this.navbtnOvrvw = new System.Windows.Forms.Button();
+            this.navbtnTrx = new System.Windows.Forms.Button();
+            this.navbtnPartners = new System.Windows.Forms.Button();
+            this.navbtnBudget = new System.Windows.Forms.Button();
+            this.navbtnAcc = new System.Windows.Forms.Button();
+            this.navtbnInv = new System.Windows.Forms.Button();
+            this.navbtnSpare = new System.Windows.Forms.Button();
+            this.pnlAcc = new System.Windows.Forms.Panel();
             this.btnAccUpdate = new System.Windows.Forms.Button();
             this.comboAccType = new System.Windows.Forms.ComboBox();
             this.txtAccBalance = new System.Windows.Forms.TextBox();
@@ -50,136 +50,153 @@
             this.lblAccType = new System.Windows.Forms.Label();
             this.btnAccStmtAdd = new System.Windows.Forms.Button();
             this.lblAccBic = new System.Windows.Forms.Label();
-            this.dgv_accounts = new System.Windows.Forms.DataGridView();
-            this.pnl_ovrvw = new System.Windows.Forms.Panel();
+            this.dgvAccounts = new System.Windows.Forms.DataGridView();
+            this.pnlOvrvw = new System.Windows.Forms.Panel();
+            this.pnlPartners = new System.Windows.Forms.Panel();
+            this.dgvPartners = new System.Windows.Forms.DataGridView();
+            this.pnlBudgets = new System.Windows.Forms.Panel();
+            this.btnUpdateTrxType = new System.Windows.Forms.Button();
+            this.txtTrxTypeBudget = new System.Windows.Forms.TextBox();
+            this.lblTrxTypeBudget = new System.Windows.Forms.Label();
+            this.txtTryTypeName = new System.Windows.Forms.TextBox();
+            this.lblTrxTypeName = new System.Windows.Forms.Label();
+            this.btnAddTrxType = new System.Windows.Forms.Button();
+            this.dgvTransactionTypes = new System.Windows.Forms.DataGridView();
             this.pnl_nav.SuspendLayout();
-            this.pnl_acc.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_accounts)).BeginInit();
+            this.pnlAcc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
+            this.pnlPartners.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPartners)).BeginInit();
+            this.pnlBudgets.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionTypes)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_nav
             // 
-            this.pnl_nav.Controls.Add(this.navbtn_ovrvw);
-            this.pnl_nav.Controls.Add(this.navbtn_trx);
-            this.pnl_nav.Controls.Add(this.navbtn_partners);
-            this.pnl_nav.Controls.Add(this.navbtn_budget);
-            this.pnl_nav.Controls.Add(this.navbtn_acc);
-            this.pnl_nav.Controls.Add(this.navtbn_inv);
-            this.pnl_nav.Controls.Add(this.navbtn_res);
+            this.pnl_nav.Controls.Add(this.navbtnOvrvw);
+            this.pnl_nav.Controls.Add(this.navbtnTrx);
+            this.pnl_nav.Controls.Add(this.navbtnPartners);
+            this.pnl_nav.Controls.Add(this.navbtnBudget);
+            this.pnl_nav.Controls.Add(this.navbtnAcc);
+            this.pnl_nav.Controls.Add(this.navtbnInv);
+            this.pnl_nav.Controls.Add(this.navbtnSpare);
             this.pnl_nav.Location = new System.Drawing.Point(10, 5);
             this.pnl_nav.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_nav.Name = "pnl_nav";
             this.pnl_nav.Size = new System.Drawing.Size(1255, 91);
             this.pnl_nav.TabIndex = 0;
             // 
-            // navbtn_ovrvw
+            // navbtnOvrvw
             // 
-            this.navbtn_ovrvw.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.navbtn_ovrvw.FlatAppearance.BorderSize = 0;
-            this.navbtn_ovrvw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_ovrvw.Location = new System.Drawing.Point(2, 3);
-            this.navbtn_ovrvw.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.navbtn_ovrvw.Name = "navbtn_ovrvw";
-            this.navbtn_ovrvw.Size = new System.Drawing.Size(160, 91);
-            this.navbtn_ovrvw.TabIndex = 0;
-            this.navbtn_ovrvw.Text = " Overview";
-            this.navbtn_ovrvw.UseVisualStyleBackColor = false;
-            this.navbtn_ovrvw.Click += new System.EventHandler(this.navbtn_ovrvw_Click);
+            this.navbtnOvrvw.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.navbtnOvrvw.FlatAppearance.BorderSize = 0;
+            this.navbtnOvrvw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbtnOvrvw.Location = new System.Drawing.Point(2, 3);
+            this.navbtnOvrvw.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.navbtnOvrvw.Name = "navbtnOvrvw";
+            this.navbtnOvrvw.Size = new System.Drawing.Size(160, 91);
+            this.navbtnOvrvw.TabIndex = 0;
+            this.navbtnOvrvw.Text = " Overview";
+            this.navbtnOvrvw.UseVisualStyleBackColor = false;
+            this.navbtnOvrvw.Click += new System.EventHandler(this.navbtnOvrvw_Click);
             // 
-            // navbtn_trx
+            // navbtnTrx
             // 
-            this.navbtn_trx.BackColor = System.Drawing.Color.LightGray;
-            this.navbtn_trx.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_trx.Location = new System.Drawing.Point(166, 3);
-            this.navbtn_trx.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.navbtn_trx.Name = "navbtn_trx";
-            this.navbtn_trx.Size = new System.Drawing.Size(160, 91);
-            this.navbtn_trx.TabIndex = 1;
-            this.navbtn_trx.Text = " Transactions";
-            this.navbtn_trx.UseVisualStyleBackColor = false;
+            this.navbtnTrx.BackColor = System.Drawing.Color.LightGray;
+            this.navbtnTrx.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbtnTrx.Location = new System.Drawing.Point(166, 3);
+            this.navbtnTrx.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.navbtnTrx.Name = "navbtnTrx";
+            this.navbtnTrx.Size = new System.Drawing.Size(160, 91);
+            this.navbtnTrx.TabIndex = 1;
+            this.navbtnTrx.Text = " Transactions";
+            this.navbtnTrx.UseVisualStyleBackColor = false;
+            this.navbtnTrx.Click += new System.EventHandler(this.navbtnTrx_Click);
             // 
-            // navbtn_partners
+            // navbtnPartners
             // 
-            this.navbtn_partners.BackColor = System.Drawing.Color.LightGray;
-            this.navbtn_partners.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_partners.Location = new System.Drawing.Point(330, 3);
-            this.navbtn_partners.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.navbtn_partners.Name = "navbtn_partners";
-            this.navbtn_partners.Size = new System.Drawing.Size(160, 91);
-            this.navbtn_partners.TabIndex = 2;
-            this.navbtn_partners.Text = " Partners";
-            this.navbtn_partners.UseVisualStyleBackColor = false;
+            this.navbtnPartners.BackColor = System.Drawing.Color.LightGray;
+            this.navbtnPartners.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbtnPartners.Location = new System.Drawing.Point(330, 3);
+            this.navbtnPartners.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.navbtnPartners.Name = "navbtnPartners";
+            this.navbtnPartners.Size = new System.Drawing.Size(160, 91);
+            this.navbtnPartners.TabIndex = 2;
+            this.navbtnPartners.Text = " Partners";
+            this.navbtnPartners.UseVisualStyleBackColor = false;
+            this.navbtnPartners.Click += new System.EventHandler(this.navbtnPartners_Click);
             // 
-            // navbtn_budget
+            // navbtnBudget
             // 
-            this.navbtn_budget.BackColor = System.Drawing.Color.LightGray;
-            this.navbtn_budget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_budget.Location = new System.Drawing.Point(494, 3);
-            this.navbtn_budget.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.navbtn_budget.Name = "navbtn_budget";
-            this.navbtn_budget.Size = new System.Drawing.Size(160, 91);
-            this.navbtn_budget.TabIndex = 3;
-            this.navbtn_budget.Text = " Budgets";
-            this.navbtn_budget.UseVisualStyleBackColor = false;
+            this.navbtnBudget.BackColor = System.Drawing.Color.LightGray;
+            this.navbtnBudget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbtnBudget.Location = new System.Drawing.Point(494, 3);
+            this.navbtnBudget.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.navbtnBudget.Name = "navbtnBudget";
+            this.navbtnBudget.Size = new System.Drawing.Size(160, 91);
+            this.navbtnBudget.TabIndex = 3;
+            this.navbtnBudget.Text = " Budgets";
+            this.navbtnBudget.UseVisualStyleBackColor = false;
+            this.navbtnBudget.Click += new System.EventHandler(this.navbtnBudget_Click);
             // 
-            // navbtn_acc
+            // navbtnAcc
             // 
-            this.navbtn_acc.BackColor = System.Drawing.Color.LightGray;
-            this.navbtn_acc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_acc.Location = new System.Drawing.Point(658, 3);
-            this.navbtn_acc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.navbtn_acc.Name = "navbtn_acc";
-            this.navbtn_acc.Size = new System.Drawing.Size(160, 91);
-            this.navbtn_acc.TabIndex = 4;
-            this.navbtn_acc.Text = " Accounts";
-            this.navbtn_acc.UseVisualStyleBackColor = false;
-            this.navbtn_acc.Click += new System.EventHandler(this.navbtn_acc_Click);
+            this.navbtnAcc.BackColor = System.Drawing.Color.LightGray;
+            this.navbtnAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbtnAcc.Location = new System.Drawing.Point(658, 3);
+            this.navbtnAcc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.navbtnAcc.Name = "navbtnAcc";
+            this.navbtnAcc.Size = new System.Drawing.Size(160, 91);
+            this.navbtnAcc.TabIndex = 4;
+            this.navbtnAcc.Text = " Accounts";
+            this.navbtnAcc.UseVisualStyleBackColor = false;
+            this.navbtnAcc.Click += new System.EventHandler(this.navbtnAcc_Click);
             // 
-            // navtbn_inv
+            // navtbnInv
             // 
-            this.navtbn_inv.BackColor = System.Drawing.Color.LightGray;
-            this.navtbn_inv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navtbn_inv.Location = new System.Drawing.Point(822, 3);
-            this.navtbn_inv.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.navtbn_inv.Name = "navtbn_inv";
-            this.navtbn_inv.Size = new System.Drawing.Size(160, 91);
-            this.navtbn_inv.TabIndex = 5;
-            this.navtbn_inv.Text = " Investments";
-            this.navtbn_inv.UseVisualStyleBackColor = false;
+            this.navtbnInv.BackColor = System.Drawing.Color.LightGray;
+            this.navtbnInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navtbnInv.Location = new System.Drawing.Point(822, 3);
+            this.navtbnInv.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.navtbnInv.Name = "navtbnInv";
+            this.navtbnInv.Size = new System.Drawing.Size(160, 91);
+            this.navtbnInv.TabIndex = 5;
+            this.navtbnInv.Text = " Investments";
+            this.navtbnInv.UseVisualStyleBackColor = false;
             // 
-            // navbtn_res
+            // navbtnSpare
             // 
-            this.navbtn_res.BackColor = System.Drawing.Color.LightGray;
-            this.navbtn_res.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navbtn_res.Location = new System.Drawing.Point(986, 3);
-            this.navbtn_res.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.navbtn_res.Name = "navbtn_res";
-            this.navbtn_res.Size = new System.Drawing.Size(160, 91);
-            this.navbtn_res.TabIndex = 6;
-            this.navbtn_res.Text = " ";
-            this.navbtn_res.UseVisualStyleBackColor = false;
+            this.navbtnSpare.BackColor = System.Drawing.Color.LightGray;
+            this.navbtnSpare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbtnSpare.Location = new System.Drawing.Point(986, 3);
+            this.navbtnSpare.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.navbtnSpare.Name = "navbtnSpare";
+            this.navbtnSpare.Size = new System.Drawing.Size(160, 91);
+            this.navbtnSpare.TabIndex = 6;
+            this.navbtnSpare.Text = " ";
+            this.navbtnSpare.UseVisualStyleBackColor = false;
             // 
-            // pnl_acc
+            // pnlAcc
             // 
-            this.pnl_acc.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnl_acc.Controls.Add(this.btnAccUpdate);
-            this.pnl_acc.Controls.Add(this.comboAccType);
-            this.pnl_acc.Controls.Add(this.txtAccBalance);
-            this.pnl_acc.Controls.Add(this.txtAccBic);
-            this.pnl_acc.Controls.Add(this.txtAccIban);
-            this.pnl_acc.Controls.Add(this.txtAccName);
-            this.pnl_acc.Controls.Add(this.lblAccName);
-            this.pnl_acc.Controls.Add(this.lblAccBalance);
-            this.pnl_acc.Controls.Add(this.lblAccIban);
-            this.pnl_acc.Controls.Add(this.btnAccAdd);
-            this.pnl_acc.Controls.Add(this.lblAccType);
-            this.pnl_acc.Controls.Add(this.btnAccStmtAdd);
-            this.pnl_acc.Controls.Add(this.lblAccBic);
-            this.pnl_acc.Controls.Add(this.dgv_accounts);
-            this.pnl_acc.Location = new System.Drawing.Point(11, 89);
-            this.pnl_acc.Name = "pnl_acc";
-            this.pnl_acc.Size = new System.Drawing.Size(1255, 595);
-            this.pnl_acc.TabIndex = 1;
+            this.pnlAcc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlAcc.Controls.Add(this.btnAccUpdate);
+            this.pnlAcc.Controls.Add(this.comboAccType);
+            this.pnlAcc.Controls.Add(this.txtAccBalance);
+            this.pnlAcc.Controls.Add(this.txtAccBic);
+            this.pnlAcc.Controls.Add(this.txtAccIban);
+            this.pnlAcc.Controls.Add(this.txtAccName);
+            this.pnlAcc.Controls.Add(this.lblAccName);
+            this.pnlAcc.Controls.Add(this.lblAccBalance);
+            this.pnlAcc.Controls.Add(this.lblAccIban);
+            this.pnlAcc.Controls.Add(this.btnAccAdd);
+            this.pnlAcc.Controls.Add(this.lblAccType);
+            this.pnlAcc.Controls.Add(this.btnAccStmtAdd);
+            this.pnlAcc.Controls.Add(this.lblAccBic);
+            this.pnlAcc.Controls.Add(this.dgvAccounts);
+            this.pnlAcc.Location = new System.Drawing.Point(11, 89);
+            this.pnlAcc.Name = "pnlAcc";
+            this.pnlAcc.Size = new System.Drawing.Size(1255, 595);
+            this.pnlAcc.TabIndex = 1;
             // 
             // btnAccUpdate
             // 
@@ -301,26 +318,131 @@
             this.lblAccBic.TabIndex = 6;
             this.lblAccBic.Text = "BIC :";
             // 
-            // dgv_accounts
+            // dgvAccounts
             // 
-            this.dgv_accounts.AllowUserToAddRows = false;
-            this.dgv_accounts.AllowUserToDeleteRows = false;
-            this.dgv_accounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_accounts.Location = new System.Drawing.Point(21, 19);
-            this.dgv_accounts.Name = "dgv_accounts";
-            this.dgv_accounts.ReadOnly = true;
-            this.dgv_accounts.RowTemplate.Height = 29;
-            this.dgv_accounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_accounts.Size = new System.Drawing.Size(632, 555);
-            this.dgv_accounts.TabIndex = 0;
+            this.dgvAccounts.AllowUserToAddRows = false;
+            this.dgvAccounts.AllowUserToDeleteRows = false;
+            this.dgvAccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAccounts.Location = new System.Drawing.Point(21, 19);
+            this.dgvAccounts.MultiSelect = false;
+            this.dgvAccounts.Name = "dgvAccounts";
+            this.dgvAccounts.ReadOnly = true;
+            this.dgvAccounts.RowTemplate.Height = 29;
+            this.dgvAccounts.Size = new System.Drawing.Size(632, 555);
+            this.dgvAccounts.TabIndex = 0;
+            this.dgvAccounts.SelectionChanged += new System.EventHandler(this.dgvAccounts_SelectionChanged);
             // 
-            // pnl_ovrvw
+            // pnlOvrvw
             // 
-            this.pnl_ovrvw.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnl_ovrvw.Location = new System.Drawing.Point(11, 89);
-            this.pnl_ovrvw.Name = "pnl_ovrvw";
-            this.pnl_ovrvw.Size = new System.Drawing.Size(1255, 595);
-            this.pnl_ovrvw.TabIndex = 2;
+            this.pnlOvrvw.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlOvrvw.Location = new System.Drawing.Point(11, 89);
+            this.pnlOvrvw.Name = "pnlOvrvw";
+            this.pnlOvrvw.Size = new System.Drawing.Size(1255, 595);
+            this.pnlOvrvw.TabIndex = 2;
+            // 
+            // pnlPartners
+            // 
+            this.pnlPartners.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlPartners.Controls.Add(this.dgvPartners);
+            this.pnlPartners.Location = new System.Drawing.Point(11, 89);
+            this.pnlPartners.Name = "pnlPartners";
+            this.pnlPartners.Size = new System.Drawing.Size(1255, 595);
+            this.pnlPartners.TabIndex = 3;
+            // 
+            // dgvPartners
+            // 
+            this.dgvPartners.AllowUserToAddRows = false;
+            this.dgvPartners.AllowUserToDeleteRows = false;
+            this.dgvPartners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPartners.Location = new System.Drawing.Point(21, 19);
+            this.dgvPartners.Name = "dgvPartners";
+            this.dgvPartners.ReadOnly = true;
+            this.dgvPartners.RowTemplate.Height = 29;
+            this.dgvPartners.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPartners.Size = new System.Drawing.Size(632, 555);
+            this.dgvPartners.TabIndex = 1;
+            // 
+            // pnlBudgets
+            // 
+            this.pnlBudgets.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlBudgets.Controls.Add(this.btnUpdateTrxType);
+            this.pnlBudgets.Controls.Add(this.txtTrxTypeBudget);
+            this.pnlBudgets.Controls.Add(this.lblTrxTypeBudget);
+            this.pnlBudgets.Controls.Add(this.txtTryTypeName);
+            this.pnlBudgets.Controls.Add(this.lblTrxTypeName);
+            this.pnlBudgets.Controls.Add(this.btnAddTrxType);
+            this.pnlBudgets.Controls.Add(this.dgvTransactionTypes);
+            this.pnlBudgets.Location = new System.Drawing.Point(11, 89);
+            this.pnlBudgets.Name = "pnlBudgets";
+            this.pnlBudgets.Size = new System.Drawing.Size(1255, 595);
+            this.pnlBudgets.TabIndex = 3;
+            // 
+            // btnUpdateTrxType
+            // 
+            this.btnUpdateTrxType.Location = new System.Drawing.Point(1089, 121);
+            this.btnUpdateTrxType.Name = "btnUpdateTrxType";
+            this.btnUpdateTrxType.Size = new System.Drawing.Size(144, 70);
+            this.btnUpdateTrxType.TabIndex = 15;
+            this.btnUpdateTrxType.Text = "UPDATE TRANSACTION TYPE";
+            this.btnUpdateTrxType.UseVisualStyleBackColor = true;
+            // 
+            // txtTrxTypeBudget
+            // 
+            this.txtTrxTypeBudget.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtTrxTypeBudget.Location = new System.Drawing.Point(711, 158);
+            this.txtTrxTypeBudget.Name = "txtTrxTypeBudget";
+            this.txtTrxTypeBudget.Size = new System.Drawing.Size(215, 33);
+            this.txtTrxTypeBudget.TabIndex = 14;
+            // 
+            // lblTrxTypeBudget
+            // 
+            this.lblTrxTypeBudget.AutoSize = true;
+            this.lblTrxTypeBudget.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTrxTypeBudget.Location = new System.Drawing.Point(689, 125);
+            this.lblTrxTypeBudget.Name = "lblTrxTypeBudget";
+            this.lblTrxTypeBudget.Size = new System.Drawing.Size(96, 30);
+            this.lblTrxTypeBudget.TabIndex = 13;
+            this.lblTrxTypeBudget.Text = "Budget :";
+            // 
+            // txtTryTypeName
+            // 
+            this.txtTryTypeName.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtTryTypeName.Location = new System.Drawing.Point(711, 67);
+            this.txtTryTypeName.Name = "txtTryTypeName";
+            this.txtTryTypeName.Size = new System.Drawing.Size(215, 33);
+            this.txtTryTypeName.TabIndex = 12;
+            // 
+            // lblTrxTypeName
+            // 
+            this.lblTrxTypeName.AutoSize = true;
+            this.lblTrxTypeName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTrxTypeName.Location = new System.Drawing.Point(683, 34);
+            this.lblTrxTypeName.Name = "lblTrxTypeName";
+            this.lblTrxTypeName.Size = new System.Drawing.Size(83, 30);
+            this.lblTrxTypeName.TabIndex = 11;
+            this.lblTrxTypeName.Text = "Name :";
+            // 
+            // btnAddTrxType
+            // 
+            this.btnAddTrxType.Location = new System.Drawing.Point(1089, 30);
+            this.btnAddTrxType.Name = "btnAddTrxType";
+            this.btnAddTrxType.Size = new System.Drawing.Size(144, 70);
+            this.btnAddTrxType.TabIndex = 10;
+            this.btnAddTrxType.Text = "ADD TRANSACTION TYPE";
+            this.btnAddTrxType.UseVisualStyleBackColor = true;
+            // 
+            // dgvTransactionTypes
+            // 
+            this.dgvTransactionTypes.AllowUserToAddRows = false;
+            this.dgvTransactionTypes.AllowUserToDeleteRows = false;
+            this.dgvTransactionTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTransactionTypes.Location = new System.Drawing.Point(21, 19);
+            this.dgvTransactionTypes.Name = "dgvTransactionTypes";
+            this.dgvTransactionTypes.ReadOnly = true;
+            this.dgvTransactionTypes.RowTemplate.Height = 29;
+            this.dgvTransactionTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTransactionTypes.Size = new System.Drawing.Size(632, 555);
+            this.dgvTransactionTypes.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -329,15 +451,22 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1285, 691);
             this.Controls.Add(this.pnl_nav);
-            this.Controls.Add(this.pnl_acc);
-            this.Controls.Add(this.pnl_ovrvw);
+            this.Controls.Add(this.pnlAcc);
+            this.Controls.Add(this.pnlPartners);
+            this.Controls.Add(this.pnlBudgets);
+            this.Controls.Add(this.pnlOvrvw);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnl_nav.ResumeLayout(false);
-            this.pnl_acc.ResumeLayout(false);
-            this.pnl_acc.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_accounts)).EndInit();
+            this.pnlAcc.ResumeLayout(false);
+            this.pnlAcc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).EndInit();
+            this.pnlPartners.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPartners)).EndInit();
+            this.pnlBudgets.ResumeLayout(false);
+            this.pnlBudgets.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionTypes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -345,17 +474,17 @@
         #endregion
 
         private FlowLayoutPanel pnl_nav;
-        private Button navbtn_ovrvw;
-        private Button navbtn_trx;
-        private Button navbtn_partners;
-        private Button navbtn_budget;
-        private Button navbtn_acc;
-        private Button navtbn_inv;
-        private Button navbtn_res;
-        private Panel pnl_acc;
-        private Panel pnl_ovrvw;
+        private Button navbtnOvrvw;
+        private Button navbtnTrx;
+        private Button navbtnPartners;
+        private Button navbtnBudget;
+        private Button navbtnAcc;
+        private Button navtbnInv;
+        private Button navbtnSpare;
+        private Panel pnlAcc;
+        private Panel pnlOvrvw;
         private Button btnAccStmtAdd;
-        private DataGridView dgv_accounts;
+        private DataGridView dgvAccounts;
         private Button btnAccAdd;
         private Button btnAccUpdate;
         private ComboBox comboAccType;
@@ -368,5 +497,15 @@
         private Label lblAccIban;
         private Label lblAccType;
         private Label lblAccBic;
+        private Panel pnlPartners;
+        private DataGridView dgvPartners;
+        private Panel pnlBudgets;
+        private Button btnUpdateTrxType;
+        private TextBox txtTrxTypeBudget;
+        private Label lblTrxTypeBudget;
+        private TextBox txtTryTypeName;
+        private Label lblTrxTypeName;
+        private Button btnAddTrxType;
+        private DataGridView dgvTransactionTypes;
     }
 }

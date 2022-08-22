@@ -1,30 +1,47 @@
 
+using CashflowALPHA.Viewmodels;
+
 namespace CashflowALPHA
 {
     public partial class MainForm : Form
     {
-
-        AccountsViewModel winFormsHelper = new AccountsViewModel();
         public MainForm()
         {
             InitializeComponent();
-            startupAcc();
+            
         }
 
         //Navigation buttons
         //##############################
-        private void navbtn_ovrvw_Click(object sender, EventArgs e)
+        private void navbtnOvrvw_Click(object sender, EventArgs e)
         {
             ResetNavbtnBackColor();
-            this.navbtn_ovrvw.BackColor = Color.WhiteSmoke;
-            this.pnl_ovrvw.BringToFront();
+            this.navbtnOvrvw.BackColor = Color.WhiteSmoke;
+            this.pnlOvrvw.BringToFront();
         }
 
-        private void navbtn_acc_Click(object sender, EventArgs e)
+        private void navbtnAcc_Click(object sender, EventArgs e)
         {
             ResetNavbtnBackColor();
-            this.navbtn_acc.BackColor = Color.WhiteSmoke;
-            this.pnl_acc.BringToFront();
+            this.navbtnAcc.BackColor = Color.WhiteSmoke;
+            this.pnlAcc.BringToFront();
+        }
+
+        private void navbtnPartners_Click(object sender, EventArgs e)
+        {
+            ResetNavbtnBackColor();
+            this.navbtnPartners.BackColor = Color.WhiteSmoke;
+            this.pnlPartners.BringToFront();
+        }
+        private void navbtnBudget_Click(object sender, EventArgs e)
+        {
+            ResetNavbtnBackColor();
+            this.navbtnBudget.BackColor = Color.WhiteSmoke;
+            this.pnlBudgets.BringToFront();
+        }
+        private void navbtnTrx_Click(object sender, EventArgs e)
+        {
+
         }
 
         //############################################################
@@ -36,45 +53,64 @@ namespace CashflowALPHA
         private void btn_add_stmt_Click(object sender, EventArgs e)
         {
             
-            winFormsHelper.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*");
+            AccountsViewModel.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*");
         }
         private void btnAccUpdate_Click(object sender, EventArgs e)
         {
-            winFormsHelper.LoadAccEntryAsync(txtAccName, txtAccIban, txtAccBic, comboAccType, txtAccBalance);
+            
         }
 
         private void btnAccAdd_Click(object sender, EventArgs e)
         {
 
         }
-        //Init routine for accounts panel
-        private void startupAcc()
+        private void dgvAccounts_SelectionChanged(object sender, EventArgs e)
         {
-            winFormsHelper.LoadAccTableAsync(dgv_accounts);
+            if(dgvAccounts.CurrentRow != null)
+            {
+
+                string name = dgvAccounts.CurrentRow.Cells[0].Value.ToString();
+                AccountsViewModel.LoadAccEntryAsync(txtAccName, txtAccIban, txtAccBic, comboAccType, txtAccBalance, name);
+            }
+            
+        }
+        //Init routine for accounts panel
+        private void Startup()
+        {
+            AccountsViewModel.LoadAccTableAsync(dgvAccounts);
+            PartnersViewModel.LoadPartnersTableAsync(dgvPartners);
 
         }
 
         //OVERVIEW PANEL
         //##############################
 
+        //TRANSACTIONTYPES PANEL
+        //##############################
+
+        //PARTNERS PANEL
+        //##############################
+
+        //TRANSACTIONS PANEL
+        //##############################
 
 
         //UI Helper functions
         //##############################
         private void ResetNavbtnBackColor()
         {
-            this.navbtn_acc.BackColor = Color.LightGray;
-            this.navbtn_budget.BackColor = Color.LightGray;
-            this.navbtn_ovrvw.BackColor = Color.LightGray;
-            this.navbtn_partners.BackColor = Color.LightGray;
-            this.navbtn_trx.BackColor = Color.LightGray;            
-            this.navtbn_inv.BackColor = Color.LightGray;
-            this.navbtn_res.BackColor = Color.LightGray;
+            this.navbtnAcc.BackColor = Color.LightGray;
+            this.navbtnBudget.BackColor = Color.LightGray;
+            this.navbtnOvrvw.BackColor = Color.LightGray;
+            this.navbtnPartners.BackColor = Color.LightGray;
+            this.navbtnTrx.BackColor = Color.LightGray;            
+            this.navtbnInv.BackColor = Color.LightGray;
+            this.navbtnSpare.BackColor = Color.LightGray;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            Startup();
         }
 
         
