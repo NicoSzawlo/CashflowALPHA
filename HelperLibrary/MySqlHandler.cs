@@ -67,7 +67,7 @@ namespace HelperLibrary
 
         //Transactions table
         //#######################################################
-        public static void InsertIntoTransaction(Transaction trx)
+        public static void InsertIntoTrx(Transaction trx)
         {
             MySqlCommand cmd = Connect();
 

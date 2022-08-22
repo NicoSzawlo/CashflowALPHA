@@ -154,12 +154,12 @@ namespace HelperLibrary.DataLayer
             {
                 list.Add(new Partner
                 {
-                    ID = int.Parse(dr["acc_id"].ToString()),
-                    Name = dr["acc_name"].ToString(),
-                    Iban = dr["acc_iban"].ToString(),
-                    Bic = dr["acc_bic"].ToString(),
-                    Bankcode = dr["acc_balance"].ToString(),
-                    UsualTrxType = int.Parse(dr["acc_acctype_id"].ToString())
+                    ID = int.Parse(dr["partn_id"].ToString()),
+                    Name = dr["partn_name"].ToString(),
+                    Iban = dr["partn_iban"].ToString(),
+                    Bic = dr["partn_bic"].ToString(),
+                    Bankcode = dr["partn_bankcode"].ToString(),
+                    UsualTrxType = int.Parse(dr["partn_trxtype_id"].ToString())
                 });
             }
             return list;
