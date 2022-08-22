@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,11 +57,9 @@ namespace HelperLibrary.DataLayer
             List<Task> tasks = new List<Task>();
             foreach(Partner partn in list)
             {
-                //tasks.Add(Task.Run(() => MySqlHandler.InsertIntoPartners(partn)));
-                //i++;
                 await Task.Run(() => MySqlHandler.InsertIntoPartners(partn));
             }
-            //await Task.WhenAll(tasks);
+            
         }
 
 
@@ -76,7 +75,7 @@ namespace HelperLibrary.DataLayer
 
 
         //Method for extracting Distinct Partners
-        public static List<Partner> GetDistinctObjectList(List<Partner> inlist)
+        public static async Task<List<Partner>> GetDistinctObjectList(List<Partner> inlist)
         {
             List<Partner> outlist = new List<Partner>();
             bool dupe = false;
@@ -85,18 +84,23 @@ namespace HelperLibrary.DataLayer
 
                 if (outlist.Count == 0)
                 {
-                    outlist.Add(ipartn);
+                    if(!await Task.Run(() => CheckDbEntry(ipartn)))
+                    {
+                        outlist.Add(ipartn);
+                    }
                 }
                 else
                 {
                     foreach (Partner opartn in outlist)
                     {
-                        if(opartn.Name == ipartn.Name)
+                        if(opartn.Name.ToUpper() == ipartn.Name.ToUpper())
                         {
                             dupe = true;
                             break;
                         }
                     }
+                    dupe = await Task.Run(() => CheckDbEntry(ipartn));
+
                     if (!dupe)
                     {
                         outlist.Add(ipartn);
@@ -112,7 +116,17 @@ namespace HelperLibrary.DataLayer
 
 
 
-
+        //Checking Object instance in Db for dupe
+        private static async Task<bool> CheckDbEntry(Partner partn)
+        {
+            bool dupe = false;
+            DataTable result = await MySqlHandler.Select("*", "tab_partners", "partn_name", partn.Name);
+            if(result != null)
+            {
+                dupe = true;
+            }
+            return dupe;
+        }
 
 
         //Adding all george statement partners to objectlist

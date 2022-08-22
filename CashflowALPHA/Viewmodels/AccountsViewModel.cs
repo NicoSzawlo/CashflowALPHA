@@ -24,8 +24,10 @@ namespace CashflowALPHA
             filepath = ofd.FileName;
 
             DataTable dt = CsvProcessor.CsvToTable(filepath);
+
             List<Partner> partners = await Task.Run(() => Partner.GetObjectListStmtAsync(dt));
-            partners = Partner.GetDistinctObjectList(partners);
+            partners = await Task.Run(() => Partner.GetDistinctObjectList(partners));
+
             Partner.InsertObjectListDbAsync(partners);
         }
 
