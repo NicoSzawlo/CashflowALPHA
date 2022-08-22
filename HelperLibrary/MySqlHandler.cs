@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,40 @@ namespace HelperLibrary
             Disconnect(cmd);
             return result;
 
+        }
+
+        //Transactions table
+        //#######################################################
+        public static void InsertIntoTransaction(Transaction trx)
+        {
+            MySqlCommand cmd = Connect();
+
+            cmd.CommandText = 
+                "INSERT INTO tab_trx " +
+                "(trx_date, trx_amnt, trx_currency, trx_info, trx_reference, trx_partn_id, trx_acc_id, trx_trxtype_id, trx_invpos_id)" +
+                " VALUES " +
+                "(@date, @amnt, @curr, @info, @reference, @partnid, @accid, @trxtypeid, @invposid )";
+            cmd.Parameters.AddWithValue("@date", trx.Date);
+            cmd.Parameters.AddWithValue("@amnt", trx.Amount);
+            cmd.Parameters.AddWithValue("@curr", trx.Currency);
+            cmd.Parameters.AddWithValue("@info", trx.Info);
+            cmd.Parameters.AddWithValue("@reference", trx.Reference);
+            cmd.Parameters.AddWithValue("@partnid", trx.PartnerID);
+            cmd.Parameters.AddWithValue("@accid", trx.AccountID);
+            cmd.Parameters.AddWithValue("@trxtypeid", trx.TypeID);
+            cmd.Parameters.AddWithValue("@invposid", trx.InvPosID);
+
+            try
+            {
+                var result = cmd.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(cmd.ToString());
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
         }
 
         //Accounts table

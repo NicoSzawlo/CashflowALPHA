@@ -29,6 +29,9 @@ namespace CashflowALPHA
             partners = await Task.Run(() => Partner.GetDistinctObjectList(partners));
 
             Partner.InsertObjectListDbAsync(partners);
+            partners = await Task.Run(() => Partner.GetObjectListDbAsync());
+            List<Transaction> trx = await Task.Run(() => Transaction.GetObjectListStmtAsync(dt));
+            Transaction.InsertObjectListDbAsync(trx);
         }
 
         //Loads content for accounts panel datagridview from mysql view_ac

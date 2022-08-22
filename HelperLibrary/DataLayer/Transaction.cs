@@ -11,16 +11,16 @@ namespace HelperLibrary.DataLayer
 {
     public class Transaction
     {
-        int? ID { get; set; }
-        DateTime? Date { get; set; }
-        decimal? Amount { get; set; }
-        string? Currency { get; set; }
-        string?  Info { get; set; }
-        string? Reference { get; set; }
-        int? PartnerID  { get; set; }
-        int? AccountID { get; set; }
-        int? TypeID { get; set; }
-        int? InvPosID { get; set; }
+        public int? ID { get; set; }
+        public DateTime? Date { get; set; }
+        public decimal? Amount { get; set; }
+        public string? Currency { get; set; }
+        public string?  Info { get; set; }
+        public string? Reference { get; set; }
+        public int? PartnerID  { get; set; }
+        public int? AccountID { get; set; }
+        public int? TypeID { get; set; }
+        public int? InvPosID { get; set; }
 
         //Function to asynchronously load mysqldata into Object
         //public static async Task<Transaction> GetObjectAsync(string name)
@@ -59,6 +59,17 @@ namespace HelperLibrary.DataLayer
         {
             List<Transaction> list = await Task.Run(() => FileToListAsync(stmt));
             return list;
+        }
+
+        public static async void InsertObjectListDbAsync(List<Transaction> list)
+        {
+            int i = 0;
+            List<Task> tasks = new List<Task>();
+            foreach (Transaction trx in list)
+            {
+                await Task.Run(() => MySqlHandler.InsertIntoTrx(trx));
+            }
+
         }
 
         //Adding all george statement transaction entries of file and get partner ID from db
