@@ -55,7 +55,7 @@ namespace CashflowALPHA
             //Add Account type list to Combobox and set current type
             foreach(var item in typelist){
                 type.Items.Add(item.Name);
-                if(item.ID == accentry.Type)
+                if(item.ID == accentry.TypeID)
                 {
                     type.Text = item.Name;
                 }
@@ -77,5 +77,11 @@ namespace CashflowALPHA
             //Debug.WriteLine(watch.ElapsedMilliseconds);
         }
 
+
+        //Method for updating Account in database
+        public static async Task UpdateAccAsync(Account acc)
+        {
+            await Task.Run(() => MySqlHandler.UpdateAccount(acc));   
+        }
     }
 }

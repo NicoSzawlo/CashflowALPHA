@@ -13,7 +13,7 @@ namespace HelperLibrary.DataLayer
         public string? Name { get; set; }
         public string? Iban { get; set; }
         public string? Bic { get; set; }
-        public int? Type { get; set; }
+        public int? TypeID { get; set; }
         public decimal? Balance { get; set; }
 
         //Function to asynchronously load mysqldata into Object
@@ -29,7 +29,7 @@ namespace HelperLibrary.DataLayer
                 acc.Name = row["acc_name"].ToString();
                 acc.Iban = row["acc_iban"].ToString();
                 acc.Bic = row["acc_bic"].ToString();
-                acc.Type = int.Parse(row["acc_acctype_id"].ToString());
+                acc.TypeID = int.Parse(row["acc_acctype_id"].ToString());
                 acc.Balance = decimal.Parse(row["acc_balance"].ToString());
             }
             catch(Exception ex)
@@ -52,7 +52,7 @@ namespace HelperLibrary.DataLayer
                         Name = dr["acc_name"].ToString(), 
                         Iban = dr["acc_iban"].ToString(), 
                         Bic = dr["acc_bic"].ToString(), 
-                        Type = int.Parse(dr["acc_acctype_id" ].ToString()), 
+                        TypeID = int.Parse(dr["acc_acctype_id" ].ToString()), 
                         Balance = decimal.Parse(dr["acc_balance"].ToString()) 
                     });
                 }
@@ -63,6 +63,17 @@ namespace HelperLibrary.DataLayer
             }
 
             return list;
+        }
+
+        //Method for updating account data
+        public static  async void InsertObjectListDbAsync(List<Account> list)
+        {
+            int i = 0;
+            List<Task> tasks = new List<Task>();
+            foreach (Account acc in list)
+            {
+                await Task.Run(() => MySqlHandler.InsertIntoPartners(acc));
+            }
         }
     }
 }

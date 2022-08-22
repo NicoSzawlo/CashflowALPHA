@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using HelperLibrary.DataLayer;
 using MySql.Data;
 using MySql.Data.MySqlClient;
@@ -65,15 +66,17 @@ namespace HelperLibrary
         }
 
         //Insert into account table
-        public void InsertIntoAccount(string name, string iban, string bic, int type)
+        public void InsertIntoAccount(Account acc)
         {
             MySqlCommand cmd = Connect();
 
-            cmd.CommandText = "INSERT INTO tab_accounts (name, iban, bic, type) VALUES (@name, @iban, @bic, @type)";
-            cmd.Parameters.AddWithValue("@name", name);
-            cmd.Parameters.AddWithValue("@iban", iban);
-            cmd.Parameters.AddWithValue("@bic", bic);
-            cmd.Parameters.AddWithValue("@type", type);
+            cmd.CommandText = "INSERT INTO tab_accounts (name, iban, bic, type, balance) VALUES (@name, @iban, @bic, @type, @balance)";
+            cmd.Parameters.AddWithValue("@name", acc.Name);
+            cmd.Parameters.AddWithValue("@iban", acc.Iban);
+            cmd.Parameters.AddWithValue("@bic", acc.Bic);
+            cmd.Parameters.AddWithValue("@type", acc.TypeID);
+            cmd.Parameters.AddWithValue("@balance", acc.Balance);
+            cmd.Parameters.AddWithValue("@id", acc.ID);
 
             try
             {
@@ -86,6 +89,31 @@ namespace HelperLibrary
             }
             Disconnect(cmd);
             
+        }
+        //Update account row
+        public static void UpdateAccount(Account acc)
+        {
+            MySqlCommand cmd = Connect();
+
+            cmd.CommandText = "UPDATE tab_accounts SET acc_name = @name,acc_iban = @iban, acc_bic = @bic,acc_acctype_id = @type,acc_balance = @balance) WHERE acc_id = @id";
+            
+            cmd.Parameters.AddWithValue("@name", acc.Name);
+            cmd.Parameters.AddWithValue("@iban", acc.Iban);
+            cmd.Parameters.AddWithValue("@bic", acc.Bic);
+            cmd.Parameters.AddWithValue("@type", acc.TypeID);
+            cmd.Parameters.AddWithValue("@balance", acc.Balance);
+            cmd.Parameters.AddWithValue("@id", acc.ID);
+
+            try
+            {
+                var result = cmd.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
         }
 
         //Insert into partner table
@@ -115,7 +143,7 @@ namespace HelperLibrary
         }
 
         //Open Mysql server connection on command handle
-        public static MySqlCommand Connect()
+        private static MySqlCommand Connect()
         {
             MySqlConnection conn = new MySqlConnection(connStr);
             MySqlCommand cmd = conn.CreateCommand();
@@ -124,7 +152,7 @@ namespace HelperLibrary
         }
 
         //Close Mysql server connection on command
-        public static void Disconnect(MySqlCommand cmd)
+        private static void Disconnect(MySqlCommand cmd)
         {
             cmd.Connection.Close();
         }
