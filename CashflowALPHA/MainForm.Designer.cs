@@ -48,7 +48,7 @@
             this.lblAccIban = new System.Windows.Forms.Label();
             this.btnAccAdd = new System.Windows.Forms.Button();
             this.lblAccType = new System.Windows.Forms.Label();
-            this.btnAccStmtAdd = new System.Windows.Forms.Button();
+            this.btnAccAddStmt = new System.Windows.Forms.Button();
             this.lblAccBic = new System.Windows.Forms.Label();
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.pnlOvrvw = new System.Windows.Forms.Panel();
@@ -192,7 +192,7 @@
             this.pnlAcc.Controls.Add(this.lblAccIban);
             this.pnlAcc.Controls.Add(this.btnAccAdd);
             this.pnlAcc.Controls.Add(this.lblAccType);
-            this.pnlAcc.Controls.Add(this.btnAccStmtAdd);
+            this.pnlAcc.Controls.Add(this.btnAccAddStmt);
             this.pnlAcc.Controls.Add(this.lblAccBic);
             this.pnlAcc.Controls.Add(this.dgvAccounts);
             this.pnlAcc.Location = new System.Drawing.Point(11, 89);
@@ -300,15 +300,15 @@
             this.lblAccType.TabIndex = 7;
             this.lblAccType.Text = "Account Type:";
             // 
-            // btnAccStmtAdd
+            // btnAccAddStmt
             // 
-            this.btnAccStmtAdd.Location = new System.Drawing.Point(957, 429);
-            this.btnAccStmtAdd.Name = "btnAccStmtAdd";
-            this.btnAccStmtAdd.Size = new System.Drawing.Size(166, 57);
-            this.btnAccStmtAdd.TabIndex = 2;
-            this.btnAccStmtAdd.Text = "ADD STATEMENT";
-            this.btnAccStmtAdd.UseVisualStyleBackColor = true;
-            this.btnAccStmtAdd.Click += new System.EventHandler(this.btn_add_stmt_Click);
+            this.btnAccAddStmt.Location = new System.Drawing.Point(957, 429);
+            this.btnAccAddStmt.Name = "btnAccAddStmt";
+            this.btnAccAddStmt.Size = new System.Drawing.Size(166, 57);
+            this.btnAccAddStmt.TabIndex = 2;
+            this.btnAccAddStmt.Text = "ADD STATEMENT";
+            this.btnAccAddStmt.UseVisualStyleBackColor = true;
+            this.btnAccAddStmt.Click += new System.EventHandler(this.btnAccAddStmt_Click);
             // 
             // lblAccBic
             // 
@@ -468,10 +468,10 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1285, 691);
             this.Controls.Add(this.pnl_nav);
+            this.Controls.Add(this.pnlAcc);
             this.Controls.Add(this.pnlPartners);
             this.Controls.Add(this.pnlBudgets);
             this.Controls.Add(this.pnlOvrvw);
-            this.Controls.Add(this.pnlAcc);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -501,7 +501,7 @@
         private Button navbtnSpare;
         private Panel pnlAcc;
         private Panel pnlOvrvw;
-        private Button btnAccStmtAdd;
+        private Button btnAccAddStmt;
         private DataGridView dgvAccounts;
         private Button btnAccAdd;
         private Button btnAccUpdate;

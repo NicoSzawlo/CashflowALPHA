@@ -23,15 +23,8 @@ namespace CashflowALPHA
             ofd.ShowDialog();
             filepath = ofd.FileName;
 
-            DataTable dt = CsvProcessor.CsvToTable(filepath);
-
-            List<Partner> partners = await Task.Run(() => Partner.GetObjectListStmtAsync(dt));
-            partners = await Task.Run(() => Partner.GetDistinctObjectList(partners));
-
-            Partner.InsertObjectListDbAsync(partners);
-            partners = await Task.Run(() => Partner.GetObjectListDbAsync());
-            List<Transaction> trx = await Task.Run(() => Transaction.GetObjectListStmtAsync(dt));
-            Transaction.InsertObjectListDbAsync(trx);
+            bool done = await Task.Run(() => ProcessStmtFile(filepath));
+            
         }
 
         //Loads content for accounts panel datagridview from mysql view_ac
@@ -103,6 +96,20 @@ namespace CashflowALPHA
         public static async Task UpdateAccAsync(Account acc)
         {
             await Task.Run(() => MySqlHandler.UpdateAccount(acc));   
+        }
+
+        private static async Task<bool> ProcessStmtFile(string filepath)
+        {
+            bool done = false
+            DataTable dt = CsvProcessor.CsvToTable(filepath);
+            List<Partner> partners = Partner.GetObjectListStmtAsync(dt);
+            List<Partner> distpartners = Partner.GetDistinctObjectList(partners);
+
+            Partner.InsertObjectListDbAsync(distpartners);
+            List<Transaction> trx = Transaction.GetObjectListStmt(dt);
+            await Task.Run(() => Transaction.InsertObjectListDbAsync(trx));
+            done = true;
+            return done;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace HelperLibrary.DataLayer
         public int? AccountID { get; set; }
         public int? TypeID { get; set; }
         public int? InvPosID { get; set; }
+        private const string CashPlaceholder = "_Cash";
 
         //Function to asynchronously load mysqldata into Object
         //public static async Task<Transaction> GetObjectAsync(string name)
@@ -55,9 +56,9 @@ namespace HelperLibrary.DataLayer
             return list;
         }
 
-        public static async Task<List<Transaction>> GetObjectListStmtAsync(DataTable stmt)
+        public static List<Transaction> GetObjectListStmt(DataTable stmt)
         {
-            List<Transaction> list = await Task.Run(() => FileToListAsync(stmt));
+            List<Transaction> list = FileToList(stmt);
             return list;
         }
 
@@ -74,14 +75,22 @@ namespace HelperLibrary.DataLayer
 
         //Adding all george statement transaction entries of file and get partner ID from db
         //Also check for transaction type of partner and add if already set
-        private async static Task<List<Transaction>> FileToListAsync(DataTable stmt)
+        private static List<Transaction> FileToList(DataTable stmt)
         {
             List<Transaction> list = new List<Transaction>();
             foreach (DataRow dr in stmt.Rows)
             {
+                Partner partn = new Partner();
+                if (dr["Partner Name"].ToString() == "")
+                {
+                    partn = Partner.GetObjectDb(CashPlaceholder);
+                }
+                else
+                {
+                    partn = Partner.GetObjectDb(dr["Partner Name"].ToString());
+                }
+                
 
-                Partner partn = null;
-                partn = await Task.Run(() => Partner.GetObjectDbAsync(dr["Partner Name"].ToString()));
                 if(partn.UsualTrxType == null)
                 {
                     list.Add(new Transaction

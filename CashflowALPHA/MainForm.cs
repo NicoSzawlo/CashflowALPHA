@@ -52,7 +52,7 @@ namespace CashflowALPHA
 
         //ACCOUNTS PANEL
         //##############################
-        private void btn_add_stmt_Click(object sender, EventArgs e)
+        private void btnAccAddStmt_Click(object sender, EventArgs e)
         {
             
             AccountsViewModel.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*");

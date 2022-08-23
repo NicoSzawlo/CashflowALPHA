@@ -21,61 +21,73 @@ namespace HelperLibrary.DataLayer
 
 
         //Function to asynchronously load mysqldata into Object
-        public static async Task<Partner> GetObjectDbAsync(string name)
+        public static Partner GetObjectDb(string name)
         {
             Partner partn = new Partner();
-            DataTable partnerdt = await Task.Run(() => MySqlHandler.Select("*", "tab_partners", "partn_name", name));
-            DataRow row = partnerdt.Rows[0];
-
-            try
+            DataTable partnerdt = MySqlHandler.Select("*", "tab_partners", "partn_name", name);
+            
+            if (partnerdt.Rows.Count != 0)
             {
-                partn.ID = int.Parse(row["partn_id"].ToString());
-                partn.Name = row["partn_name"].ToString();
-                partn.Iban = row["partn_iban"].ToString();
-                partn.Bic = row["partn_bic"].ToString();
-                partn.Bankcode = row["partn_balance"].ToString();
-                partn.UsualTrxType = int.Parse(row["partn_trxtype_id"].ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                DataRow row = partnerdt.Rows[0];
+                try
+                {
+                    partn.ID = int.Parse(row["partn_id"].ToString());
+                    partn.Name = row["partn_name"].ToString();
+                    partn.Iban = row["partn_iban"].ToString();
+                    partn.Bic = row["partn_bic"].ToString();
+                    partn.Bankcode = row["partn_balance"].ToString();
+                    partn.UsualTrxType = int.Parse(row["partn_trxtype_id"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
             return partn;
         }
         //Function to asynchronously load mysql data into object list
         public static async Task<List<Partner>> GetObjectListDbAsync()
         {
-            DataTable partnerdt = await Task.Run(() => MySqlHandler.Select("*", "tab_accounts"));
-            List<Partner> list = await Task.Run(() => DbToList(partnerdt));
+            DataTable partnerdt = await Task.Run(() => MySqlHandler.Select("*", "tab_partners"));
+            List<Partner> list = DbToList(partnerdt);
 
             return list;
         }
         //Function to push objectlist into db
         public static async void InsertObjectListDbAsync(List<Partner> list)
         {
-            int i = 0;
-            List<Task> tasks = new List<Task>();
-            foreach(Partner partn in list)
+            //Check if Db empty and add Placeholder for cash 
+            //Maybe move into software setup later
+            List<Partner> check = await Task.Run(() => GetObjectListDbAsync());
+            if (check.Count == 0)
             {
-                await Task.Run(() => MySqlHandler.InsertIntoPartners(partn));
+                Partner cash = new Partner();
+                cash.Name = "_Cash";
+                await Task.Run(() => MySqlHandler.InsertIntoPartners(cash));
             }
-            
+
+            //Insert every partner in the list
+            List<Task> tasks = new List<Task>();
+            foreach (Partner partn in list)
+            {
+                if (partn.Name != "")
+                {
+                    await Task.Run(() => MySqlHandler.InsertIntoPartners(partn));
+                }
+            }
         }
 
 
         //Async task extracting all partners from file
-        public static async Task<List<Partner>> GetObjectListStmtAsync(DataTable stmt)
+        public static List<Partner> GetObjectListStmtAsync(DataTable stmt)
         {
-            List<Partner> list = await Task.Run(() => FileToList(stmt));
+            List<Partner> list = FileToList(stmt);
             return list;
         }
 
 
-
-
-
         //Method for extracting Distinct Partners
-        public static async Task<List<Partner>> GetDistinctObjectList(List<Partner> inlist)
+        public static List<Partner> GetDistinctObjectList(List<Partner> inlist)
         {
             List<Partner> outlist = new List<Partner>();
             bool dupe = false;
@@ -84,29 +96,31 @@ namespace HelperLibrary.DataLayer
 
                 if (outlist.Count == 0)
                 {
-                    if(!await Task.Run(() => CheckDbEntry(ipartn)))
+                    if(!CheckDbEntry(ipartn))
                     {
                         outlist.Add(ipartn);
                     }
                 }
                 else
                 {
-                    foreach (Partner opartn in outlist)
+                    dupe = CheckDbEntry(ipartn);
+                    if (!dupe)
                     {
-                        if(opartn.Name.ToUpper() == ipartn.Name.ToUpper())
+                        foreach (Partner opartn in outlist)
                         {
-                            dupe = true;
-                            break;
+                            if (opartn.Name.ToUpper() == ipartn.Name.ToUpper())
+                            {
+                                dupe = true;
+                                break;
+                            }
                         }
                     }
-                    dupe = await Task.Run(() => CheckDbEntry(ipartn));
 
                     if (!dupe)
                     {
                         outlist.Add(ipartn);
                     }
                     dupe = false;
-
                 }
             }
 
@@ -114,14 +128,12 @@ namespace HelperLibrary.DataLayer
         }
 
 
-
-
         //Checking Object instance in Db for dupe
         private static bool CheckDbEntry(Partner partn)
         {
             bool dupe = false;
             DataTable result = MySqlHandler.Select("*", "tab_partners", "partn_name", partn.Name);
-            if(result != null)
+            if(result.Rows.Count > 0)
             {
                 dupe = true;
             }
@@ -156,10 +168,10 @@ namespace HelperLibrary.DataLayer
                 {
                     ID = int.Parse(dr["partn_id"].ToString()),
                     Name = dr["partn_name"].ToString(),
-                    Iban = dr["partn_iban"].ToString(),
-                    Bic = dr["partn_bic"].ToString(),
-                    Bankcode = dr["partn_bankcode"].ToString(),
-                    UsualTrxType = int.Parse(dr["partn_trxtype_id"].ToString())
+                    //Iban = dr["partn_iban"].ToString(),
+                    //Bic = dr["partn_bic"].ToString(),
+                    //Bankcode = dr["partn_bankcode"].ToString(),
+                    //UsualTrxType = int.Parse(dr["partn_trxtype_id"].ToString())
                 });
             }
             return list;
