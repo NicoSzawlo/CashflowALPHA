@@ -23,7 +23,7 @@ namespace CashflowALPHA
             ofd.ShowDialog();
             filepath = ofd.FileName;
 
-            bool done = await Task.Run(() => ProcessStmtFile(filepath));
+            await Task.Run(() => ProcessStmtFile(filepath));
             
         }
 
@@ -98,9 +98,8 @@ namespace CashflowALPHA
             await Task.Run(() => MySqlHandler.UpdateAccount(acc));   
         }
 
-        private static async Task<bool> ProcessStmtFile(string filepath)
+        private static async Task ProcessStmtFile(string filepath)
         {
-            bool done = false
             DataTable dt = CsvProcessor.CsvToTable(filepath);
             List<Partner> partners = Partner.GetObjectListStmtAsync(dt);
             List<Partner> distpartners = Partner.GetDistinctObjectList(partners);
@@ -108,8 +107,7 @@ namespace CashflowALPHA
             Partner.InsertObjectListDbAsync(distpartners);
             List<Transaction> trx = Transaction.GetObjectListStmt(dt);
             await Task.Run(() => Transaction.InsertObjectListDbAsync(trx));
-            done = true;
-            return done;
+            
         }
     }
 }

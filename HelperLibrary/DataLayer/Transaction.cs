@@ -89,9 +89,9 @@ namespace HelperLibrary.DataLayer
                 {
                     partn = Partner.GetObjectDb(dr["Partner Name"].ToString());
                 }
-                
 
-                if(partn.UsualTrxType == null)
+                
+                if (partn.UsualTrxType == null)
                 {
                     list.Add(new Transaction
                     {
@@ -116,7 +116,6 @@ namespace HelperLibrary.DataLayer
                         TypeID = partn.UsualTrxType
                     });
                 }
-                
             }
             return list;
         }
