@@ -44,7 +44,9 @@ namespace CashflowALPHA
         }
         private void navbtnTrx_Click(object sender, EventArgs e)
         {
-
+            ResetNavbtnBackColor();
+            this.navbtnTrx.BackColor = Color.WhiteSmoke;
+            this.pnlTrx.BringToFront();
         }
 
         //############################################################
@@ -84,7 +86,7 @@ namespace CashflowALPHA
             PartnersViewModel.LoadPartnersTableAsync(dgvPartners);
             PartnersViewModel.LoadTrxTypeTableAsync(dgvPartnerTypes);
             TrxTypesViewModel.LoadTrxTypeTableAsync(dgvTransactionTypes);
-            
+            TransactionsViewModel.LoadTrxTableAsync(dgvTrx);
         }
 
         //OVERVIEW PANEL

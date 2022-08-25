@@ -63,6 +63,8 @@
             this.lblTrxTypeName = new System.Windows.Forms.Label();
             this.btnAddTrxType = new System.Windows.Forms.Button();
             this.dgvTransactionTypes = new System.Windows.Forms.DataGridView();
+            this.pnlTrx = new System.Windows.Forms.Panel();
+            this.dgvTrx = new System.Windows.Forms.DataGridView();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -71,6 +73,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartners)).BeginInit();
             this.pnlBudgets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionTypes)).BeginInit();
+            this.pnlTrx.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTrx)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_nav
@@ -481,6 +485,30 @@
             this.dgvTransactionTypes.Size = new System.Drawing.Size(553, 416);
             this.dgvTransactionTypes.TabIndex = 1;
             // 
+            // pnlTrx
+            // 
+            this.pnlTrx.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlTrx.Controls.Add(this.dgvTrx);
+            this.pnlTrx.Location = new System.Drawing.Point(10, 67);
+            this.pnlTrx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlTrx.Name = "pnlTrx";
+            this.pnlTrx.Size = new System.Drawing.Size(1098, 446);
+            this.pnlTrx.TabIndex = 3;
+            // 
+            // dgvTrx
+            // 
+            this.dgvTrx.AllowUserToAddRows = false;
+            this.dgvTrx.AllowUserToDeleteRows = false;
+            this.dgvTrx.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTrx.Location = new System.Drawing.Point(18, 22);
+            this.dgvTrx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvTrx.MultiSelect = false;
+            this.dgvTrx.Name = "dgvTrx";
+            this.dgvTrx.ReadOnly = true;
+            this.dgvTrx.RowTemplate.Height = 29;
+            this.dgvTrx.Size = new System.Drawing.Size(553, 416);
+            this.dgvTrx.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -488,10 +516,11 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1124, 518);
             this.Controls.Add(this.pnl_nav);
+            this.Controls.Add(this.pnlTrx);
+            this.Controls.Add(this.pnlOvrvw);
             this.Controls.Add(this.pnlAcc);
             this.Controls.Add(this.pnlPartners);
             this.Controls.Add(this.pnlBudgets);
-            this.Controls.Add(this.pnlOvrvw);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -506,6 +535,8 @@
             this.pnlBudgets.ResumeLayout(false);
             this.pnlBudgets.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionTypes)).EndInit();
+            this.pnlTrx.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTrx)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -547,5 +578,7 @@
         private Button btnAddTrxType;
         private DataGridView dgvTransactionTypes;
         private DataGridView dgvPartnerTypes;
+        private Panel pnlTrx;
+        private DataGridView dgvTrx;
     }
 }
