@@ -14,7 +14,7 @@ namespace CashflowALPHA
     public class AccountsViewModel
     {
         //Opens file dialog and reads file
-        public static async void OpenFD( string initDir, string filter)
+        public static async void OpenFD( string initDir, string filter, string accname)
         {
             string filepath;
             OpenFileDialog ofd = new OpenFileDialog();
@@ -23,7 +23,7 @@ namespace CashflowALPHA
             ofd.ShowDialog();
             filepath = ofd.FileName;
 
-            await Task.Run(() => ProcessStmtFile(filepath));
+            await Task.Run(() => ProcessStmtFile(filepath, accname));
             
         }
 
@@ -56,11 +56,10 @@ namespace CashflowALPHA
                     type.Text = item.Name;
                 }
             }
-            
         }
 
         //Updates account in db with data from textboxes
-        public static void UpdateAccEntryAsync(string name, string iban, string bic, string type, decimal balance)
+        public static void UpdateAccEntry(string name, string iban, string bic, string type, decimal balance)
         {
             int accid = Account.GetObjectId(name);
             int acctypeid = AccountType.GetObjectId(type);
@@ -74,7 +73,7 @@ namespace CashflowALPHA
                 TypeID = acctypeid,
                 Balance = balance
             };
-            AccountsViewModel.UpdateAccAsync(acc);
+            UpdateAccAsync(acc);
         }
         //Inserts an Account asynchronous
         public async Task InsertAccAsync()
@@ -93,20 +92,20 @@ namespace CashflowALPHA
 
 
         //Method for updating Account in database
-        public static async Task UpdateAccAsync(Account acc)
+        private static async Task UpdateAccAsync(Account acc)
         {
             await Task.Run(() => MySqlHandler.UpdateAccount(acc));   
         }
 
-        private static async Task ProcessStmtFile(string filepath)
+        private static async Task ProcessStmtFile(string filepath, string accname)
         {
             DataTable dt = CsvProcessor.CsvToTable(filepath);
             List<Partner> partners = Partner.GetObjectListStmtAsync(dt);
             List<Partner> distpartners = Partner.GetDistinctObjectList(partners);
 
             Partner.InsertObjectListDbAsync(distpartners);
-            List<Transaction> trx = Transaction.GetObjectListStmt(dt);
-            await Task.Run(() => Transaction.InsertObjectListDbAsync(trx));
+            List<Transaction> trx = Transaction.GetObjectListStmt(dt, accname);
+            await Task.Run(() => Transaction.InsertObjectListDbAsync(trx, accname));
             
         }
     }

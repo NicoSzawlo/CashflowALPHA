@@ -56,11 +56,11 @@ namespace CashflowALPHA
         private void btnAccAddStmt_Click(object sender, EventArgs e)
         {
             
-            AccountsViewModel.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*");
+            AccountsViewModel.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*", dgvAccounts.CurrentRow.Cells[0].Value.ToString());
         }
         private void btnAccUpdate_Click(object sender, EventArgs e)
         {
-            AccountsViewModel.UpdateAccEntryAsync(txtAccName.Text, txtAccIban.Text, txtAccBic.Text, comboAccType.Text, Decimal.Parse(txtAccBalance.Text));
+            AccountsViewModel.UpdateAccEntry(txtAccName.Text, txtAccIban.Text, txtAccBic.Text, comboAccType.Text, Decimal.Parse(txtAccBalance.Text));
         }
 
         private void btnAccAdd_Click(object sender, EventArgs e)
@@ -127,10 +127,5 @@ namespace CashflowALPHA
 
 
         //Temp testing area
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CultureInfo cult = new CultureInfo("de-DE");
-            decimal m = decimal.Parse("2,316.91", new NumberFormatInfo() { NumberDecimalSeparator = "." });
-        }
     }
 }

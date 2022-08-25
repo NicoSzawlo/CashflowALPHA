@@ -57,15 +57,16 @@ namespace HelperLibrary.DataLayer
             return list;
         }
 
-        public static List<Transaction> GetObjectListStmt(DataTable stmt)
+        public static List<Transaction> GetObjectListStmt(DataTable stmt, string accname)
         {
-            List<Transaction> list = FileToList(stmt);
+            Account acc = Account.GetObjectDb(accname);
+            List<Transaction> list = FileToList(stmt, acc);
             return list;
         }
 
-        public static async void InsertObjectListDbAsync(List<Transaction> list)
+        public static async void InsertObjectListDbAsync(List<Transaction> list, string accname)
         {
-            int i = 0;
+            Account accentry = Account.GetObjectDb(accname);
             List<Task> tasks = new List<Task>();
             foreach (Transaction trx in list)
             {
@@ -76,7 +77,7 @@ namespace HelperLibrary.DataLayer
 
         //Adding all george statement transaction entries of file and get partner ID from db
         //Also check for transaction type of partner and add if already set
-        private static List<Transaction> FileToList(DataTable stmt)
+        private static List<Transaction> FileToList(DataTable stmt, Account acc)
         {
             List<Transaction> list = new List<Transaction>();
             
@@ -103,6 +104,7 @@ namespace HelperLibrary.DataLayer
                         Currency = dr["Currency"].ToString(),
                         Info = dr["Booking Info"].ToString(),
                         Reference = dr["Booking Reference"].ToString(),
+                        AccountID = acc.ID,
                         PartnerID = partn.ID
                     });
                 }
@@ -115,6 +117,7 @@ namespace HelperLibrary.DataLayer
                         Currency = dr["Currency"].ToString(),
                         Info = dr["Booking Info"].ToString(),
                         Reference = dr["Booking Reference"].ToString(),
+                        AccountID = acc.ID,
                         PartnerID = partn.ID,
                         TypeID = partn.UsualTrxType
                     });

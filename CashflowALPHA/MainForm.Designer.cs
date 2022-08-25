@@ -63,7 +63,6 @@
             this.lblTrxTypeName = new System.Windows.Forms.Label();
             this.btnAddTrxType = new System.Windows.Forms.Button();
             this.dgvTransactionTypes = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -95,7 +94,7 @@
             this.navbtnOvrvw.FlatAppearance.BorderSize = 0;
             this.navbtnOvrvw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.navbtnOvrvw.Location = new System.Drawing.Point(2, 2);
-            this.navbtnOvrvw.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.navbtnOvrvw.Margin = new System.Windows.Forms.Padding(2);
             this.navbtnOvrvw.Name = "navbtnOvrvw";
             this.navbtnOvrvw.Size = new System.Drawing.Size(140, 68);
             this.navbtnOvrvw.TabIndex = 0;
@@ -108,7 +107,7 @@
             this.navbtnTrx.BackColor = System.Drawing.Color.LightGray;
             this.navbtnTrx.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.navbtnTrx.Location = new System.Drawing.Point(146, 2);
-            this.navbtnTrx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.navbtnTrx.Margin = new System.Windows.Forms.Padding(2);
             this.navbtnTrx.Name = "navbtnTrx";
             this.navbtnTrx.Size = new System.Drawing.Size(140, 68);
             this.navbtnTrx.TabIndex = 1;
@@ -121,7 +120,7 @@
             this.navbtnPartners.BackColor = System.Drawing.Color.LightGray;
             this.navbtnPartners.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.navbtnPartners.Location = new System.Drawing.Point(290, 2);
-            this.navbtnPartners.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.navbtnPartners.Margin = new System.Windows.Forms.Padding(2);
             this.navbtnPartners.Name = "navbtnPartners";
             this.navbtnPartners.Size = new System.Drawing.Size(140, 68);
             this.navbtnPartners.TabIndex = 2;
@@ -134,7 +133,7 @@
             this.navbtnBudget.BackColor = System.Drawing.Color.LightGray;
             this.navbtnBudget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.navbtnBudget.Location = new System.Drawing.Point(434, 2);
-            this.navbtnBudget.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.navbtnBudget.Margin = new System.Windows.Forms.Padding(2);
             this.navbtnBudget.Name = "navbtnBudget";
             this.navbtnBudget.Size = new System.Drawing.Size(140, 68);
             this.navbtnBudget.TabIndex = 3;
@@ -147,7 +146,7 @@
             this.navbtnAcc.BackColor = System.Drawing.Color.LightGray;
             this.navbtnAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.navbtnAcc.Location = new System.Drawing.Point(578, 2);
-            this.navbtnAcc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.navbtnAcc.Margin = new System.Windows.Forms.Padding(2);
             this.navbtnAcc.Name = "navbtnAcc";
             this.navbtnAcc.Size = new System.Drawing.Size(140, 68);
             this.navbtnAcc.TabIndex = 4;
@@ -160,7 +159,7 @@
             this.navtbnInv.BackColor = System.Drawing.Color.LightGray;
             this.navtbnInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.navtbnInv.Location = new System.Drawing.Point(722, 2);
-            this.navtbnInv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.navtbnInv.Margin = new System.Windows.Forms.Padding(2);
             this.navtbnInv.Name = "navtbnInv";
             this.navtbnInv.Size = new System.Drawing.Size(140, 68);
             this.navtbnInv.TabIndex = 5;
@@ -172,7 +171,7 @@
             this.navbtnSpare.BackColor = System.Drawing.Color.LightGray;
             this.navbtnSpare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.navbtnSpare.Location = new System.Drawing.Point(866, 2);
-            this.navbtnSpare.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.navbtnSpare.Margin = new System.Windows.Forms.Padding(2);
             this.navbtnSpare.Name = "navbtnSpare";
             this.navbtnSpare.Size = new System.Drawing.Size(140, 68);
             this.navbtnSpare.TabIndex = 6;
@@ -182,7 +181,6 @@
             // pnlAcc
             // 
             this.pnlAcc.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlAcc.Controls.Add(this.button1);
             this.pnlAcc.Controls.Add(this.btnAccUpdate);
             this.pnlAcc.Controls.Add(this.comboAccType);
             this.pnlAcc.Controls.Add(this.txtAccBalance);
@@ -483,17 +481,6 @@
             this.dgvTransactionTypes.Size = new System.Drawing.Size(553, 416);
             this.dgvTransactionTypes.TabIndex = 1;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(950, 224);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 43);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "ADD STATEMENT";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -560,6 +547,5 @@
         private Button btnAddTrxType;
         private DataGridView dgvTransactionTypes;
         private DataGridView dgvPartnerTypes;
-        private Button button1;
     }
 }
