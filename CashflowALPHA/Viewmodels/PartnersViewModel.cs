@@ -23,14 +23,30 @@ namespace CashflowALPHA.Viewmodels
             dgv.DataSource = dt;
         }
 
-        public static void SetPartnerTrxTypeAsync(string partnername, string trxtypename)
+        public static void SetPartnerTrxType(List<string> partnernames, string trxtypename)
         {
-            Partner partn = Partner.GetObjectDb(partnername);
-            int trxtypeid = TransactionType.GetObjectId(trxtypename);
+            List<Partner> partners = new List<Partner>();
+            Partner partn = new Partner();
+            foreach (string partnername in partnernames)
+            {
+                partn = Partner.GetObjectDb(partnername);
+                int trxtypeid = TransactionType.GetObjectId(trxtypename);
+                partn.TypeID = trxtypeid;
+                partners.Add(partn);
+                
+            }
+            Partner.UpdateObjectListAsync(partners);
+        }
 
-            partn.TypeID = trxtypeid;
+        public static List<string> GetSelectedNames(DataGridView dgv)
+        {
+            List<string> selectedNames = new List<string>();
+            foreach (DataGridViewRow row in dgv.SelectedRows)
+            {
+                selectedNames.Add(row.Cells[1].ToString());
+            }
+            return selectedNames;
 
-            Partner.UpdateObjectAsync(partn);
         }
     }
 }

@@ -83,9 +83,13 @@ namespace HelperLibrary.DataLayer
 
 
         //Function for updating database entry
-        public static async void UpdateObjectAsync(Partner partn)
+        public static async void UpdateObjectListAsync(List<Partner> partners)
         {
-            await Task.Run(() => MySqlHandler.UpdatePartner(partn));
+            foreach(Partner partn in partners)
+            {
+                await Task.Run(() => MySqlHandler.UpdatePartner(partn));
+            }
+            
         }
         //Async task extracting all partners from file
         public static List<Partner> GetObjectListStmtAsync(DataTable stmt)
