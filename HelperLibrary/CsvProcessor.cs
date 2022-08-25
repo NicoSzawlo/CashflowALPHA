@@ -11,6 +11,7 @@ namespace HelperLibrary
     {
 
         //Process filestring to Datatable
+        //MISSING CHECK FOR EMPTY ROW 
         public static DataTable CsvToTable(string filepath)
         {
             DataTable dt = new DataTable();

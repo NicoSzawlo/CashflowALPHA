@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,6 +79,8 @@ namespace HelperLibrary.DataLayer
         private static List<Transaction> FileToList(DataTable stmt)
         {
             List<Transaction> list = new List<Transaction>();
+            
+
             foreach (DataRow dr in stmt.Rows)
             {
                 Partner partn = new Partner();
@@ -96,7 +99,7 @@ namespace HelperLibrary.DataLayer
                     list.Add(new Transaction
                     {
                         Date = DateTime.Parse(dr["Booking Date"].ToString()),
-                        Amount = decimal.Parse(dr["Amount"].ToString()),
+                        Amount = decimal.Parse(dr["Amount"].ToString(), new NumberFormatInfo() { NumberDecimalSeparator = "." }),
                         Currency = dr["Currency"].ToString(),
                         Info = dr["Booking Info"].ToString(),
                         Reference = dr["Booking Reference"].ToString(),
@@ -108,7 +111,7 @@ namespace HelperLibrary.DataLayer
                     list.Add(new Transaction
                     {
                         Date = DateTime.Parse(dr["Booking Date"].ToString()),
-                        Amount = decimal.Parse(dr["Amount"].ToString()),
+                        Amount = decimal.Parse(dr["Amount"].ToString(), new NumberFormatInfo() { NumberDecimalSeparator = "." }),
                         Currency = dr["Currency"].ToString(),
                         Info = dr["Booking Info"].ToString(),
                         Reference = dr["Booking Reference"].ToString(),

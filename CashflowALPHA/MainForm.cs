@@ -1,6 +1,7 @@
 
 using CashflowALPHA.Viewmodels;
 using HelperLibrary.DataLayer;
+using System.Globalization;
 using System.Xml.Linq;
 
 namespace CashflowALPHA
@@ -121,6 +122,15 @@ namespace CashflowALPHA
             Startup();
         }
 
-        
+
+
+
+
+        //Temp testing area
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CultureInfo cult = new CultureInfo("de-DE");
+            decimal m = decimal.Parse("2,316.91", new NumberFormatInfo() { NumberDecimalSeparator = "." });
+        }
     }
 }
