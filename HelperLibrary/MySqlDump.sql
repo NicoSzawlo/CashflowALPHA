@@ -129,7 +129,7 @@ DROP TABLE IF EXISTS `tab_trxtypes`;
 CREATE TABLE `tab_trxtypes` (
   `trxtype_id` int(11) NOT NULL AUTO_INCREMENT,
   `trxtype_name` varchar(45) DEFAULT NULL,
-  `trxtype_budget` varchar(45) DEFAULT NULL,
+  `trxtype_budget` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`trxtype_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Contains types of transactions and budgets';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -186,7 +186,8 @@ DROP TABLE IF EXISTS `view_trxtypes`;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `view_trxtypes` AS SELECT 
- 1 AS `Transaction Type`*/;
+ 1 AS `Transaction Type`,
+ 1 AS `Budget`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -256,7 +257,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `view_trxtypes` AS select `tab_trxtypes`.`trxtype_name` AS `Transaction Type` from `tab_trxtypes` */;
+/*!50001 VIEW `view_trxtypes` AS select `tab_trxtypes`.`trxtype_name` AS `Transaction Type`,`tab_trxtypes`.`trxtype_budget` AS `Budget` from `tab_trxtypes` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -270,4 +271,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-25 14:04:42
+-- Dump completed on 2022-08-25 14:40:53

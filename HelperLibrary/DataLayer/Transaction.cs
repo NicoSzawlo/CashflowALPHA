@@ -95,7 +95,7 @@ namespace HelperLibrary.DataLayer
                 }
 
                 
-                if (partn.UsualTrxType == null)
+                if (partn.TypeID == null)
                 {
                     list.Add(new Transaction
                     {
@@ -119,7 +119,7 @@ namespace HelperLibrary.DataLayer
                         Reference = dr["Booking Reference"].ToString(),
                         AccountID = acc.ID,
                         PartnerID = partn.ID,
-                        TypeID = partn.UsualTrxType
+                        TypeID = partn.TypeID
                     });
                 }
             }

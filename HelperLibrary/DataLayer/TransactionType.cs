@@ -17,7 +17,7 @@ namespace HelperLibrary.DataLayer
         public static TransactionType GetObjectDb(string name)
         {
             TransactionType trxtype = new TransactionType();
-            DataTable trxtypedt = MySqlHandler.Select("*", "tab_accounts", "acc_name", name);
+            DataTable trxtypedt = MySqlHandler.Select("*", "tab_trxtypes", "trxtype_name", name);
             DataRow row = trxtypedt.Rows[0];
 
             try

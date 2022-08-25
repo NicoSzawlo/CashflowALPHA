@@ -75,28 +75,15 @@ namespace CashflowALPHA
             };
             UpdateAccAsync(acc);
         }
-        //Inserts an Account asynchronous
-        public async Task InsertAccAsync()
-        {
-            //List<Task> tasks = new List<Task>();
-            //var watch = System.Diagnostics.Stopwatch.StartNew();
-            //for (int i = 0; i < 1000; i++)
-            //{
-            //    tasks.Add(Task.Run(() => mySqlHandler.InsertIntoAccount(i.ToString(), "test", "Test", 1)));
-            //}
-            //await Task.WhenAll(tasks);
-            //watch.Stop();
-            //Debug.WriteLine("Duration was:");
-            //Debug.WriteLine(watch.ElapsedMilliseconds);
-        }
 
 
         //Method for updating Account in database
-        private static async Task UpdateAccAsync(Account acc)
+        private static async void UpdateAccAsync(Account acc)
         {
             await Task.Run(() => MySqlHandler.UpdateAccount(acc));   
         }
 
+        //Method for processing statement file asynchronously
         private static async Task ProcessStmtFile(string filepath, string accname)
         {
             DataTable dt = CsvProcessor.CsvToTable(filepath);

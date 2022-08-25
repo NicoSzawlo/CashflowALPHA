@@ -17,7 +17,7 @@ namespace HelperLibrary.DataLayer
         public string? Iban { get; set; }
         public string? Bic { get; set; }
         public string? Bankcode { get; set; }
-        public int? UsualTrxType { get; set; }
+        public int? TypeID { get; set; }
 
 
         //Function to asynchronously load mysqldata into Object
@@ -36,7 +36,7 @@ namespace HelperLibrary.DataLayer
                     partn.Iban = row["partn_iban"].ToString();
                     partn.Bic = row["partn_bic"].ToString();
                     partn.Bankcode = row["partn_balance"].ToString();
-                    partn.UsualTrxType = int.Parse(row["partn_trxtype_id"].ToString());
+                    partn.TypeID = int.Parse(row["partn_trxtype_id"].ToString());
                 }
                 catch (Exception ex)
                 {
@@ -45,6 +45,8 @@ namespace HelperLibrary.DataLayer
             }
             return partn;
         }
+
+
         //Function to asynchronously load mysql data into object list
         public static async Task<List<Partner>> GetObjectListDbAsync()
         {
@@ -53,7 +55,9 @@ namespace HelperLibrary.DataLayer
 
             return list;
         }
-        //Function to push objectlist into db
+
+
+        //Function to insert objectlist into db
         public static async void InsertObjectListDbAsync(List<Partner> list)
         {
             //Check if Db empty and add Placeholder for cash 
@@ -78,6 +82,11 @@ namespace HelperLibrary.DataLayer
         }
 
 
+        //Function for updating database entry
+        public static async void UpdateObjectAsync(Partner partn)
+        {
+            await Task.Run(() => MySqlHandler.UpdatePartner(partn));
+        }
         //Async task extracting all partners from file
         public static List<Partner> GetObjectListStmtAsync(DataTable stmt)
         {

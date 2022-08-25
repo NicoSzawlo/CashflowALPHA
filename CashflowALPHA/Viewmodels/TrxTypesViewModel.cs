@@ -14,7 +14,7 @@ namespace CashflowALPHA.Viewmodels
         //Loads content of Transactiontypes for the Budget setting page
         public static async void LoadTrxTypeTableAsync(DataGridView dgv)
         {
-            DataTable dt = await Task.Run(() => MySqlHandler.Select("*", "tab_trxtypes"));
+            DataTable dt = await Task.Run(() => MySqlHandler.Select("*", "view_trxtypes"));
             dgv.DataSource = dt;
         }
 

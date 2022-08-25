@@ -1,4 +1,5 @@
 ﻿using HelperLibrary;
+using HelperLibrary.DataLayer;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,6 +23,14 @@ namespace CashflowALPHA.Viewmodels
             dgv.DataSource = dt;
         }
 
+        public static void SetPartnerTrxTypeAsync(string partnername, string trxtypename)
+        {
+            Partner partn = Partner.GetObjectDb(partnername);
+            int trxtypeid = TransactionType.GetObjectId(trxtypename);
 
+            partn.TypeID = trxtypeid;
+
+            Partner.UpdateObjectAsync(partn);
+        }
     }
 }

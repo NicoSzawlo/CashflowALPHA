@@ -67,6 +67,8 @@ namespace HelperLibrary
 
         //Transactions table
         //#######################################################
+
+        //Insert into Transactions table
         public static void InsertIntoTrx(Transaction trx)
         {
             MySqlCommand cmd = Connect();
@@ -101,6 +103,7 @@ namespace HelperLibrary
 
         //Accounts table
         //#######################################################
+
         //Insert into account table
         public static void InsertIntoAccount(Account acc)
         {
@@ -155,6 +158,7 @@ namespace HelperLibrary
 
         //Partners table
         //#######################################################
+
         //Insert into partner table
         public static void InsertIntoPartners(Partner partn)
         {
@@ -165,7 +169,7 @@ namespace HelperLibrary
             cmd.Parameters.AddWithValue("@iban", partn.Iban);
             cmd.Parameters.AddWithValue("@bic", partn.Bic);
             cmd.Parameters.AddWithValue("@bankcode", partn.Bankcode);
-            cmd.Parameters.AddWithValue("@type", partn.UsualTrxType);
+            cmd.Parameters.AddWithValue("@type", partn.TypeID);
 
             try
             {
@@ -181,7 +185,31 @@ namespace HelperLibrary
 
         }
 
+        //Update partner entry
+        public static void UpdatePartner(Partner partn)
+        {
+            MySqlCommand cmd = Connect();
 
+            cmd.CommandText = "UPDATE tab_partners SET partn_name = @name,partn_iban = @iban, partn_bic = @bic,partn_bankcode = @bankcode ,partn_trxtype_id = @trxtypeid WHERE partn_id = @id";
+
+            cmd.Parameters.AddWithValue("@name", partn.Name);
+            cmd.Parameters.AddWithValue("@iban", partn.Iban);
+            cmd.Parameters.AddWithValue("@bic", partn.Bic);
+            cmd.Parameters.AddWithValue("@bankcode", partn.Bankcode);
+            cmd.Parameters.AddWithValue("@trxtypeid", partn.TypeID);
+            cmd.Parameters.AddWithValue("@id", partn.ID);
+
+            try
+            {
+                var result = cmd.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+        }
         //Transactiontypes table
         //#######################################################
         public static void InsertIntoTrxTypes(TransactionType trxtype)

@@ -101,6 +101,11 @@ namespace CashflowALPHA
         }
         //PARTNERS PANEL
         //##############################
+        private void btnSetPartnType_Click(object sender, EventArgs e)
+        {
+            PartnersViewModel.SetPartnerTrxTypeAsync(dgvPartners.CurrentRow.Cells[1].Value.ToString(), dgvPartnerTypes.CurrentRow.Cells[0].Value.ToString());
+        }
+
 
         //TRANSACTIONS PANEL
         //##############################
@@ -123,6 +128,8 @@ namespace CashflowALPHA
         {
             Startup();
         }
+
+        
 
 
 

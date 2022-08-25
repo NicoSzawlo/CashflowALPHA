@@ -65,6 +65,7 @@
             this.dgvTransactionTypes = new System.Windows.Forms.DataGridView();
             this.pnlTrx = new System.Windows.Forms.Panel();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
+            this.btnSetPartnType = new System.Windows.Forms.Button();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -360,6 +361,7 @@
             // pnlPartners
             // 
             this.pnlPartners.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlPartners.Controls.Add(this.btnSetPartnType);
             this.pnlPartners.Controls.Add(this.dgvPartnerTypes);
             this.pnlPartners.Controls.Add(this.dgvPartners);
             this.pnlPartners.Location = new System.Drawing.Point(10, 67);
@@ -379,7 +381,7 @@
             this.dgvPartnerTypes.ReadOnly = true;
             this.dgvPartnerTypes.RowTemplate.Height = 29;
             this.dgvPartnerTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPartnerTypes.Size = new System.Drawing.Size(235, 129);
+            this.dgvPartnerTypes.Size = new System.Drawing.Size(234, 304);
             this.dgvPartnerTypes.TabIndex = 2;
             // 
             // dgvPartners
@@ -500,7 +502,7 @@
             this.dgvTrx.AllowUserToAddRows = false;
             this.dgvTrx.AllowUserToDeleteRows = false;
             this.dgvTrx.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTrx.Location = new System.Drawing.Point(18, 22);
+            this.dgvTrx.Location = new System.Drawing.Point(18, 14);
             this.dgvTrx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTrx.MultiSelect = false;
             this.dgvTrx.Name = "dgvTrx";
@@ -509,6 +511,17 @@
             this.dgvTrx.Size = new System.Drawing.Size(553, 416);
             this.dgvTrx.TabIndex = 1;
             // 
+            // btnSetPartnType
+            // 
+            this.btnSetPartnType.Location = new System.Drawing.Point(598, 335);
+            this.btnSetPartnType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSetPartnType.Name = "btnSetPartnType";
+            this.btnSetPartnType.Size = new System.Drawing.Size(233, 95);
+            this.btnSetPartnType.TabIndex = 16;
+            this.btnSetPartnType.Text = "SET TRANSACTION CATEGORY FOR SELECTED PARTNERS";
+            this.btnSetPartnType.UseVisualStyleBackColor = true;
+            this.btnSetPartnType.Click += new System.EventHandler(this.btnSetPartnType_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -516,11 +529,11 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1124, 518);
             this.Controls.Add(this.pnl_nav);
+            this.Controls.Add(this.pnlPartners);
+            this.Controls.Add(this.pnlBudgets);
             this.Controls.Add(this.pnlTrx);
             this.Controls.Add(this.pnlOvrvw);
             this.Controls.Add(this.pnlAcc);
-            this.Controls.Add(this.pnlPartners);
-            this.Controls.Add(this.pnlBudgets);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -580,5 +593,6 @@
         private DataGridView dgvPartnerTypes;
         private Panel pnlTrx;
         private DataGridView dgvTrx;
+        private Button btnSetPartnType;
     }
 }
