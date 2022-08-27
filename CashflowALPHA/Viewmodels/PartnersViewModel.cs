@@ -43,7 +43,7 @@ namespace CashflowALPHA.Viewmodels
             List<string> selectedNames = new List<string>();
             foreach (DataGridViewRow row in dgv.SelectedRows)
             {
-                selectedNames.Add(row.Cells[1].ToString());
+                selectedNames.Add(row.Cells[1].Value.ToString());
             }
             return selectedNames;
 
