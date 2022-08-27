@@ -64,6 +64,7 @@ namespace HelperLibrary.DataLayer
             return list;
         }
 
+        //Insert object list into database
         public static async void InsertObjectListDbAsync(List<Transaction> list, string accname)
         {
             Account accentry = Account.GetObjectDb(accname);

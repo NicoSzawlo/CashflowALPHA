@@ -48,5 +48,17 @@ namespace CashflowALPHA.Viewmodels
             return selectedNames;
 
         }
+
+        private static async void SetTrxTypes()
+        {
+            List<Partner> partners = await Task.Run(() => Partner.GetObjectListDbAsync());
+            foreach (Partner partner in partners)
+            {
+                if(partner.TypeID != null)
+                {
+
+                }
+            }
+        }
     }
 }

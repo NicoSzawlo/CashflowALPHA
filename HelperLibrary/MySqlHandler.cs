@@ -101,6 +101,43 @@ namespace HelperLibrary
             Disconnect(cmd);
         }
 
+        public static void UpdateTransaction(Transaction trx)
+        {
+            MySqlCommand cmd = Connect();
+
+            cmd.CommandText = "UPDATE tab_trx SET " +
+                "trx_date = @date," +
+                "trx_amnt = @amount, " +
+                "trx_currency = @currency, " +
+                "trx_info = @info, " +
+                "trx_reference = @reference, " +
+                "trx_partn_id = @partnerid, " +
+                "trx_acc_id = @accountid, " +
+                "trx_trxtype_id = @trxtypeid " +
+                "WHERE trx_id = @id";
+
+            cmd.Parameters.AddWithValue("@date", trx.Date);
+            cmd.Parameters.AddWithValue("@amount", trx.Amount);
+            cmd.Parameters.AddWithValue("@currency", trx.Currency);
+            cmd.Parameters.AddWithValue("@info", trx.Info);
+            cmd.Parameters.AddWithValue("@reference", trx.Reference);
+            cmd.Parameters.AddWithValue("@partnerid", trx.PartnerID);
+            cmd.Parameters.AddWithValue("@accountid", trx.AccountID);
+            cmd.Parameters.AddWithValue("@trxtypeid", trx.TypeID);
+            cmd.Parameters.AddWithValue("@id", trx.ID);
+
+            try
+            {
+                var result = cmd.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+        }
+
         //Accounts table
         //#######################################################
 
