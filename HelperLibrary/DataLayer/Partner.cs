@@ -177,15 +177,30 @@ namespace HelperLibrary.DataLayer
             List<Partner> list = new List<Partner>();
             foreach (DataRow dr in db.Rows)
             {
-                list.Add(new Partner
+                if (dr["partn_trxtype_id"].ToString() != "")
                 {
-                    ID = int.Parse(dr["partn_id"].ToString()),
-                    Name = dr["partn_name"].ToString(),
-                    //Iban = dr["partn_iban"].ToString(),
-                    //Bic = dr["partn_bic"].ToString(),
-                    //Bankcode = dr["partn_bankcode"].ToString(),
-                    //UsualTrxType = int.Parse(dr["partn_trxtype_id"].ToString())
-                });
+                    list.Add(new Partner
+                    {
+                        ID = int.Parse(dr["partn_id"].ToString()),
+                        Name = dr["partn_name"].ToString(),
+                        Iban = dr["partn_iban"].ToString(),
+                        Bic = dr["partn_bic"].ToString(),
+                        Bankcode = dr["partn_bankcode"].ToString(),
+                        TypeID = int.Parse(dr["partn_trxtype_id"].ToString())
+                    });
+                }
+                else
+                {
+                    list.Add(new Partner
+                    {
+                        ID = int.Parse(dr["partn_id"].ToString()),
+                        Name = dr["partn_name"].ToString(),
+                        Iban = dr["partn_iban"].ToString(),
+                        Bic = dr["partn_bic"].ToString(),
+                        Bankcode = dr["partn_bankcode"].ToString()
+                    });
+                }
+                
             }
             return list;
         }

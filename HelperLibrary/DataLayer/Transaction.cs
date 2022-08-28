@@ -22,31 +22,9 @@ namespace HelperLibrary.DataLayer
         public int? AccountID { get; set; }
         public int? TypeID { get; set; }
         public int? InvPosID { get; set; }
+
         private const string CashPlaceholder = "_Cash";
 
-        //Function to asynchronously load mysqldata into Object
-        //public static async Task<Transaction> GetObjectAsync(string name)
-        //{
-        //    Partner partn = new Partner();
-        //    MySqlHandler mySqlHandler = new MySqlHandler();
-        //    DataTable partnerdt = await Task.Run(() => mySqlHandler.Select("*", "tab_partners", "partn_name", name));
-        //    DataRow row = partnerdt.Rows[0];
-
-        //    try
-        //    {
-        //        partn.ID = int.Parse(row["partn_id"].ToString());
-        //        partn.Name = row["partn_name"].ToString();
-        //        partn.Iban = row["partn_iban"].ToString();
-        //        partn.Bic = row["partn_bic"].ToString();
-        //        partn.Bankcode = row["partn_balance"].ToString();
-        //        partn.UsualTrxType = int.Parse(row["partn_trxtype_id"].ToString());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //    return partn;
-        //}
         //Function to asynchronously load mysql data into object list
         public static async Task<List<Transaction>> GetObjectListDbAsync()
         {
@@ -56,13 +34,25 @@ namespace HelperLibrary.DataLayer
 
             return list;
         }
+        //Overload 1 to get Transactions for a specific partner
+        public static async Task<List<Transaction>> GetObjectListDbAsync(Partner partner)
+        {
+            List<Transaction> list = new List<Transaction>();
+            DataTable trxdt = await Task.Run(() => MySqlHandler.Select("*", "tab_trx", "trx_partn_id", partner.ID.ToString()));
+            list = await Task.Run(() => DbToList(trxdt));
 
+            return list;
+        }
+
+        //Pull objectlist from Statementfile Datatable
         public static List<Transaction> GetObjectListStmt(DataTable stmt, string accname)
         {
             Account acc = Account.GetObjectDb(accname);
             List<Transaction> list = FileToList(stmt, acc);
             return list;
         }
+
+
 
         //Insert object list into database
         public static async void InsertObjectListDbAsync(List<Transaction> list, string accname)
@@ -74,6 +64,16 @@ namespace HelperLibrary.DataLayer
             }
 
         }
+
+        //Update database entries for list of objects
+        public static void UpdateObjectListAsync(List<Transaction> trxs)
+        {
+            foreach (Transaction trx in trxs)
+            {
+                MySqlHandler.UpdateTransaction(trx);
+            }
+        }
+
 
         //Adding all george statement transaction entries of file and get partner ID from db
         //Also check for transaction type of partner and add if already set
@@ -132,21 +132,45 @@ namespace HelperLibrary.DataLayer
             List<Transaction> list = new List<Transaction>();
             foreach (DataRow dr in db.Rows)
             {
-                list.Add(new Transaction
+                Transaction trx = new Transaction();
+                trx.ID = int.Parse(dr["trx_id"].ToString());
+                trx.Date = DateTime.Parse(dr["trx_date"].ToString());
+                trx.Amount = decimal.Parse(dr["trx_amnt"].ToString());
+                trx.Currency = dr["trx_currency"].ToString();
+                trx.Info = dr["trx_info"].ToString();
+                trx.Reference = dr["trx_reference"].ToString();
+                if(!EmtpyStringCheck(dr["trx_partn_id"].ToString()))
                 {
-                    ID = int.Parse(dr["trx_id"].ToString()),
-                    Date = DateTime.Parse(dr["trx_name"].ToString()),
-                    Amount = decimal.Parse(dr["trx_iban"].ToString()),
-                    Currency = dr["trx_bic"].ToString(),
-                    Info = dr["trx_balance"].ToString(),
-                    Reference = dr["trx_acctype_id"].ToString(),
-                    PartnerID = int.Parse(dr["trx_id"].ToString()),
-                    AccountID = int.Parse(dr["trx_id"].ToString()),
-                    TypeID = int.Parse(dr["trx_id"].ToString()),
-                    InvPosID = int.Parse(dr["trx_id"].ToString()),
-                });
+                    trx.PartnerID = int.Parse(dr["trx_partn_id"].ToString());
+                }
+                if (!EmtpyStringCheck(dr["trx_acc_id"].ToString()))
+                {
+                    trx.AccountID = int.Parse(dr["trx_acc_id"].ToString());
+                }
+                    
+                if (!EmtpyStringCheck(dr["trx_trxtype_id"].ToString()))
+                {
+                    trx.TypeID = int.Parse(dr["trx_trxtype_id"].ToString());
+                }
+                  
+                if (!EmtpyStringCheck(dr["trx_invpos_id"].ToString()))
+                {
+                    trx.InvPosID = int.Parse(dr["trx_invpos_id"].ToString());
+                }
+                list.Add(trx);
+                
             }
             return list;
+        }
+        //Check if string is empty and returns bool
+        private static bool EmtpyStringCheck(string str)
+        {
+            bool empty = false;
+            if (str == "")
+            {
+                empty = true;
+            }
+            return empty;
         }
     }
 }

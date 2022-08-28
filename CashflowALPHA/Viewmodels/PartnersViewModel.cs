@@ -49,14 +49,25 @@ namespace CashflowALPHA.Viewmodels
 
         }
 
-        private static async void SetTrxTypes()
+        public static async void SetTrxTypes()
         {
             List<Partner> partners = await Task.Run(() => Partner.GetObjectListDbAsync());
+            List<Transaction> trxlist = new List<Transaction>();
             foreach (Partner partner in partners)
             {
+                trxlist.Clear();
                 if(partner.TypeID != null)
                 {
-
+                    trxlist = await Transaction.GetObjectListDbAsync(partner);
+                    foreach(Transaction trx in trxlist)
+                    {
+                        if (trx.TypeID == null)
+                        {
+                            trx.TypeID = partner.TypeID;
+                        }
+                    }
+                    Transaction.UpdateObjectListAsync(trxlist);
+                    
                 }
             }
         }

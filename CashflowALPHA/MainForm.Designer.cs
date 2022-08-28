@@ -53,6 +53,7 @@
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.pnlOvrvw = new System.Windows.Forms.Panel();
             this.pnlPartners = new System.Windows.Forms.Panel();
+            this.btnSetPartnType = new System.Windows.Forms.Button();
             this.dgvPartnerTypes = new System.Windows.Forms.DataGridView();
             this.dgvPartners = new System.Windows.Forms.DataGridView();
             this.pnlBudgets = new System.Windows.Forms.Panel();
@@ -65,7 +66,7 @@
             this.dgvTransactionTypes = new System.Windows.Forms.DataGridView();
             this.pnlTrx = new System.Windows.Forms.Panel();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
-            this.btnSetPartnType = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -361,6 +362,7 @@
             // pnlPartners
             // 
             this.pnlPartners.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlPartners.Controls.Add(this.button1);
             this.pnlPartners.Controls.Add(this.btnSetPartnType);
             this.pnlPartners.Controls.Add(this.dgvPartnerTypes);
             this.pnlPartners.Controls.Add(this.dgvPartners);
@@ -369,6 +371,17 @@
             this.pnlPartners.Name = "pnlPartners";
             this.pnlPartners.Size = new System.Drawing.Size(1098, 446);
             this.pnlPartners.TabIndex = 3;
+            // 
+            // btnSetPartnType
+            // 
+            this.btnSetPartnType.Location = new System.Drawing.Point(598, 335);
+            this.btnSetPartnType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSetPartnType.Name = "btnSetPartnType";
+            this.btnSetPartnType.Size = new System.Drawing.Size(233, 95);
+            this.btnSetPartnType.TabIndex = 16;
+            this.btnSetPartnType.Text = "SET TRANSACTION CATEGORY FOR SELECTED PARTNERS";
+            this.btnSetPartnType.UseVisualStyleBackColor = true;
+            this.btnSetPartnType.Click += new System.EventHandler(this.btnSetPartnType_Click);
             // 
             // dgvPartnerTypes
             // 
@@ -511,16 +524,16 @@
             this.dgvTrx.Size = new System.Drawing.Size(553, 416);
             this.dgvTrx.TabIndex = 1;
             // 
-            // btnSetPartnType
+            // button1
             // 
-            this.btnSetPartnType.Location = new System.Drawing.Point(598, 335);
-            this.btnSetPartnType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSetPartnType.Name = "btnSetPartnType";
-            this.btnSetPartnType.Size = new System.Drawing.Size(233, 95);
-            this.btnSetPartnType.TabIndex = 16;
-            this.btnSetPartnType.Text = "SET TRANSACTION CATEGORY FOR SELECTED PARTNERS";
-            this.btnSetPartnType.UseVisualStyleBackColor = true;
-            this.btnSetPartnType.Click += new System.EventHandler(this.btnSetPartnType_Click);
+            this.button1.Location = new System.Drawing.Point(846, 335);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(233, 95);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "SET TRANSACTION CATEGORY FOR SELECTED PARTNERS";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
@@ -594,5 +607,6 @@
         private Panel pnlTrx;
         private DataGridView dgvTrx;
         private Button btnSetPartnType;
+        private Button button1;
     }
 }
