@@ -23,7 +23,7 @@ namespace CashflowALPHA.Viewmodels
             dgv.DataSource = dt;
         }
 
-        public static void SetPartnerTrxType(List<string> partnernames, string trxtypename)
+        public static async void SetPartnerTrxType(List<string> partnernames, string trxtypename)
         {
             List<Partner> partners = new List<Partner>();
             Partner partn = new Partner();
@@ -36,6 +36,7 @@ namespace CashflowALPHA.Viewmodels
                 
             }
             Partner.UpdateObjectListAsync(partners);
+            await Task.Run(() => SetTrxTypes());
         }
 
         public static List<string> GetSelectedNames(DataGridView dgv)
@@ -49,7 +50,7 @@ namespace CashflowALPHA.Viewmodels
 
         }
 
-        public static async void SetTrxTypes()
+        private static async void SetTrxTypes()
         {
             List<Partner> partners = await Task.Run(() => Partner.GetObjectListDbAsync());
             List<Transaction> trxlist = new List<Transaction>();

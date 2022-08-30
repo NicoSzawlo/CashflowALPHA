@@ -130,12 +130,6 @@ namespace CashflowALPHA
             Startup();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
-        {
-            await Task.Run(() => PartnersViewModel.SetTrxTypes());
-        }
-
-
 
 
 
