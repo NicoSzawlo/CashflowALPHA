@@ -131,10 +131,6 @@ namespace CashflowALPHA
         }
 
 
-
-
-
-
         //Temp testing area
     }
 }
