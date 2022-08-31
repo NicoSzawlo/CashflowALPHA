@@ -20,12 +20,37 @@ namespace HelperLibrary.DataLayer
         public int? TypeID { get; set; }
 
 
-        //Function to asynchronously load mysqldata into Object
+        //Function to asynchronously load mysqldata into Object from string name
+        // +1 Overload for getting Object via ID
         public static Partner GetObjectDb(string name)
         {
             Partner partn = new Partner();
             DataTable partnerdt = MySqlHandler.Select("*", "tab_partners", "partn_name", name);
             
+            if (partnerdt.Rows.Count != 0)
+            {
+                DataRow row = partnerdt.Rows[0];
+                try
+                {
+                    partn.ID = int.Parse(row["partn_id"].ToString());
+                    partn.Name = row["partn_name"].ToString();
+                    partn.Iban = row["partn_iban"].ToString();
+                    partn.Bic = row["partn_bic"].ToString();
+                    partn.Bankcode = row["partn_balance"].ToString();
+                    partn.TypeID = int.Parse(row["partn_trxtype_id"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return partn;
+        }
+        public static Partner GetObjectDb(int? id)
+        {
+            Partner partn = new Partner();
+            DataTable partnerdt = MySqlHandler.Select("*", "tab_partners", "partn_name", id.ToString());
+
             if (partnerdt.Rows.Count != 0)
             {
                 DataRow row = partnerdt.Rows[0];

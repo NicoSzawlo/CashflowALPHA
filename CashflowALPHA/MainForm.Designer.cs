@@ -65,6 +65,14 @@
             this.btnAddTrxType = new System.Windows.Forms.Button();
             this.dgvTransactionTypes = new System.Windows.Forms.DataGridView();
             this.pnlTrx = new System.Windows.Forms.Panel();
+            this.txtTrxReference = new System.Windows.Forms.TextBox();
+            this.lblTrxReference = new System.Windows.Forms.Label();
+            this.txtTrxInvpos = new System.Windows.Forms.TextBox();
+            this.lblTrxInvpos = new System.Windows.Forms.Label();
+            this.txtTrxPartner = new System.Windows.Forms.TextBox();
+            this.txtTrxAccount = new System.Windows.Forms.TextBox();
+            this.lblTrxAccount = new System.Windows.Forms.Label();
+            this.lblTrxPartner = new System.Windows.Forms.Label();
             this.comboTrxType = new System.Windows.Forms.ComboBox();
             this.txtTrxInfo = new System.Windows.Forms.TextBox();
             this.txtTrxAmount = new System.Windows.Forms.TextBox();
@@ -76,14 +84,6 @@
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
-            this.txtTrxPartner = new System.Windows.Forms.TextBox();
-            this.txtTrxAccount = new System.Windows.Forms.TextBox();
-            this.lblTrxAccount = new System.Windows.Forms.Label();
-            this.lblTrxPartner = new System.Windows.Forms.Label();
-            this.txtTrxInvpos = new System.Windows.Forms.TextBox();
-            this.lblTrxInvpos = new System.Windows.Forms.Label();
-            this.txtTrxReference = new System.Windows.Forms.TextBox();
-            this.lblTrxReference = new System.Windows.Forms.Label();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -545,6 +545,83 @@
             this.pnlTrx.Size = new System.Drawing.Size(1098, 446);
             this.pnlTrx.TabIndex = 3;
             // 
+            // txtTrxReference
+            // 
+            this.txtTrxReference.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtTrxReference.Location = new System.Drawing.Point(885, 246);
+            this.txtTrxReference.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTrxReference.Multiline = true;
+            this.txtTrxReference.Name = "txtTrxReference";
+            this.txtTrxReference.Size = new System.Drawing.Size(189, 119);
+            this.txtTrxReference.TabIndex = 32;
+            // 
+            // lblTrxReference
+            // 
+            this.lblTrxReference.AutoSize = true;
+            this.lblTrxReference.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTrxReference.Location = new System.Drawing.Point(861, 215);
+            this.lblTrxReference.Name = "lblTrxReference";
+            this.lblTrxReference.Size = new System.Drawing.Size(121, 30);
+            this.lblTrxReference.TabIndex = 31;
+            this.lblTrxReference.Text = "Reference :";
+            // 
+            // txtTrxInvpos
+            // 
+            this.txtTrxInvpos.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtTrxInvpos.Location = new System.Drawing.Point(885, 182);
+            this.txtTrxInvpos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTrxInvpos.Name = "txtTrxInvpos";
+            this.txtTrxInvpos.Size = new System.Drawing.Size(189, 33);
+            this.txtTrxInvpos.TabIndex = 30;
+            // 
+            // lblTrxInvpos
+            // 
+            this.lblTrxInvpos.AutoSize = true;
+            this.lblTrxInvpos.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTrxInvpos.Location = new System.Drawing.Point(861, 151);
+            this.lblTrxInvpos.Name = "lblTrxInvpos";
+            this.lblTrxInvpos.Size = new System.Drawing.Size(221, 30);
+            this.lblTrxInvpos.TabIndex = 29;
+            this.lblTrxInvpos.Text = "Investment Position :";
+            // 
+            // txtTrxPartner
+            // 
+            this.txtTrxPartner.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtTrxPartner.Location = new System.Drawing.Point(885, 115);
+            this.txtTrxPartner.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTrxPartner.Name = "txtTrxPartner";
+            this.txtTrxPartner.Size = new System.Drawing.Size(189, 33);
+            this.txtTrxPartner.TabIndex = 28;
+            // 
+            // txtTrxAccount
+            // 
+            this.txtTrxAccount.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtTrxAccount.Location = new System.Drawing.Point(885, 48);
+            this.txtTrxAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTrxAccount.Name = "txtTrxAccount";
+            this.txtTrxAccount.Size = new System.Drawing.Size(189, 33);
+            this.txtTrxAccount.TabIndex = 27;
+            // 
+            // lblTrxAccount
+            // 
+            this.lblTrxAccount.AutoSize = true;
+            this.lblTrxAccount.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTrxAccount.Location = new System.Drawing.Point(861, 17);
+            this.lblTrxAccount.Name = "lblTrxAccount";
+            this.lblTrxAccount.Size = new System.Drawing.Size(107, 30);
+            this.lblTrxAccount.TabIndex = 25;
+            this.lblTrxAccount.Text = "Account :";
+            // 
+            // lblTrxPartner
+            // 
+            this.lblTrxPartner.AutoSize = true;
+            this.lblTrxPartner.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTrxPartner.Location = new System.Drawing.Point(861, 84);
+            this.lblTrxPartner.Name = "lblTrxPartner";
+            this.lblTrxPartner.Size = new System.Drawing.Size(97, 30);
+            this.lblTrxPartner.TabIndex = 26;
+            this.lblTrxPartner.Text = "Partner :";
+            // 
             // comboTrxType
             // 
             this.comboTrxType.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -656,83 +733,7 @@
             this.dgvTrx.RowTemplate.Height = 29;
             this.dgvTrx.Size = new System.Drawing.Size(553, 416);
             this.dgvTrx.TabIndex = 1;
-            // 
-            // txtTrxPartner
-            // 
-            this.txtTrxPartner.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtTrxPartner.Location = new System.Drawing.Point(885, 115);
-            this.txtTrxPartner.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTrxPartner.Name = "txtTrxPartner";
-            this.txtTrxPartner.Size = new System.Drawing.Size(189, 33);
-            this.txtTrxPartner.TabIndex = 28;
-            // 
-            // txtTrxAccount
-            // 
-            this.txtTrxAccount.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtTrxAccount.Location = new System.Drawing.Point(885, 48);
-            this.txtTrxAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTrxAccount.Name = "txtTrxAccount";
-            this.txtTrxAccount.Size = new System.Drawing.Size(189, 33);
-            this.txtTrxAccount.TabIndex = 27;
-            // 
-            // lblTrxAccount
-            // 
-            this.lblTrxAccount.AutoSize = true;
-            this.lblTrxAccount.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxAccount.Location = new System.Drawing.Point(861, 17);
-            this.lblTrxAccount.Name = "lblTrxAccount";
-            this.lblTrxAccount.Size = new System.Drawing.Size(107, 30);
-            this.lblTrxAccount.TabIndex = 25;
-            this.lblTrxAccount.Text = "Account :";
-            // 
-            // lblTrxPartner
-            // 
-            this.lblTrxPartner.AutoSize = true;
-            this.lblTrxPartner.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxPartner.Location = new System.Drawing.Point(861, 84);
-            this.lblTrxPartner.Name = "lblTrxPartner";
-            this.lblTrxPartner.Size = new System.Drawing.Size(97, 30);
-            this.lblTrxPartner.TabIndex = 26;
-            this.lblTrxPartner.Text = "Partner :";
-            // 
-            // txtTrxInvpos
-            // 
-            this.txtTrxInvpos.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtTrxInvpos.Location = new System.Drawing.Point(885, 182);
-            this.txtTrxInvpos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTrxInvpos.Name = "txtTrxInvpos";
-            this.txtTrxInvpos.Size = new System.Drawing.Size(189, 33);
-            this.txtTrxInvpos.TabIndex = 30;
-            // 
-            // lblTrxInvpos
-            // 
-            this.lblTrxInvpos.AutoSize = true;
-            this.lblTrxInvpos.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxInvpos.Location = new System.Drawing.Point(861, 151);
-            this.lblTrxInvpos.Name = "lblTrxInvpos";
-            this.lblTrxInvpos.Size = new System.Drawing.Size(221, 30);
-            this.lblTrxInvpos.TabIndex = 29;
-            this.lblTrxInvpos.Text = "Investment Position :";
-            // 
-            // txtTrxReference
-            // 
-            this.txtTrxReference.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtTrxReference.Location = new System.Drawing.Point(885, 246);
-            this.txtTrxReference.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTrxReference.Multiline = true;
-            this.txtTrxReference.Name = "txtTrxReference";
-            this.txtTrxReference.Size = new System.Drawing.Size(189, 119);
-            this.txtTrxReference.TabIndex = 32;
-            // 
-            // lblTrxReference
-            // 
-            this.lblTrxReference.AutoSize = true;
-            this.lblTrxReference.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxReference.Location = new System.Drawing.Point(861, 215);
-            this.lblTrxReference.Name = "lblTrxReference";
-            this.lblTrxReference.Size = new System.Drawing.Size(144, 30);
-            this.lblTrxReference.TabIndex = 31;
-            this.lblTrxReference.Text = "Information :";
+            this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
             // 
             // MainForm
             // 

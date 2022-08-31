@@ -25,6 +25,46 @@ namespace HelperLibrary.DataLayer
 
         private const string CashPlaceholder = "_Cash";
 
+        public static Transaction GetObjectDb(string id)
+        {
+            Transaction trx = new Transaction();
+            DataTable trxdt = MySqlHandler.Select("*", "tab_trx", "trx_id", id);
+            DataRow dr = trxdt.Rows[0];
+
+            try
+            {
+                trx.ID = int.Parse(dr["trx_id"].ToString());
+                trx.Date = DateTime.Parse(dr["trx_date"].ToString());
+                trx.Amount = decimal.Parse(dr["trx_amnt"].ToString());
+                trx.Currency = dr["trx_currency"].ToString();
+                trx.Info = dr["trx_info"].ToString();
+                trx.Reference = dr["trx_reference"].ToString();
+                if (!EmtpyStringCheck(dr["trx_partn_id"].ToString()))
+                {
+                    trx.PartnerID = int.Parse(dr["trx_partn_id"].ToString());
+                }
+                if (!EmtpyStringCheck(dr["trx_acc_id"].ToString()))
+                {
+                    trx.AccountID = int.Parse(dr["trx_acc_id"].ToString());
+                }
+
+                if (!EmtpyStringCheck(dr["trx_trxtype_id"].ToString()))
+                {
+                    trx.TypeID = int.Parse(dr["trx_trxtype_id"].ToString());
+                }
+
+                if (!EmtpyStringCheck(dr["trx_invpos_id"].ToString()))
+                {
+                    trx.InvPosID = int.Parse(dr["trx_invpos_id"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return trx;
+        }
+
         //Function to asynchronously load mysql data into object list
         public static async Task<List<Transaction>> GetObjectListDbAsync()
         {
