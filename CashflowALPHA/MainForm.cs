@@ -116,7 +116,7 @@ namespace CashflowALPHA
             {
 
                 string id = dgvTrx.CurrentRow.Cells[0].Value.ToString();
-                TransactionsViewModel.LoadTrxEntryAsync(txtTrxDate, txtTrxAmount,txtTrxPartner, txtTrxInfo, txtTrxReference, comboTrxType, id);
+                TransactionsViewModel.LoadTrxEntryAsync(txtTrxDate, txtTrxAccount, txtTrxAmount,txtTrxPartner, txtTrxInfo, txtTrxReference, comboTrxType, id);
             }
         }
 

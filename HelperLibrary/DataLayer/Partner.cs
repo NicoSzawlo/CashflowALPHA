@@ -49,7 +49,7 @@ namespace HelperLibrary.DataLayer
         public static Partner GetObjectDb(int? id)
         {
             Partner partn = new Partner();
-            DataTable partnerdt = MySqlHandler.Select("*", "tab_partners", "partn_name", id.ToString());
+            DataTable partnerdt = MySqlHandler.Select("*", "tab_partners", "partn_id", id.ToString());
 
             if (partnerdt.Rows.Count != 0)
             {

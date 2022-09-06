@@ -17,6 +17,7 @@ namespace HelperLibrary.DataLayer
         public decimal? Balance { get; set; }
 
         //Function to load mysqldata into Object
+        // + 1 Overload to load from ID
         public static Account GetObjectDb(string name)
         {
             Account acc = new Account();
@@ -33,6 +34,28 @@ namespace HelperLibrary.DataLayer
                 acc.Balance = decimal.Parse(row["acc_balance"].ToString());
             }
             catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return acc;
+        }
+        //Overload 1: Load entry from ID
+        public static Account GetObjectDb(int? id)
+        {
+            Account acc = new Account();
+            DataTable acctypedt = MySqlHandler.Select("*", "tab_accounts", "acc_id", id.ToString());
+            DataRow row = acctypedt.Rows[0];
+
+            try
+            {
+                acc.ID = int.Parse(row["acc_id"].ToString());
+                acc.Name = row["acc_name"].ToString();
+                acc.Iban = row["acc_iban"].ToString();
+                acc.Bic = row["acc_bic"].ToString();
+                acc.TypeID = int.Parse(row["acc_acctype_id"].ToString());
+                acc.Balance = decimal.Parse(row["acc_balance"].ToString());
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

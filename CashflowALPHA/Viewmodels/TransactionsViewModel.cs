@@ -18,16 +18,16 @@ namespace CashflowALPHA.Viewmodels
         }
 
         //Load transaction entry into Textboxes for detailed information
-        public static async void LoadTrxEntryAsync(TextBox date, /*TextBox account,*/ TextBox amount, TextBox partner, /*TextBox invpos,*/ TextBox info, TextBox reference, ComboBox type, string id)
+        public static async void LoadTrxEntryAsync(TextBox date, TextBox account, TextBox amount, TextBox partner, /*TextBox invpos,*/ TextBox info, TextBox reference, ComboBox type, string id)
         {
             //Load transaction entry
             Transaction trx = await Task.Run(() => Transaction.GetObjectDb(id));
             //Load transaction types list
             List<TransactionType> typelist = await TransactionType.GetObjectListDbAsync();
             Partner partn = Partner.GetObjectDb(trx.PartnerID);
-
+            Account acc = Account.GetObjectDb(trx.AccountID);
             date.Text = trx.Date.ToString();
-            //account.Text = 
+            account.Text = acc.Name;
             amount.Text = trx.Amount.ToString();
             partner.Text = partn.Name;
             //invpos.Text =
