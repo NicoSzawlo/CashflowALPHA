@@ -93,7 +93,6 @@ namespace CashflowALPHA
             Partner.InsertObjectListDbAsync(distpartners);
             List<Transaction> trx = Transaction.GetObjectListStmt(dt, accname);
             await Task.Run(() => Transaction.InsertObjectListDbAsync(trx, accname));
-            
         }
     }
 }

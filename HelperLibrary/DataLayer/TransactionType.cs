@@ -35,16 +35,16 @@ namespace HelperLibrary.DataLayer
         public static async Task<List<TransactionType>> GetObjectListDbAsync()
         {
             List<TransactionType> list = new List<TransactionType>();
-            DataTable trxtypedt = await Task.Run(() => MySqlHandler.Select("*", "tab_trxtype"));
+            DataTable trxtypedt = await Task.Run(() => MySqlHandler.Select("*", "tab_trxtypes"));
             try
             {
                 foreach (DataRow dr in trxtypedt.Rows)
                 {
                     list.Add(new TransactionType
                     {
-                        ID = int.Parse(dr["trx_id"].ToString()),
-                        Name = dr["trx_name"].ToString(),
-                        Budget = decimal.Parse(dr["trx_iban"].ToString())
+                        ID = int.Parse(dr["trxtype_id"].ToString()),
+                        Name = dr["trxtype_name"].ToString(),
+                        Budget = decimal.Parse(dr["trxtype_budget"].ToString())
                     });
                 }
             }

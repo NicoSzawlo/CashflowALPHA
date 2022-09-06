@@ -98,6 +98,10 @@ namespace HelperLibrary.DataLayer
         public static async void InsertObjectListDbAsync(List<Transaction> list, string accname)
         {
             Account accentry = Account.GetObjectDb(accname);
+            foreach( Transaction t in list)
+            {
+                t.AccountID = accentry.ID;
+            }
             foreach (Transaction trx in list)
             {
                 await Task.Run(() => MySqlHandler.InsertIntoTrx(trx));
