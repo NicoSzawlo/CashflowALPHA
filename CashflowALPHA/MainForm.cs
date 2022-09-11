@@ -67,7 +67,8 @@ namespace CashflowALPHA
 
         private void btnAccAdd_Click(object sender, EventArgs e)
         {
-
+            AccountsViewModel.AddAccEntry(txtAccName.Text, txtAccIban.Text, txtAccBic.Text, comboAccType.Text, Decimal.Parse(txtAccBalance.Text));
+            AccountsViewModel.LoadAccTableAsync(dgvAccounts);
         }
         private void dgvAccounts_SelectionChanged(object sender, EventArgs e)
         {
@@ -83,10 +84,12 @@ namespace CashflowALPHA
         private void Startup()
         {
             AccountsViewModel.LoadAccTableAsync(dgvAccounts);
+            AccountsViewModel.InitAccTypeCombobox(comboAccType);
             PartnersViewModel.LoadPartnersTableAsync(dgvPartners);
             PartnersViewModel.LoadTrxTypeTableAsync(dgvPartnerTypes);
             TrxTypesViewModel.LoadTrxTypeTableAsync(dgvTransactionTypes);
             TransactionsViewModel.LoadTrxTableAsync(dgvTrx);
+            
         }
 
         //OVERVIEW PANEL
@@ -116,7 +119,7 @@ namespace CashflowALPHA
             {
 
                 string id = dgvTrx.CurrentRow.Cells[0].Value.ToString();
-                TransactionsViewModel.LoadTrxEntryAsync(txtTrxDate, txtTrxAccount, txtTrxAmount,txtTrxPartner, txtTrxInfo, txtTrxReference, comboTrxType, id);
+                TransactionsViewModel.LoadTrxEntryAsync(txtTrxDate, txtTrxAmount,txtTrxPartner, txtTrxInfo, txtTrxReference, comboTrxType, id);
             }
         }
 

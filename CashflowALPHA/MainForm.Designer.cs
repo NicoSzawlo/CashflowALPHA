@@ -307,9 +307,9 @@
             this.lblAccIban.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblAccIban.Location = new System.Drawing.Point(603, 72);
             this.lblAccIban.Name = "lblAccIban";
-            this.lblAccIban.Size = new System.Drawing.Size(77, 30);
+            this.lblAccIban.Size = new System.Drawing.Size(220, 30);
             this.lblAccIban.TabIndex = 5;
-            this.lblAccIban.Text = "IBAN :";
+            this.lblAccIban.Text = "IBAN / Cardnumber :";
             // 
             // btnAccAdd
             // 
@@ -742,11 +742,11 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1124, 518);
             this.Controls.Add(this.pnl_nav);
-            this.Controls.Add(this.pnlTrx);
-            this.Controls.Add(this.pnlOvrvw);
             this.Controls.Add(this.pnlAcc);
             this.Controls.Add(this.pnlPartners);
             this.Controls.Add(this.pnlBudgets);
+            this.Controls.Add(this.pnlTrx);
+            this.Controls.Add(this.pnlOvrvw);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";

@@ -146,7 +146,7 @@ namespace HelperLibrary
         {
             MySqlCommand cmd = Connect();
 
-            cmd.CommandText = "INSERT INTO tab_accounts (name, iban, bic, type, balance) VALUES (@name, @iban, @bic, @type, @balance)";
+            cmd.CommandText = "INSERT INTO tab_accounts (acc_name, acc_iban, acc_bic, acc_acctype_id, acc_balance) VALUES (@name, @iban, @bic, @type, @balance)";
             cmd.Parameters.AddWithValue("@name", acc.Name);
             cmd.Parameters.AddWithValue("@iban", acc.Iban);
             cmd.Parameters.AddWithValue("@bic", acc.Bic);

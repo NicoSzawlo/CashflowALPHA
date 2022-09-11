@@ -40,7 +40,6 @@ namespace CashflowALPHA
 
             //Load Account table and select single account
             Account accentry = await Task.Run(() => Account.GetObjectDb(accountname));
-            //Load Account type Table for Combobox
             List<AccountType> typelist = await Task.Run(() => AccountType.GetObjectListDbAsync());
 
             //Set Textbox info for account
@@ -48,14 +47,25 @@ namespace CashflowALPHA
             iban.Text = accentry.Iban;
             bic.Text = accentry.Bic;
             balance.Text = accentry.Balance.ToString();
-            //Add Account type list to Combobox and set current type
-            foreach(var item in typelist){
-                type.Items.Add(item.Name);
-                if(item.ID == accentry.TypeID)
-                {
-                    type.Text = item.Name;
-                }
-            }
+            //type.Text = typelist[accentry.ID].Name;
+            InitAccTypeCombobox(type);
+
+
+        }
+        
+        //Adding a new account into the database
+        public static void AddAccEntry(string name, string iban, string bic, string type, decimal balance)
+        {
+            AccountType acctype = AccountType.GetObjectDb(type);
+            Account acc = new Account
+            {
+                Name = name,
+                Iban = iban,
+                Bic = bic,
+                TypeID = acctype.ID,
+                Balance = balance
+            };
+            MySqlHandler.InsertIntoAccount(acc);
         }
 
         //Updates account in db with data from textboxes
@@ -93,6 +103,18 @@ namespace CashflowALPHA
             Partner.InsertObjectListDbAsync(distpartners);
             List<Transaction> trx = Transaction.GetObjectListStmt(dt, accname);
             await Task.Run(() => Transaction.InsertObjectListDbAsync(trx, accname));
+        }
+
+        public static async void InitAccTypeCombobox(ComboBox type)
+        {
+            //Load Account type Table for Combobox
+            List<AccountType> typelist = await Task.Run(() => AccountType.GetObjectListDbAsync());
+
+            //Add Account type list to Combobox and set current type
+            foreach (var item in typelist)
+            {
+                type.Items.Add(item.Name);
+            }
         }
     }
 }
