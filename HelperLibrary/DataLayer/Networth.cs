@@ -13,14 +13,23 @@ namespace HelperLibrary.DataLayer
         public DateTime Date { get; set; }
         public decimal Capital { get; set; }
 
-        public static List<Networth> CalculateNetworth()
+        public static List<Networth> CalculateOverallNetworth()
         {
             List<Networth> DateList = new List<Networth>();
 
             List<Transaction> TrxList = Transaction.GetObjectListDb();
 
+            foreach(Transaction trx in TrxList)
+            {
+                if (DateList.Count == 0)
+                { 
+
+                }
+            }
+
             return DateList;
 
         }
+
     }
 }

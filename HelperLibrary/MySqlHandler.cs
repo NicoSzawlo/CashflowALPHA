@@ -65,11 +65,11 @@ namespace HelperLibrary
 
         }
 
-        public static DataTable SelectSync(string item, string table)
+        public static DataTable SelectOrderBySync(string item, string table, string orderby)
         {
             DataTable result = new DataTable();
             MySqlCommand cmd = Connect();
-            cmd.CommandText = "SELECT " + item + " FROM " + table + ";";
+            cmd.CommandText = "SELECT " + item + " FROM " + table + " ORDER BY "+ orderby +";";
 
             try
             {

@@ -87,7 +87,7 @@ namespace HelperLibrary.DataLayer
         public static List<Transaction> GetObjectListDb()
         {
             List<Transaction> list = new List<Transaction>();
-            DataTable trxdt = MySqlHandler.SelectSync("*", "tab_trx");
+            DataTable trxdt = MySqlHandler.SelectOrderBySync("*", "tab_trx", "trx_date");
             list = DbToList(trxdt);
             
             return list;
