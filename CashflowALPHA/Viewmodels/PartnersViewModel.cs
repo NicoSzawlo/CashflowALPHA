@@ -59,7 +59,7 @@ namespace CashflowALPHA.Viewmodels
                 trxlist.Clear();
                 if(partner.TypeID != null)
                 {
-                    trxlist = await Transaction.GetObjectListDbAsync(partner);
+                    trxlist = await Transaction.GetObjectListForPartnerDb(partner);
                     foreach(Transaction trx in trxlist)
                     {
                         if (trx.TypeID == null)

@@ -65,6 +65,28 @@ namespace HelperLibrary
 
         }
 
+        public static DataTable SelectSync(string item, string table)
+        {
+            DataTable result = new DataTable();
+            MySqlCommand cmd = Connect();
+            cmd.CommandText = "SELECT " + item + " FROM " + table + ";";
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(result);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+            return result;
+
+        }
+
         //Transactions table
         //#######################################################
 

@@ -75,12 +75,21 @@ namespace HelperLibrary.DataLayer
             return list;
         }
         //Overload 1 to get Transactions for a specific partner
-        public static async Task<List<Transaction>> GetObjectListDbAsync(Partner partner)
+        public static async Task<List<Transaction>> GetObjectListForPartnerDb(Partner partner)
         {
             List<Transaction> list = new List<Transaction>();
             DataTable trxdt = await Task.Run(() => MySqlHandler.Select("*", "tab_trx", "trx_partn_id", partner.ID.ToString()));
             list = await Task.Run(() => DbToList(trxdt));
 
+            return list;
+        }
+
+        public static List<Transaction> GetObjectListDb()
+        {
+            List<Transaction> list = new List<Transaction>();
+            DataTable trxdt = MySqlHandler.SelectSync("*", "tab_trx");
+            list = DbToList(trxdt);
+            
             return list;
         }
 
