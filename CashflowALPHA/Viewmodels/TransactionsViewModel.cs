@@ -25,6 +25,7 @@ namespace CashflowALPHA.Viewmodels
             //Load transaction types list
             List<TransactionType> typelist = await TransactionType.GetObjectListDbAsync();
             Partner partn = Partner.GetObjectDb(trx.PartnerID);
+            Account acc = Account.GetObjectDb(trx.AccountID);
 
             date.Text = trx.Date.ToString();
             account.Text = acc.Name;
