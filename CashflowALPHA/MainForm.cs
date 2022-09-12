@@ -141,9 +141,15 @@ namespace CashflowALPHA
             Startup();
         }
 
-        
+
+
+
 
 
         //Temp testing area
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OverviewViewModel.CalcNetworth();
+        }
     }
 }

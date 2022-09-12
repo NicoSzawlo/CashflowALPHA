@@ -84,9 +84,11 @@
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
+            this.pnlOvrvw.SuspendLayout();
             this.pnlPartners.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartnerTypes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartners)).BeginInit();
@@ -371,6 +373,7 @@
             // pnlOvrvw
             // 
             this.pnlOvrvw.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlOvrvw.Controls.Add(this.button2);
             this.pnlOvrvw.Location = new System.Drawing.Point(10, 67);
             this.pnlOvrvw.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlOvrvw.Name = "pnlOvrvw";
@@ -735,6 +738,17 @@
             this.dgvTrx.TabIndex = 1;
             this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(937, 387);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 43);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "UPDATE ACCOUNT";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -742,11 +756,11 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1124, 518);
             this.Controls.Add(this.pnl_nav);
+            this.Controls.Add(this.pnlOvrvw);
             this.Controls.Add(this.pnlAcc);
             this.Controls.Add(this.pnlPartners);
             this.Controls.Add(this.pnlBudgets);
             this.Controls.Add(this.pnlTrx);
-            this.Controls.Add(this.pnlOvrvw);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -755,6 +769,7 @@
             this.pnlAcc.ResumeLayout(false);
             this.pnlAcc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).EndInit();
+            this.pnlOvrvw.ResumeLayout(false);
             this.pnlPartners.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartnerTypes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartners)).EndInit();
@@ -826,5 +841,6 @@
         private Label lblTrxPartner;
         private TextBox txtTrxReference;
         private Label lblTrxReference;
+        private Button button2;
     }
 }

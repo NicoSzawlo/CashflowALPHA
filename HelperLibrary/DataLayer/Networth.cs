@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace HelperLibrary.DataLayer
 {
-    internal class Networth
+    public class Networth
     {
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public decimal Capital { get; set; }
 
         public static List<Networth> CalculateOverallNetworth()
@@ -18,14 +18,14 @@ namespace HelperLibrary.DataLayer
             List<Networth> DateList = new List<Networth>();
 
             List<Transaction> TrxList = Transaction.GetObjectListDb();
-
-            foreach(Transaction trx in TrxList)
+            
+            //Initiating List of Dates from first in DB to NOW
+            for (DateTime date = (DateTime)TrxList[0].Date; date <= DateTime.Now; date = date.AddDays(1))
             {
-                if (DateList.Count == 0)
-                { 
-
-                }
+                DateList.Add( new Networth { Date = date});
             }
+
+
 
             return DateList;
 
