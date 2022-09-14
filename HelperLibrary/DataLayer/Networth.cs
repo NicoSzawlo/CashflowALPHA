@@ -24,7 +24,10 @@ namespace HelperLibrary.DataLayer
             {
                 DateList.Add( new Networth { Date = date});
             }
-            
+            foreach(Networth networth in DateList)
+            {
+
+            }
             return DateList;
 
         }

@@ -1,9 +1,16 @@
-Adding of Creditcard Statements -> PRIO 1
+> Adding of Creditcard Statements -> PRIO 1
   - Interchange with linked giro account?
   - Billing immediately or when booked from linked account?
   - 
-Adding of Broker Cash and Depot Account Statements -> PRIO 2
+> Adding of Broker Cash and Depot Account Statements -> PRIO 2
   - DB Tables for investments? Tickers, Positions, ...?
   - Implementing it to calc of networth
   -
-Method for Checking in DB if TRX linked to Account -> If so then recalculate account balance after adding Trx
+
+> Adding of Wallet Statements
+
+> Method for Checking in DB if TRX linked to Account -> If so then recalculate account balance after adding Trx
+
+> Correcting the int?,DateTime?,... properties of classes and use casting instead when DataType is known
+
+> 
