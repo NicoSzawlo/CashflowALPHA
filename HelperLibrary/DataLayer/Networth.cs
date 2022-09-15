@@ -20,13 +20,22 @@ namespace HelperLibrary.DataLayer
             List<Transaction> TrxList = Transaction.GetObjectListDb();
             
             //Initiating List of Dates from first in DB to NOW
-            for (DateTime date = DateTime.Now; date >= (DateTime)TrxList[0].Date; date = date.AddDays(-1))
+            for (DateTime date = (DateTime)TrxList[0].Date; date <= DateTime.Now; date = date.AddDays(1))
             {
                 DateList.Add( new Networth { Date = date});
             }
-            foreach(Networth networth in DateList)
-            {
 
+            //Calculate networth from transactions
+            for(int i = DateList.Count-1; i >= 0; i--)
+            {
+                foreach(Transaction transaction in TrxList)
+                {
+                    if (DateList[i].Date == transaction.Date)
+                    {
+                        DateList[i].Capital += (decimal)transaction.Amount;
+                    }
+                    
+                }
             }
             return DateList;
 
