@@ -13,4 +13,4 @@
 
 > Correcting the int?,DateTime?,... properties of classes and use casting instead when DataType is known
 
-> 
+> Switching to Date from DateTime
