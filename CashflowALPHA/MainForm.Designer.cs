@@ -842,6 +842,5 @@
         private TextBox txtTrxReference;
         private Label lblTrxReference;
         private Button button2;
-        private Chart
     }
 }
