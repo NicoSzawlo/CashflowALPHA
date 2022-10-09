@@ -52,6 +52,7 @@
             this.lblAccBic = new System.Windows.Forms.Label();
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.pnlOvrvw = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnlPartners = new System.Windows.Forms.Panel();
             this.btnSetPartnType = new System.Windows.Forms.Button();
             this.dgvPartnerTypes = new System.Windows.Forms.DataGridView();
@@ -84,7 +85,7 @@
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.chrtOvrvwNetworth = new ScottPlot.FormsPlot();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -373,12 +374,24 @@
             // pnlOvrvw
             // 
             this.pnlOvrvw.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlOvrvw.Controls.Add(this.chrtOvrvwNetworth);
             this.pnlOvrvw.Controls.Add(this.button2);
             this.pnlOvrvw.Location = new System.Drawing.Point(10, 67);
             this.pnlOvrvw.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlOvrvw.Name = "pnlOvrvw";
             this.pnlOvrvw.Size = new System.Drawing.Size(1098, 446);
             this.pnlOvrvw.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(937, 387);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 43);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "UPDATE ACCOUNT";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pnlPartners
             // 
@@ -738,16 +751,13 @@
             this.dgvTrx.TabIndex = 1;
             this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
             // 
-            // button2
+            // chrtOvrvwNetworth
             // 
-            this.button2.Location = new System.Drawing.Point(937, 387);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 43);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "UPDATE ACCOUNT";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.chrtOvrvwNetworth.Location = new System.Drawing.Point(18, 19);
+            this.chrtOvrvwNetworth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.chrtOvrvwNetworth.Name = "chrtOvrvwNetworth";
+            this.chrtOvrvwNetworth.Size = new System.Drawing.Size(531, 411);
+            this.chrtOvrvwNetworth.TabIndex = 16;
             // 
             // MainForm
             // 
@@ -842,5 +852,6 @@
         private TextBox txtTrxReference;
         private Label lblTrxReference;
         private Button button2;
+        private ScottPlot.FormsPlot chrtOvrvwNetworth;
     }
 }

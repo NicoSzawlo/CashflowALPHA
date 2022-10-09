@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1" />
+    <PackageReference Include="ScottPlot" Version="4.1.58" />
+    <PackageReference Include="ScottPlot.WinForms" Version="4.1.58" />
   </ItemGroup>
 
   <ItemGroup>

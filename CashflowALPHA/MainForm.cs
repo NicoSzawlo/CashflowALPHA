@@ -149,7 +149,9 @@ namespace CashflowALPHA
         //Temp testing area
         private void button2_Click(object sender, EventArgs e)
         {
-            OverviewViewModel.CalcNetworth();
+            OverviewViewModel.CalcNetworth(chrtOvrvwNetworth);
+            
+            
         }
     }
 }
