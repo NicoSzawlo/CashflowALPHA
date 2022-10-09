@@ -23,12 +23,12 @@ namespace CashflowALPHA.Viewmodels
             }
             double[] xs = dates.Select(x => x.ToOADate()).ToArray();
             double[] ys = capital.Select(x => Convert.ToDouble(x)).ToArray();
-            plot.Plot.AddScatterLines(xs,ys);
+            plot.Plot.AddScatterLines(xs,ys, lineWidth:3);
             plot.Plot.XAxis.Label("Date");
             plot.Plot.XAxis.Ticks(true);
             plot.Plot.XAxis.DateTimeFormat(true);
-            plot.Refresh();
             plot.Plot.Render();
+            plot.Refresh();
         }
 
         public static async void SetNetworthtrendCurrentYear(ScottPlot.FormsPlot plot,DateTimePicker dtpStart, DateTimePicker dtpEnd)
