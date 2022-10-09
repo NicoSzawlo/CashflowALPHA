@@ -96,6 +96,15 @@ namespace CashflowALPHA
 
         //OVERVIEW PANEL
         //##############################
+        private void dateOvrvwNetStart_ValueChanged(object sender, EventArgs e)
+        {
+            OverviewViewModel.SetNetworthtrendXCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwEnd.Value);
+        }
+
+        private void dateOvrvwEnd_ValueChanged(object sender, EventArgs e)
+        {
+            OverviewViewModel.SetNetworthtrendXCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwEnd.Value);
+        }
 
         //TRANSACTIONTYPES PANEL
         //##############################
@@ -144,26 +153,8 @@ namespace CashflowALPHA
         }
 
 
-
-
-
-
         //Temp testing area
-        private void button2_Click(object sender, EventArgs e)
-        {
-            OverviewViewModel.InitNetworthtrend(chrtOvrvwNetworth);
-            
-            
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            OverviewViewModel.SetNetworthtrendXCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwEnd);
-        }
-
-        private void dateOvrvwNetStart_ValueChanged(object sender, EventArgs e)
-        {
-            OverviewViewModel.SetNetworthtrendXCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwEnd.Value);
-        }
+        
+        
     }
 }
