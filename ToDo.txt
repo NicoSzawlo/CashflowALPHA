@@ -16,3 +16,6 @@
 > Switching to Date from DateTime
 
 > Calculation of spending per group in timespan
+
+> Fix Networth calculation, why goes negative??
+
