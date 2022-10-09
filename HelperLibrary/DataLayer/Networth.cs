@@ -42,7 +42,7 @@ namespace HelperLibrary.DataLayer
                 {
                     if (DateList[i].Date == transaction.Date)
                     {
-                        DateList[i].Capital += (decimal)transaction.Amount;
+                        DateList[i].Capital -= (decimal)transaction.Amount;
                     }
 
                 }
@@ -56,10 +56,11 @@ namespace HelperLibrary.DataLayer
             DateTime today = DateTime.Now;
             DateTime firstDayOfYear = new DateTime();
             DateTime listitem = new DateTime();
-            
+            decimal high = 0;
             for(int i = networthList.Count-1; i >= 0; i--)
             {
                 listitem = (DateTime)networthList[i].Date;
+                
                 if (listitem.Year < today.Year)
                 {
                     firstDayOfYear = (DateTime)networthList[i + 1].Date;
@@ -68,6 +69,24 @@ namespace HelperLibrary.DataLayer
             }
 
             return firstDayOfYear;
+        }
+
+        public static double GetMaxFromSpan(List<Networth> networthList, DateTime start)
+        {
+            decimal max = 0;
+            double dmax = 0;
+            for(int i = networthList.Count-1; i >= 0; i--)
+            {
+                if(networthList[i].Date > start)
+                {
+                    if (networthList[i].Capital > max)
+                    {
+                        max = networthList[i].Capital;
+                    }
+                }
+            }
+            dmax = Convert.ToDouble(max);
+            return dmax;
         }
 
     }

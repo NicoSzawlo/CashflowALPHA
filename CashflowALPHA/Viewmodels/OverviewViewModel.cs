@@ -31,7 +31,7 @@ namespace CashflowALPHA.Viewmodels
             plot.Refresh();
         }
 
-        public static async void SetNetworthtrendCurrentYear(ScottPlot.FormsPlot plot,DateTimePicker dtpStart, DateTimePicker dtpEnd)
+        public static async void SetNetworthtrendXCurrentYear(ScottPlot.FormsPlot plot,DateTimePicker dtpStart, DateTimePicker dtpEnd)
         {
 
             List<Networth> networthList = await Task.Run(() => Networth.CalculateOverallNetworth());
@@ -40,13 +40,23 @@ namespace CashflowALPHA.Viewmodels
             dtpStart.Value = first;
             dtpEnd.Value = today;
             plot.Plot.SetAxisLimitsX(Convert.ToDouble(first.ToOADate()), Convert.ToDouble(today.ToOADate()));
+            SetNetworthtrendYStandart(plot, networthList, dtpStart.Value);
             plot.Refresh();
 
         }
-        public static void SetNetworthtrendCustom(ScottPlot.FormsPlot plot, DateTime start, DateTime end)
+        public static async void SetNetworthtrendXCustom(ScottPlot.FormsPlot plot, DateTime start, DateTime end)
         {
+            List<Networth> networthList = await Task.Run(() => Networth.CalculateOverallNetworth());
             plot.Plot.SetAxisLimitsX(Convert.ToDouble(start.ToOADate()), Convert.ToDouble(end.ToOADate()));
+            SetNetworthtrendYStandart(plot, networthList, start);
             plot.Refresh();
+        }
+
+        public static void SetNetworthtrendYStandart(ScottPlot.FormsPlot plot,List<Networth> networthList, DateTime start)
+        {
+            double max = Networth.GetMaxFromSpan(networthList,start);
+            plot.Plot.SetAxisLimitsY(-500, max+500);
+
         }
     }
 }

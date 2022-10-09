@@ -89,7 +89,9 @@ namespace CashflowALPHA
             PartnersViewModel.LoadTrxTypeTableAsync(dgvPartnerTypes);
             TrxTypesViewModel.LoadTrxTypeTableAsync(dgvTransactionTypes);
             TransactionsViewModel.LoadTrxTableAsync(dgvTrx);
-            
+            OverviewViewModel.InitNetworthtrend(chrtOvrvwNetworth);
+            OverviewViewModel.SetNetworthtrendXCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwEnd);
+
         }
 
         //OVERVIEW PANEL
@@ -156,12 +158,12 @@ namespace CashflowALPHA
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OverviewViewModel.SetNetworthtrendCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwEnd);
+            OverviewViewModel.SetNetworthtrendXCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwEnd);
         }
 
         private void dateOvrvwNetStart_ValueChanged(object sender, EventArgs e)
         {
-            OverviewViewModel.SetNetworthtrendCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwEnd.Value);
+            OverviewViewModel.SetNetworthtrendXCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwEnd.Value);
         }
     }
 }

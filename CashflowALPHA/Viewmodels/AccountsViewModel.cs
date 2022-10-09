@@ -47,7 +47,13 @@ namespace CashflowALPHA
             iban.Text = accentry.Iban;
             bic.Text = accentry.Bic;
             balance.Text = accentry.Balance.ToString();
-            //type.Text = typelist[accentry.ID].Name;
+            foreach(AccountType acctype in typelist)
+            {
+                if(acctype.ID == accentry.TypeID)
+                {
+                    type.Text = acctype.Name;
+                }
+            }
             InitAccTypeCombobox(type);
 
 
