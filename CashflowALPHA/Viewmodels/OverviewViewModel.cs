@@ -11,7 +11,7 @@ namespace CashflowALPHA.Viewmodels
 {
     public class OverviewViewModel
     {
-        public static async void LoadNetworthtrend(ScottPlot.FormsPlot plot)
+        public static async void InitNetworthtrend(ScottPlot.FormsPlot plot)
         {
             List<Networth> networthList = await Task.Run(() => Networth.CalculateOverallNetworth());
             DateTime[] dates = new DateTime[networthList.Count];
@@ -31,9 +31,22 @@ namespace CashflowALPHA.Viewmodels
             plot.Plot.Render();
         }
 
-        public static void SetNetworthtrendLimits(ScottPlot.FormsPlot plot)
+        public static async void SetNetworthtrendCurrentYear(ScottPlot.FormsPlot plot,DateTimePicker dtpStart, DateTimePicker dtpEnd)
         {
-            
+
+            List<Networth> networthList = await Task.Run(() => Networth.CalculateOverallNetworth());
+            DateTime first = Networth.GetFirstOfCurrentYear(networthList);
+            DateTime today = DateTime.Now;
+            dtpStart.Value = first;
+            dtpEnd.Value = today;
+            plot.Plot.SetAxisLimitsX(Convert.ToDouble(first.ToOADate()), Convert.ToDouble(today.ToOADate()));
+            plot.Refresh();
+
+        }
+        public static void SetNetworthtrendCustom(ScottPlot.FormsPlot plot, DateTime start, DateTime end)
+        {
+            plot.Plot.SetAxisLimitsX(Convert.ToDouble(start.ToOADate()), Convert.ToDouble(end.ToOADate()));
+            plot.Refresh();
         }
     }
 }

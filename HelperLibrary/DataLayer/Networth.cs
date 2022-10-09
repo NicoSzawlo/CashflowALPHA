@@ -51,5 +51,24 @@ namespace HelperLibrary.DataLayer
 
         }
 
+        public static DateTime GetFirstOfCurrentYear(List<Networth> networthList)
+        {
+            DateTime today = DateTime.Now;
+            DateTime firstDayOfYear = new DateTime();
+            DateTime listitem = new DateTime();
+            
+            for(int i = networthList.Count-1; i >= 0; i--)
+            {
+                listitem = (DateTime)networthList[i].Date;
+                if (listitem.Year < today.Year)
+                {
+                    firstDayOfYear = (DateTime)networthList[i + 1].Date;
+                    break;
+                }
+            }
+
+            return firstDayOfYear;
+        }
+
     }
 }

@@ -52,6 +52,10 @@
             this.lblAccBic = new System.Windows.Forms.Label();
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.pnlOvrvw = new System.Windows.Forms.Panel();
+            this.dateOvrvwEnd = new System.Windows.Forms.DateTimePicker();
+            this.dateOvrvwNetStart = new System.Windows.Forms.DateTimePicker();
+            this.button3 = new System.Windows.Forms.Button();
+            this.chrtOvrvwNetworth = new ScottPlot.FormsPlot();
             this.button2 = new System.Windows.Forms.Button();
             this.pnlPartners = new System.Windows.Forms.Panel();
             this.btnSetPartnType = new System.Windows.Forms.Button();
@@ -85,7 +89,6 @@
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
-            this.chrtOvrvwNetworth = new ScottPlot.FormsPlot();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -374,6 +377,9 @@
             // pnlOvrvw
             // 
             this.pnlOvrvw.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlOvrvw.Controls.Add(this.dateOvrvwEnd);
+            this.pnlOvrvw.Controls.Add(this.dateOvrvwNetStart);
+            this.pnlOvrvw.Controls.Add(this.button3);
             this.pnlOvrvw.Controls.Add(this.chrtOvrvwNetworth);
             this.pnlOvrvw.Controls.Add(this.button2);
             this.pnlOvrvw.Location = new System.Drawing.Point(10, 67);
@@ -381,6 +387,40 @@
             this.pnlOvrvw.Name = "pnlOvrvw";
             this.pnlOvrvw.Size = new System.Drawing.Size(1098, 446);
             this.pnlOvrvw.TabIndex = 2;
+            // 
+            // dateOvrvwEnd
+            // 
+            this.dateOvrvwEnd.Location = new System.Drawing.Point(464, 407);
+            this.dateOvrvwEnd.Name = "dateOvrvwEnd";
+            this.dateOvrvwEnd.Size = new System.Drawing.Size(200, 23);
+            this.dateOvrvwEnd.TabIndex = 19;
+            // 
+            // dateOvrvwNetStart
+            // 
+            this.dateOvrvwNetStart.Location = new System.Drawing.Point(54, 407);
+            this.dateOvrvwNetStart.Name = "dateOvrvwNetStart";
+            this.dateOvrvwNetStart.Size = new System.Drawing.Size(200, 23);
+            this.dateOvrvwNetStart.TabIndex = 18;
+            this.dateOvrvwNetStart.ValueChanged += new System.EventHandler(this.dateOvrvwNetStart_ValueChanged);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(937, 340);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(145, 43);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "UPDATE ACCOUNT";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // chrtOvrvwNetworth
+            // 
+            this.chrtOvrvwNetworth.Location = new System.Drawing.Point(18, 19);
+            this.chrtOvrvwNetworth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.chrtOvrvwNetworth.Name = "chrtOvrvwNetworth";
+            this.chrtOvrvwNetworth.Size = new System.Drawing.Size(662, 411);
+            this.chrtOvrvwNetworth.TabIndex = 16;
             // 
             // button2
             // 
@@ -751,14 +791,6 @@
             this.dgvTrx.TabIndex = 1;
             this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
             // 
-            // chrtOvrvwNetworth
-            // 
-            this.chrtOvrvwNetworth.Location = new System.Drawing.Point(18, 19);
-            this.chrtOvrvwNetworth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.chrtOvrvwNetworth.Name = "chrtOvrvwNetworth";
-            this.chrtOvrvwNetworth.Size = new System.Drawing.Size(531, 411);
-            this.chrtOvrvwNetworth.TabIndex = 16;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -853,5 +885,8 @@
         private Label lblTrxReference;
         private Button button2;
         private ScottPlot.FormsPlot chrtOvrvwNetworth;
+        private Button button3;
+        private DateTimePicker dateOvrvwEnd;
+        private DateTimePicker dateOvrvwNetStart;
     }
 }

@@ -149,9 +149,19 @@ namespace CashflowALPHA
         //Temp testing area
         private void button2_Click(object sender, EventArgs e)
         {
-            OverviewViewModel.LoadNetworthtrend(chrtOvrvwNetworth);
+            OverviewViewModel.InitNetworthtrend(chrtOvrvwNetworth);
             
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OverviewViewModel.SetNetworthtrendCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwEnd);
+        }
+
+        private void dateOvrvwNetStart_ValueChanged(object sender, EventArgs e)
+        {
+            OverviewViewModel.SetNetworthtrendCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwEnd.Value);
         }
     }
 }
