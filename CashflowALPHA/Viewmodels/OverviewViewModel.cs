@@ -11,11 +11,11 @@ namespace CashflowALPHA.Viewmodels
 {
     public class OverviewViewModel
     {
-        public static async void CalcNetworth(ScottPlot.FormsPlot plot)
+        public static async void LoadNetworthtrend(ScottPlot.FormsPlot plot)
         {
             List<Networth> networthList = await Task.Run(() => Networth.CalculateOverallNetworth());
-            DateTime[] dates = new DateTime[networthList.Count-1];
-            decimal[] capital = new decimal[networthList.Count - 1];
+            DateTime[] dates = new DateTime[networthList.Count];
+            decimal[] capital = new decimal[networthList.Count];
             for (int i = 0; i < networthList.Count; i++)
             {
                 capital[i] = networthList[i].Capital;
@@ -23,7 +23,17 @@ namespace CashflowALPHA.Viewmodels
             }
             double[] xs = dates.Select(x => x.ToOADate()).ToArray();
             double[] ys = capital.Select(x => Convert.ToDouble(x)).ToArray();
-            plot.Plot.AddScatter(xs, ys);
+            plot.Plot.AddScatterLines(xs,ys);
+            plot.Plot.XAxis.Label("Date");
+            plot.Plot.XAxis.Ticks(true);
+            plot.Plot.XAxis.DateTimeFormat(true);
+            plot.Refresh();
+            plot.Plot.Render();
+        }
+
+        public static void SetNetworthtrendLimits(ScottPlot.FormsPlot plot)
+        {
+            
         }
     }
 }
