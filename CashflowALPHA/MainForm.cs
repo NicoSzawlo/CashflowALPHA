@@ -84,7 +84,6 @@ namespace CashflowALPHA
         private void Startup()
         {
             AccountsViewModel.LoadAccTableAsync(dgvAccounts);
-            AccountsViewModel.InitAccTypeCombobox(comboAccType);
             PartnersViewModel.LoadPartnersTableAsync(dgvPartners);
             PartnersViewModel.LoadTrxTypeTableAsync(dgvPartnerTypes);
             TrxTypesViewModel.LoadTrxTypeTableAsync(dgvTransactionTypes);

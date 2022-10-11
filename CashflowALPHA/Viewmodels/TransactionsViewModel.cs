@@ -34,14 +34,27 @@ namespace CashflowALPHA.Viewmodels
             //invpos.Text =
             info.Text = trx.Info;
             reference.Text = trx.Reference;
+            InitTrxTypeCombobox(type, typelist);
             foreach(TransactionType trxtype in typelist)
             {
-                type.Items.Add(trxtype.Name);
                 if(trxtype.ID == trx.TypeID)
                 {
                     type.Text = trxtype.Name;
                 }
             }
+        }
+
+        public static void InitTrxTypeCombobox(ComboBox type, List<TransactionType> typelist)
+        {
+            //Check if combobox empty
+            if(type.Items.Count == 0)
+            {
+                foreach (TransactionType trxtype in typelist)
+                {
+                    type.Items.Add(trxtype.Name);
+                }
+            }
+            
         }
     }
 }

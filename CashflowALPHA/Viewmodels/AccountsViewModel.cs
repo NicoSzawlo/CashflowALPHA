@@ -122,10 +122,14 @@ namespace CashflowALPHA
             //Load Account type Table for Combobox
             List<AccountType> typelist = await Task.Run(() => AccountType.GetObjectListDbAsync());
 
-            //Add Account type list to Combobox and set current type
-            foreach (var item in typelist)
+            //Check if combobox empty
+            if (type.Items.Count == 0)
             {
-                type.Items.Add(item.Name);
+                //Add Account type list to Combobox and set current type
+                foreach (AccountType acctype in typelist)
+                {
+                    type.Items.Add(acctype.Name);
+                }
             }
         }
 
