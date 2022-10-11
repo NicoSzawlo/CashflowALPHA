@@ -74,7 +74,7 @@ namespace HelperLibrary.DataLayer
 
             return list;
         }
-        //Overload 1 to get Transactions for a specific partner
+        //Get list of transactions with sepcific partner
         public static async Task<List<Transaction>> GetObjectListForPartnerDb(Partner partner)
         {
             List<Transaction> list = new List<Transaction>();
@@ -82,6 +82,22 @@ namespace HelperLibrary.DataLayer
             list = await Task.Run(() => DbToList(trxdt));
 
             return list;
+        }
+
+        //Check if account has transactions linked to it
+        public static async Task<bool> CheckTrxForAcc(Account acc)
+        {
+            bool flag = false;
+            List<Transaction> list = new List<Transaction>();
+            DataTable trxdt = await Task.Run(() => MySqlHandler.Select("*", "tab_trx", "trx_acc_id", acc.ID.ToString()));
+            list = await Task.Run(() => DbToList(trxdt));
+
+            if(list.Count > 0)
+            {
+                flag = true;
+            }
+
+            return flag;
         }
 
         public static List<Transaction> GetObjectListDb()
@@ -115,7 +131,6 @@ namespace HelperLibrary.DataLayer
             {
                 await Task.Run(() => MySqlHandler.InsertIntoTrx(trx));
             }
-
         }
 
         //Update database entries for list of objects

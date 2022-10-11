@@ -95,15 +95,10 @@ namespace HelperLibrary.DataLayer
             return id;
         }
 
-        //Method for updating account data
-        public static  async void InsertObjectListDbAsync(List<Account> list)
+        //Method for updating Account in database
+        public static async void UpdateObjectAsync(Account acc)
         {
-            int i = 0;
-            List<Task> tasks = new List<Task>();
-            foreach (Account acc in list)
-            {
-                await Task.Run(() => MySqlHandler.InsertIntoAccount(acc));
-            }
+            await Task.Run(() => MySqlHandler.UpdateAccount(acc));
         }
     }
 }

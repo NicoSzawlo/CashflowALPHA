@@ -89,25 +89,31 @@ namespace CashflowALPHA
                 TypeID = acctypeid,
                 Balance = balance
             };
-            UpdateAccAsync(acc);
-        }
-
-
-        //Method for updating Account in database
-        private static async void UpdateAccAsync(Account acc)
-        {
-            await Task.Run(() => MySqlHandler.UpdateAccount(acc));   
+            Account.UpdateObjectAsync(acc);
         }
 
         //Method for processing statement file asynchronously
         private static async Task ProcessStmtFile(string filepath, string accname)
         {
             DataTable dt = CsvProcessor.CsvToTable(filepath);
+            
+            //Get distinct partners of csv file
             List<Partner> partners = Partner.GetObjectListStmtAsync(dt);
             List<Partner> distpartners = Partner.GetDistinctObjectList(partners);
-
+            //Insert partner into db
             Partner.InsertObjectListDbAsync(distpartners);
+
+            //Load list of trx
             List<Transaction> trx = Transaction.GetObjectListStmt(dt, accname);
+
+            //Check if there are already trx linked to selected acc
+            Account acc = Account.GetObjectDb(accname);
+            if(await Task.Run(() => Transaction.CheckTrxForAcc(acc)))
+            {
+                //Placeholder for recalculating account value after adding transactions
+            }
+
+            
             await Task.Run(() => Transaction.InsertObjectListDbAsync(trx, accname));
         }
 
@@ -121,6 +127,18 @@ namespace CashflowALPHA
             {
                 type.Items.Add(item.Name);
             }
+        }
+
+        public static decimal CalcAccValueDifference(List<Transaction> trxlist)
+        {
+            decimal difference = 0;
+
+            foreach(Transaction trx in trxlist)
+            {
+                difference = (decimal)trx.Amount + difference;
+            }
+
+            return difference;
         }
     }
 }

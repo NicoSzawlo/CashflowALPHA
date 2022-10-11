@@ -773,11 +773,11 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1124, 518);
             this.Controls.Add(this.pnl_nav);
-            this.Controls.Add(this.pnlOvrvw);
             this.Controls.Add(this.pnlAcc);
             this.Controls.Add(this.pnlPartners);
             this.Controls.Add(this.pnlBudgets);
             this.Controls.Add(this.pnlTrx);
+            this.Controls.Add(this.pnlOvrvw);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
