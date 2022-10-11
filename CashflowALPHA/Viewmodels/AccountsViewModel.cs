@@ -106,15 +106,15 @@ namespace CashflowALPHA
             //Load list of trx
             List<Transaction> trx = Transaction.GetObjectListStmt(dt, accname);
 
-            //Check if there are already trx linked to selected acc
-            Account acc = Account.GetObjectDb(accname);
-            if(await Task.Run(() => Transaction.CheckTrxForAcc(acc)))
-            {
-                //Placeholder for recalculating account value after adding transactions
-            }
-
-            
+            ////Check if there are already trx linked to selected acc
+            //Account acc = Account.GetObjectDb(accname);
+            //if(await Task.Run(() => Transaction.CheckTrxForAcc(acc)))
+            //{
+            //    //Placeholder for recalculating account value after adding transactions
+            //    acc.Balance = CalcAccValueDifference(trx);
+            //}
             await Task.Run(() => Transaction.InsertObjectListDbAsync(trx, accname));
+            //Account.UpdateObjectAsync(acc);
         }
 
         public static async void InitAccTypeCombobox(ComboBox type)
