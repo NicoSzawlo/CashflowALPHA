@@ -10,6 +10,8 @@
 > Adding of Wallet Statements
 
 > Method for Checking in DB if TRX linked to Account -> If so then recalculate account balance after adding Trx
+	- When recalculating consider that only the transactions after the last trx in db should
+		be used to calculate the account value difference
 
 > Correcting the int?,DateTime?,... properties of classes and use casting instead when DataType is known
 
