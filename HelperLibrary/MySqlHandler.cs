@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using HelperLibrary.DataLayer;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 
 namespace HelperLibrary
 {
@@ -93,6 +94,8 @@ namespace HelperLibrary
         //Insert into Transactions table
         public static void InsertIntoTrx(Transaction trx)
         {
+            CheckTrxEntry(trx);
+
             MySqlCommand cmd = Connect();
 
             cmd.CommandText = 
@@ -121,6 +124,53 @@ namespace HelperLibrary
                 Console.WriteLine(ex.Message);
             }
             Disconnect(cmd);
+        }
+
+        private static bool CheckTrxEntry(Transaction trx)
+        {
+            bool dupe = false;
+            DataTable result = new DataTable();
+            MySqlCommand cmd = Connect();
+            cmd.CommandText =
+                "SELECT * FROM tab_trx WHERE (" +
+                "trx_date = @date AND " +
+                "trx_amnt = @amnt AND " +
+                "trx_currency = @curr AND " +
+                "trx_info = @info AND " +
+                "trx_reference = @reference AND " +
+                "trx_partn_id = @partnid AND " +
+                "trx_acc_id = @accid AND " +
+                "trx_trxtype_id = @trxtypeid AND " +
+                "trx_invpos_id = @invposid);";
+            cmd.Parameters.AddWithValue("@date", trx.Date);
+            cmd.Parameters.AddWithValue("@amnt", trx.Amount);
+            cmd.Parameters.AddWithValue("@curr", trx.Currency);
+            cmd.Parameters.AddWithValue("@info", trx.Info);
+            cmd.Parameters.AddWithValue("@reference", trx.Reference);
+            cmd.Parameters.AddWithValue("@partnid", trx.PartnerID);
+            cmd.Parameters.AddWithValue("@accid", trx.AccountID);
+            cmd.Parameters.AddWithValue("@trxtypeid", trx.TypeID);
+            cmd.Parameters.AddWithValue("@invposid", trx.InvPosID);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(result);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+
+            if(result.Rows.Count > 0)
+            {
+                dupe = true;
+            }
+
+            return dupe;
         }
 
         public static void UpdateTransaction(Transaction trx)

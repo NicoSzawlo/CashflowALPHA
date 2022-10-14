@@ -758,6 +758,7 @@
             this.dgvTrx.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrx.Location = new System.Drawing.Point(18, 14);
             this.dgvTrx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvTrx.MultiSelect = false;
             this.dgvTrx.Name = "dgvTrx";
             this.dgvTrx.ReadOnly = true;
             this.dgvTrx.RowTemplate.Height = 29;

@@ -125,23 +125,20 @@ namespace CashflowALPHA
         //##############################
         private void dgvTrx_SelectionChanged(object sender, EventArgs e)
         {   
-            if(dgvTrx.SelectedRows.Count == 1)
+            
+            if (dgvTrx.CurrentRow != null)
             {
-                if (dgvTrx.CurrentRow != null)
-                {
-                    string id = dgvTrx.CurrentRow.Cells[0].Value.ToString();
-                    TransactionsViewModel.LoadTrxEntryAsync(
-                        txtTrxDate, 
-                        txtTrxAccount, 
-                        txtTrxAmount, 
-                        txtTrxPartner, 
-                        txtTrxInfo, 
-                        txtTrxReference, 
-                        comboTrxType, 
-                        id);
-                }
+                string id = dgvTrx.CurrentRow.Cells[0].Value.ToString();
+                TransactionsViewModel.LoadTrxEntryAsync(
+                    txtTrxDate, 
+                    txtTrxAccount, 
+                    txtTrxAmount, 
+                    txtTrxPartner, 
+                    txtTrxInfo, 
+                    txtTrxReference, 
+                    comboTrxType, 
+                    id);
             }
-
         }
 
         //UI Helper functions
