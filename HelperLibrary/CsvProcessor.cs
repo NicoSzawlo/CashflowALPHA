@@ -28,6 +28,10 @@ namespace HelperLibrary
             bool header = true;
 
             lines = content.Split(linebreak);
+            if (lines[lines.Length-1] != "")
+            {
+
+            }
             columns = lines[0].Split(separator);
 
             colcount = columns.Length;
@@ -51,12 +55,16 @@ namespace HelperLibrary
 
             foreach (string line in lines)
             {
-                templine = TrimSemicolon(line);
-                columns = templine.Split(separator);
+                if(line != "")
+                {
+                    templine = TrimSemicolon(line);
+                    columns = templine.Split(separator);
 
-                columns = TrimQuotes(columns);
+                    columns = TrimQuotes(columns);
 
-                dt.Rows.Add(columns);
+                    dt.Rows.Add(columns);
+                }
+                
             }
 
             return dt;
