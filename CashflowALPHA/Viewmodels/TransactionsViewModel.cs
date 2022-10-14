@@ -15,6 +15,7 @@ namespace CashflowALPHA.Viewmodels
         {
             DataTable dt = await Task.Run(() => MySqlHandler.Select("*", "view_trx"));
             dgv.DataSource = dt;
+            dgv.Sort(dgv.Columns[1], System.ComponentModel.ListSortDirection.Descending);
         }
 
         //Load transaction entry into Textboxes for detailed information
