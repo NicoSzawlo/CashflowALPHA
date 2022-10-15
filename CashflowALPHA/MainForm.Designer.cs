@@ -83,10 +83,10 @@
             this.lblTrxDate = new System.Windows.Forms.Label();
             this.lblTrxInfo = new System.Windows.Forms.Label();
             this.lblTrxAmount = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
+            this.formsPlot1 = new ScottPlot.FormsPlot();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -225,7 +225,7 @@
             this.pnlAcc.Location = new System.Drawing.Point(10, 67);
             this.pnlAcc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlAcc.Name = "pnlAcc";
-            this.pnlAcc.Size = new System.Drawing.Size(1098, 446);
+            this.pnlAcc.Size = new System.Drawing.Size(1098, 901);
             this.pnlAcc.TabIndex = 1;
             // 
             // btnAccUpdate
@@ -368,25 +368,26 @@
             this.dgvAccounts.Name = "dgvAccounts";
             this.dgvAccounts.ReadOnly = true;
             this.dgvAccounts.RowTemplate.Height = 29;
-            this.dgvAccounts.Size = new System.Drawing.Size(553, 416);
+            this.dgvAccounts.Size = new System.Drawing.Size(553, 868);
             this.dgvAccounts.TabIndex = 0;
             this.dgvAccounts.SelectionChanged += new System.EventHandler(this.dgvAccounts_SelectionChanged);
             // 
             // pnlOvrvw
             // 
             this.pnlOvrvw.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlOvrvw.Controls.Add(this.formsPlot1);
             this.pnlOvrvw.Controls.Add(this.dateOvrvwEnd);
             this.pnlOvrvw.Controls.Add(this.dateOvrvwNetStart);
             this.pnlOvrvw.Controls.Add(this.chrtOvrvwNetworth);
             this.pnlOvrvw.Location = new System.Drawing.Point(10, 67);
             this.pnlOvrvw.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlOvrvw.Name = "pnlOvrvw";
-            this.pnlOvrvw.Size = new System.Drawing.Size(1098, 446);
+            this.pnlOvrvw.Size = new System.Drawing.Size(1098, 901);
             this.pnlOvrvw.TabIndex = 2;
             // 
             // dateOvrvwEnd
             // 
-            this.dateOvrvwEnd.Location = new System.Drawing.Point(464, 407);
+            this.dateOvrvwEnd.Location = new System.Drawing.Point(874, 407);
             this.dateOvrvwEnd.Name = "dateOvrvwEnd";
             this.dateOvrvwEnd.Size = new System.Drawing.Size(200, 23);
             this.dateOvrvwEnd.TabIndex = 19;
@@ -405,7 +406,7 @@
             this.chrtOvrvwNetworth.Location = new System.Drawing.Point(18, 19);
             this.chrtOvrvwNetworth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chrtOvrvwNetworth.Name = "chrtOvrvwNetworth";
-            this.chrtOvrvwNetworth.Size = new System.Drawing.Size(662, 411);
+            this.chrtOvrvwNetworth.Size = new System.Drawing.Size(1064, 411);
             this.chrtOvrvwNetworth.TabIndex = 16;
             // 
             // pnlPartners
@@ -417,12 +418,12 @@
             this.pnlPartners.Location = new System.Drawing.Point(10, 67);
             this.pnlPartners.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlPartners.Name = "pnlPartners";
-            this.pnlPartners.Size = new System.Drawing.Size(1098, 446);
+            this.pnlPartners.Size = new System.Drawing.Size(1098, 901);
             this.pnlPartners.TabIndex = 3;
             // 
             // btnSetPartnType
             // 
-            this.btnSetPartnType.Location = new System.Drawing.Point(598, 335);
+            this.btnSetPartnType.Location = new System.Drawing.Point(848, 486);
             this.btnSetPartnType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSetPartnType.Name = "btnSetPartnType";
             this.btnSetPartnType.Size = new System.Drawing.Size(233, 95);
@@ -436,19 +437,20 @@
             this.dgvPartnerTypes.AllowUserToAddRows = false;
             this.dgvPartnerTypes.AllowUserToDeleteRows = false;
             this.dgvPartnerTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPartnerTypes.Location = new System.Drawing.Point(597, 14);
+            this.dgvPartnerTypes.Location = new System.Drawing.Point(848, 14);
             this.dgvPartnerTypes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvPartnerTypes.Name = "dgvPartnerTypes";
             this.dgvPartnerTypes.ReadOnly = true;
             this.dgvPartnerTypes.RowTemplate.Height = 29;
             this.dgvPartnerTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPartnerTypes.Size = new System.Drawing.Size(234, 304);
+            this.dgvPartnerTypes.Size = new System.Drawing.Size(234, 454);
             this.dgvPartnerTypes.TabIndex = 2;
             // 
             // dgvPartners
             // 
             this.dgvPartners.AllowUserToAddRows = false;
             this.dgvPartners.AllowUserToDeleteRows = false;
+            this.dgvPartners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvPartners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPartners.Location = new System.Drawing.Point(18, 14);
             this.dgvPartners.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -456,7 +458,7 @@
             this.dgvPartners.ReadOnly = true;
             this.dgvPartners.RowTemplate.Height = 29;
             this.dgvPartners.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPartners.Size = new System.Drawing.Size(553, 416);
+            this.dgvPartners.Size = new System.Drawing.Size(720, 868);
             this.dgvPartners.TabIndex = 1;
             // 
             // pnlBudgets
@@ -472,7 +474,7 @@
             this.pnlBudgets.Location = new System.Drawing.Point(10, 67);
             this.pnlBudgets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlBudgets.Name = "pnlBudgets";
-            this.pnlBudgets.Size = new System.Drawing.Size(1098, 446);
+            this.pnlBudgets.Size = new System.Drawing.Size(1098, 901);
             this.pnlBudgets.TabIndex = 3;
             // 
             // btnUpdateTrxType
@@ -545,7 +547,7 @@
             this.dgvTransactionTypes.ReadOnly = true;
             this.dgvTransactionTypes.RowTemplate.Height = 29;
             this.dgvTransactionTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTransactionTypes.Size = new System.Drawing.Size(553, 416);
+            this.dgvTransactionTypes.Size = new System.Drawing.Size(553, 868);
             this.dgvTransactionTypes.TabIndex = 1;
             // 
             // pnlTrx
@@ -566,20 +568,19 @@
             this.pnlTrx.Controls.Add(this.lblTrxDate);
             this.pnlTrx.Controls.Add(this.lblTrxInfo);
             this.pnlTrx.Controls.Add(this.lblTrxAmount);
-            this.pnlTrx.Controls.Add(this.button1);
             this.pnlTrx.Controls.Add(this.lblTrxType);
             this.pnlTrx.Controls.Add(this.lblTrxCurrency);
             this.pnlTrx.Controls.Add(this.dgvTrx);
             this.pnlTrx.Location = new System.Drawing.Point(10, 67);
             this.pnlTrx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTrx.Name = "pnlTrx";
-            this.pnlTrx.Size = new System.Drawing.Size(1098, 446);
+            this.pnlTrx.Size = new System.Drawing.Size(1098, 901);
             this.pnlTrx.TabIndex = 3;
             // 
             // txtTrxReference
             // 
             this.txtTrxReference.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtTrxReference.Location = new System.Drawing.Point(885, 246);
+            this.txtTrxReference.Location = new System.Drawing.Point(885, 446);
             this.txtTrxReference.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTrxReference.Multiline = true;
             this.txtTrxReference.Name = "txtTrxReference";
@@ -590,7 +591,7 @@
             // 
             this.lblTrxReference.AutoSize = true;
             this.lblTrxReference.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxReference.Location = new System.Drawing.Point(861, 215);
+            this.lblTrxReference.Location = new System.Drawing.Point(861, 415);
             this.lblTrxReference.Name = "lblTrxReference";
             this.lblTrxReference.Size = new System.Drawing.Size(121, 30);
             this.lblTrxReference.TabIndex = 31;
@@ -657,7 +658,7 @@
             // 
             this.comboTrxType.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.comboTrxType.FormattingEnabled = true;
-            this.comboTrxType.Location = new System.Drawing.Point(618, 182);
+            this.comboTrxType.Location = new System.Drawing.Point(889, 382);
             this.comboTrxType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboTrxType.Name = "comboTrxType";
             this.comboTrxType.Size = new System.Drawing.Size(189, 33);
@@ -666,7 +667,7 @@
             // txtTrxInfo
             // 
             this.txtTrxInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtTrxInfo.Location = new System.Drawing.Point(618, 246);
+            this.txtTrxInfo.Location = new System.Drawing.Point(885, 598);
             this.txtTrxInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTrxInfo.Multiline = true;
             this.txtTrxInfo.Name = "txtTrxInfo";
@@ -676,16 +677,16 @@
             // txtTrxAmount
             // 
             this.txtTrxAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtTrxAmount.Location = new System.Drawing.Point(618, 115);
+            this.txtTrxAmount.Location = new System.Drawing.Point(889, 315);
             this.txtTrxAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTrxAmount.Name = "txtTrxAmount";
-            this.txtTrxAmount.Size = new System.Drawing.Size(189, 33);
+            this.txtTrxAmount.Size = new System.Drawing.Size(121, 33);
             this.txtTrxAmount.TabIndex = 21;
             // 
             // txtTrxDate
             // 
             this.txtTrxDate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtTrxDate.Location = new System.Drawing.Point(618, 48);
+            this.txtTrxDate.Location = new System.Drawing.Point(889, 248);
             this.txtTrxDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTrxDate.Name = "txtTrxDate";
             this.txtTrxDate.Size = new System.Drawing.Size(189, 33);
@@ -695,7 +696,7 @@
             // 
             this.lblTrxDate.AutoSize = true;
             this.lblTrxDate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxDate.Location = new System.Drawing.Point(594, 17);
+            this.lblTrxDate.Location = new System.Drawing.Point(865, 217);
             this.lblTrxDate.Name = "lblTrxDate";
             this.lblTrxDate.Size = new System.Drawing.Size(70, 30);
             this.lblTrxDate.TabIndex = 15;
@@ -705,7 +706,7 @@
             // 
             this.lblTrxInfo.AutoSize = true;
             this.lblTrxInfo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxInfo.Location = new System.Drawing.Point(594, 215);
+            this.lblTrxInfo.Location = new System.Drawing.Point(861, 567);
             this.lblTrxInfo.Name = "lblTrxInfo";
             this.lblTrxInfo.Size = new System.Drawing.Size(144, 30);
             this.lblTrxInfo.TabIndex = 19;
@@ -715,27 +716,17 @@
             // 
             this.lblTrxAmount.AutoSize = true;
             this.lblTrxAmount.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxAmount.Location = new System.Drawing.Point(594, 84);
+            this.lblTrxAmount.Location = new System.Drawing.Point(865, 284);
             this.lblTrxAmount.Name = "lblTrxAmount";
             this.lblTrxAmount.Size = new System.Drawing.Size(106, 30);
             this.lblTrxAmount.TabIndex = 16;
             this.lblTrxAmount.Text = "Amount :";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(594, 387);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 43);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "ADD ACCOUNT";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // lblTrxType
             // 
             this.lblTrxType.AutoSize = true;
             this.lblTrxType.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxType.Location = new System.Drawing.Point(594, 152);
+            this.lblTrxType.Location = new System.Drawing.Point(865, 352);
             this.lblTrxType.Name = "lblTrxType";
             this.lblTrxType.Size = new System.Drawing.Size(183, 30);
             this.lblTrxType.TabIndex = 18;
@@ -745,7 +736,7 @@
             // 
             this.lblTrxCurrency.AutoSize = true;
             this.lblTrxCurrency.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTrxCurrency.Location = new System.Drawing.Point(805, 113);
+            this.lblTrxCurrency.Location = new System.Drawing.Point(1005, 315);
             this.lblTrxCurrency.Name = "lblTrxCurrency";
             this.lblTrxCurrency.Size = new System.Drawing.Size(73, 30);
             this.lblTrxCurrency.TabIndex = 17;
@@ -755,6 +746,7 @@
             // 
             this.dgvTrx.AllowUserToAddRows = false;
             this.dgvTrx.AllowUserToDeleteRows = false;
+            this.dgvTrx.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvTrx.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrx.Location = new System.Drawing.Point(18, 14);
             this.dgvTrx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -762,22 +754,30 @@
             this.dgvTrx.Name = "dgvTrx";
             this.dgvTrx.ReadOnly = true;
             this.dgvTrx.RowTemplate.Height = 29;
-            this.dgvTrx.Size = new System.Drawing.Size(553, 416);
+            this.dgvTrx.Size = new System.Drawing.Size(837, 868);
             this.dgvTrx.TabIndex = 1;
             this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
+            // 
+            // formsPlot1
+            // 
+            this.formsPlot1.Location = new System.Drawing.Point(93, 446);
+            this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.formsPlot1.Name = "formsPlot1";
+            this.formsPlot1.Size = new System.Drawing.Size(467, 465);
+            this.formsPlot1.TabIndex = 20;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(1124, 518);
+            this.ClientSize = new System.Drawing.Size(1124, 979);
             this.Controls.Add(this.pnl_nav);
-            this.Controls.Add(this.pnlTrx);
             this.Controls.Add(this.pnlOvrvw);
             this.Controls.Add(this.pnlAcc);
             this.Controls.Add(this.pnlPartners);
             this.Controls.Add(this.pnlBudgets);
+            this.Controls.Add(this.pnlTrx);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -847,7 +847,6 @@
         private Label lblTrxDate;
         private Label lblTrxInfo;
         private Label lblTrxAmount;
-        private Button button1;
         private Label lblTrxType;
         private Label lblTrxCurrency;
         private TextBox txtTrxInvpos;
@@ -861,5 +860,6 @@
         private ScottPlot.FormsPlot chrtOvrvwNetworth;
         private DateTimePicker dateOvrvwEnd;
         private DateTimePicker dateOvrvwNetStart;
+        private ScottPlot.FormsPlot formsPlot1;
     }
 }

@@ -32,10 +32,10 @@ namespace HelperLibrary.DataLayer
             }
             return trxtype;
         }
-        public static async Task<List<TransactionType>> GetObjectListDbAsync()
+        public static List<TransactionType> GetObjectListDbSync()
         {
             List<TransactionType> list = new List<TransactionType>();
-            DataTable trxtypedt = await Task.Run(() => MySqlHandler.Select("*", "tab_trxtypes"));
+            DataTable trxtypedt = MySqlHandler.SelectOrderBySync("*", "tab_trxtypes", "trxtype_id");
             try
             {
                 foreach (DataRow dr in trxtypedt.Rows)

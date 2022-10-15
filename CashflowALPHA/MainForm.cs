@@ -34,7 +34,9 @@ namespace CashflowALPHA
         {
             ResetNavbtnBackColor();
             this.navbtnPartners.BackColor = Color.WhiteSmoke;
+            PartnersViewModel.LoadPartnersTableAsync(dgvPartners);
             this.pnlPartners.BringToFront();
+
         }
         private void navbtnBudget_Click(object sender, EventArgs e)
         {
@@ -90,6 +92,7 @@ namespace CashflowALPHA
             TransactionsViewModel.LoadTrxTableAsync(dgvTrx);
             OverviewViewModel.InitNetworthtrend(chrtOvrvwNetworth);
             OverviewViewModel.SetNetworthtrendXCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwEnd);
+            this.pnlOvrvw.BringToFront();
 
         }
 
@@ -161,7 +164,7 @@ namespace CashflowALPHA
 
 
         //Temp testing area
-        
-        
+
+
     }
 }

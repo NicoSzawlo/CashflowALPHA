@@ -24,10 +24,10 @@ namespace CashflowALPHA.Viewmodels
             //Load transaction entry
             Transaction trx = await Task.Run(() => Transaction.GetObjectDb(id));
             //Load transaction types list
-            List<TransactionType> typelist = await TransactionType.GetObjectListDbAsync();
+            List<TransactionType> typelist = TransactionType.GetObjectListDbSync();
             Partner partn = Partner.GetObjectDb(trx.PartnerID);
             Account acc = Account.GetObjectDb(trx.AccountID);
-
+            //Set data to textboxes
             date.Text = trx.Date.ToString();
             account.Text = acc.Name;
             amount.Text = trx.Amount.ToString();
@@ -35,6 +35,8 @@ namespace CashflowALPHA.Viewmodels
             //invpos.Text =
             info.Text = trx.Info;
             reference.Text = trx.Reference;
+
+            //Set up combobox
             InitTrxTypeCombobox(type, typelist);
             foreach(TransactionType trxtype in typelist)
             {

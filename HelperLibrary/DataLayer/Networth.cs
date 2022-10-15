@@ -9,10 +9,13 @@ using System.Transactions;
 
 namespace HelperLibrary.DataLayer
 {
+
+    //Model for calculating the networth trend
     public class Networth
     {
         public DateTime? Date { get; set; }
         public decimal Capital { get; set; }
+
 
         public static List<Networth> CalculateOverallNetworth()
         {
