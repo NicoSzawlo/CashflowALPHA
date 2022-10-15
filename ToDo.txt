@@ -19,7 +19,10 @@
 
 > Calculation of spending per group in timespan
 
-> Fix Networth calculation, why goes negative??
-
 > Function to edit and update budgets
 
+
+
+
+D> Fix Networth calculation, why goes negative??
+	> Fixed temporary, there were all incomes with dupes in the transaction list
