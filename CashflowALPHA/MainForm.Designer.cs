@@ -52,7 +52,9 @@
             this.lblAccBic = new System.Windows.Forms.Label();
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.pnlOvrvw = new System.Windows.Forms.Panel();
-            this.dateOvrvwEnd = new System.Windows.Forms.DateTimePicker();
+            this.dateOvrvwBudget = new System.Windows.Forms.DateTimePicker();
+            this.chrtOvrvwBudget = new ScottPlot.FormsPlot();
+            this.dateOvrvwNetEnd = new System.Windows.Forms.DateTimePicker();
             this.dateOvrvwNetStart = new System.Windows.Forms.DateTimePicker();
             this.chrtOvrvwNetworth = new ScottPlot.FormsPlot();
             this.pnlPartners = new System.Windows.Forms.Panel();
@@ -86,7 +88,6 @@
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
-            this.formsPlot1 = new ScottPlot.FormsPlot();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -375,8 +376,9 @@
             // pnlOvrvw
             // 
             this.pnlOvrvw.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlOvrvw.Controls.Add(this.formsPlot1);
-            this.pnlOvrvw.Controls.Add(this.dateOvrvwEnd);
+            this.pnlOvrvw.Controls.Add(this.dateOvrvwBudget);
+            this.pnlOvrvw.Controls.Add(this.chrtOvrvwBudget);
+            this.pnlOvrvw.Controls.Add(this.dateOvrvwNetEnd);
             this.pnlOvrvw.Controls.Add(this.dateOvrvwNetStart);
             this.pnlOvrvw.Controls.Add(this.chrtOvrvwNetworth);
             this.pnlOvrvw.Location = new System.Drawing.Point(10, 67);
@@ -385,13 +387,29 @@
             this.pnlOvrvw.Size = new System.Drawing.Size(1098, 901);
             this.pnlOvrvw.TabIndex = 2;
             // 
-            // dateOvrvwEnd
+            // dateOvrvwBudget
             // 
-            this.dateOvrvwEnd.Location = new System.Drawing.Point(874, 407);
-            this.dateOvrvwEnd.Name = "dateOvrvwEnd";
-            this.dateOvrvwEnd.Size = new System.Drawing.Size(200, 23);
-            this.dateOvrvwEnd.TabIndex = 19;
-            this.dateOvrvwEnd.ValueChanged += new System.EventHandler(this.dateOvrvwEnd_ValueChanged);
+            this.dateOvrvwBudget.Location = new System.Drawing.Point(145, 852);
+            this.dateOvrvwBudget.Name = "dateOvrvwBudget";
+            this.dateOvrvwBudget.Size = new System.Drawing.Size(200, 23);
+            this.dateOvrvwBudget.TabIndex = 21;
+            this.dateOvrvwBudget.ValueChanged += new System.EventHandler(this.dateOvrvwBudget_ValueChanged);
+            // 
+            // chrtOvrvwBudget
+            // 
+            this.chrtOvrvwBudget.Location = new System.Drawing.Point(18, 436);
+            this.chrtOvrvwBudget.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.chrtOvrvwBudget.Name = "chrtOvrvwBudget";
+            this.chrtOvrvwBudget.Size = new System.Drawing.Size(1064, 410);
+            this.chrtOvrvwBudget.TabIndex = 20;
+            // 
+            // dateOvrvwNetEnd
+            // 
+            this.dateOvrvwNetEnd.Location = new System.Drawing.Point(874, 407);
+            this.dateOvrvwNetEnd.Name = "dateOvrvwNetEnd";
+            this.dateOvrvwNetEnd.Size = new System.Drawing.Size(200, 23);
+            this.dateOvrvwNetEnd.TabIndex = 19;
+            this.dateOvrvwNetEnd.ValueChanged += new System.EventHandler(this.dateOvrvwNetEnd_ValueChanged);
             // 
             // dateOvrvwNetStart
             // 
@@ -758,14 +776,6 @@
             this.dgvTrx.TabIndex = 1;
             this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
             // 
-            // formsPlot1
-            // 
-            this.formsPlot1.Location = new System.Drawing.Point(93, 446);
-            this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(467, 465);
-            this.formsPlot1.TabIndex = 20;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -858,8 +868,9 @@
         private TextBox txtTrxReference;
         private Label lblTrxReference;
         private ScottPlot.FormsPlot chrtOvrvwNetworth;
-        private DateTimePicker dateOvrvwEnd;
+        private DateTimePicker dateOvrvwNetEnd;
         private DateTimePicker dateOvrvwNetStart;
-        private ScottPlot.FormsPlot formsPlot1;
+        private ScottPlot.FormsPlot chrtOvrvwBudget;
+        private DateTimePicker dateOvrvwBudget;
     }
 }

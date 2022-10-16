@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 using HelperLibrary;
 using HelperLibrary.DataLayer;
 using ScottPlot;
@@ -102,6 +103,34 @@ namespace CashflowALPHA.Viewmodels
 
         //CATEGORY GRAPH
         //##############################################################
+        public static void InitBudgetGraph(ScottPlot.FormsPlot plot, DateTime month)
+        {
+            //Reset the plot
+            plot.Reset();
 
+            //Init lists and arrays for scotplot
+            List<Budget> bdgtList = Budget.GetBudgetsForMonth(month);
+            double[] budgets = new double[bdgtList.Count];
+            double[] positions = new double[bdgtList.Count];
+            string[] labels = new string[bdgtList.Count];
+
+            //fill arrays with list content
+            for(int i = 0; i < bdgtList.Count; i++)
+            {
+                budgets[i] = Convert.ToDouble(bdgtList[i].TotalSpending);
+                labels[i] = bdgtList[i].TransactionType.Name;
+                positions[i] = i;
+            }
+            //Add bars to the plot
+            var bar = plot.Plot.AddBar(budgets,positions);
+            //SEt Labels for the plot
+            plot.Plot.XTicks(positions, labels);
+            //set axis limit
+            plot.Plot.SetAxisLimits(yMin: 0);
+            //Set values above bars
+            bar.ShowValuesAboveBars = true;
+
+            plot.Refresh();
+        }
     }
 }

@@ -91,7 +91,8 @@ namespace CashflowALPHA
             TrxTypesViewModel.LoadTrxTypeTableAsync(dgvTransactionTypes);
             TransactionsViewModel.LoadTrxTableAsync(dgvTrx);
             OverviewViewModel.InitNetworthtrend(chrtOvrvwNetworth);
-            OverviewViewModel.SetNetworthtrendXCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwEnd);
+            OverviewViewModel.SetNetworthtrendXCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwNetEnd);
+            OverviewViewModel.InitBudgetGraph(chrtOvrvwBudget, dateOvrvwBudget.Value);
             this.pnlOvrvw.BringToFront();
 
         }
@@ -100,12 +101,17 @@ namespace CashflowALPHA
         //##############################
         private void dateOvrvwNetStart_ValueChanged(object sender, EventArgs e)
         {
-            OverviewViewModel.SetNetworthtrendXCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwEnd.Value);
+            OverviewViewModel.SetNetworthtrendXCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwNetEnd.Value);
         }
 
-        private void dateOvrvwEnd_ValueChanged(object sender, EventArgs e)
+        private void dateOvrvwNetEnd_ValueChanged(object sender, EventArgs e)
         {
-            OverviewViewModel.SetNetworthtrendXCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwEnd.Value);
+            OverviewViewModel.SetNetworthtrendXCustom(chrtOvrvwNetworth, dateOvrvwNetStart.Value, dateOvrvwNetEnd.Value);
+        }
+
+        private void dateOvrvwBudget_ValueChanged(object sender, EventArgs e)
+        {
+            OverviewViewModel.InitBudgetGraph(chrtOvrvwBudget, dateOvrvwBudget.Value);
         }
 
         //TRANSACTIONTYPES PANEL
