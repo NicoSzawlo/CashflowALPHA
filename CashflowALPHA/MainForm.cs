@@ -61,6 +61,12 @@ namespace CashflowALPHA
         {
             
             AccountsViewModel.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*", dgvAccounts.CurrentRow.Cells[0].Value.ToString());
+            
+            PartnersViewModel.LoadPartnersTableAsync(dgvPartners);
+            TransactionsViewModel.LoadTrxTableAsync(dgvTrx);
+            OverviewViewModel.InitNetworthtrend(chrtOvrvwNetworth);
+            OverviewViewModel.SetNetworthtrendXCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwNetEnd);
+            OverviewViewModel.InitBudgetGraph(chrtOvrvwBudget, dateOvrvwBudget.Value);
         }
         private void btnAccUpdate_Click(object sender, EventArgs e)
         {
@@ -71,6 +77,15 @@ namespace CashflowALPHA
         {
             AccountsViewModel.AddAccEntry(txtAccName.Text, txtAccIban.Text, txtAccBic.Text, comboAccType.Text, Decimal.Parse(txtAccBalance.Text));
             AccountsViewModel.LoadAccTableAsync(dgvAccounts);
+        }
+
+        private void btnAccResetDb_Click(object sender, EventArgs e)
+        {
+            AccountsViewModel.ResetDatabase();
+            PartnersViewModel.LoadPartnersTableAsync(dgvPartners);
+            OverviewViewModel.InitNetworthtrend(chrtOvrvwNetworth);
+            OverviewViewModel.SetNetworthtrendXCurrentYear(chrtOvrvwNetworth, dateOvrvwNetStart, dateOvrvwNetEnd);
+            OverviewViewModel.InitBudgetGraph(chrtOvrvwBudget, dateOvrvwBudget.Value);
         }
         private void dgvAccounts_SelectionChanged(object sender, EventArgs e)
         {

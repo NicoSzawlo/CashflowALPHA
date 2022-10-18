@@ -18,6 +18,7 @@ namespace HelperLibrary
         //Connection string for MySqlDb
         static string connStr = "Server=localhost;Database=cashflow_alpha;Uid=root;Pwd=root;";
 
+
         //Select from Mysql database 
         //Select item from table
         public static async Task<DataTable> Select(string item, string table)
@@ -341,7 +342,51 @@ namespace HelperLibrary
             }
             Disconnect(cmd);
         }
-        //General methods
+
+        //Unclassified methods
+        //#######################################################
+        public static void ResetTrxTable()
+        {
+            MySqlCommand cmd = Connect();
+
+            cmd.CommandText = 
+                "TRUNCATE tab_trx; "+
+                "ALTER TABLE tab_trx auto_increment = 1; ";
+
+            try
+            {
+                var result = cmd.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+        }
+
+        public static void ResetPartnerTable()
+        {
+            MySqlCommand cmd = Connect();
+
+            cmd.CommandText =
+                "SET FOREIGN_KEY_CHECKS = 0; "+
+                "TRUNCATE tab_partners; " +
+                "ALTER TABLE tab_partners auto_increment = 1; "+
+                "SET FOREIGN_KEY_CHECKS = 1;";
+
+            try
+            {
+                var result = cmd.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+        }
+        //Private methods
         //#######################################################
         //Open Mysql server connection on command handle
         private static MySqlCommand Connect()
@@ -357,6 +402,7 @@ namespace HelperLibrary
         {
             cmd.Connection.Close();
         }
+
     }
 
     

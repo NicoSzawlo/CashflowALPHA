@@ -144,5 +144,11 @@ namespace CashflowALPHA
 
             return difference;
         }
+
+        public static void ResetDatabase()
+        {
+            MySqlHandler.ResetTrxTable();
+            MySqlHandler.ResetPartnerTable();
+        }
     }
 }

@@ -88,6 +88,7 @@
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
+            this.btnAccResetDb = new System.Windows.Forms.Button();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -209,6 +210,7 @@
             // pnlAcc
             // 
             this.pnlAcc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlAcc.Controls.Add(this.btnAccResetDb);
             this.pnlAcc.Controls.Add(this.btnAccUpdate);
             this.pnlAcc.Controls.Add(this.comboAccType);
             this.pnlAcc.Controls.Add(this.txtAccBalance);
@@ -776,6 +778,17 @@
             this.dgvTrx.TabIndex = 1;
             this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
             // 
+            // btnAccResetDb
+            // 
+            this.btnAccResetDb.Location = new System.Drawing.Point(837, 274);
+            this.btnAccResetDb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAccResetDb.Name = "btnAccResetDb";
+            this.btnAccResetDb.Size = new System.Drawing.Size(145, 43);
+            this.btnAccResetDb.TabIndex = 15;
+            this.btnAccResetDb.Text = "RESET DATABASE";
+            this.btnAccResetDb.UseVisualStyleBackColor = true;
+            this.btnAccResetDb.Click += new System.EventHandler(this.btnAccResetDb_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -783,11 +796,11 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1124, 979);
             this.Controls.Add(this.pnl_nav);
-            this.Controls.Add(this.pnlOvrvw);
             this.Controls.Add(this.pnlAcc);
             this.Controls.Add(this.pnlPartners);
             this.Controls.Add(this.pnlBudgets);
             this.Controls.Add(this.pnlTrx);
+            this.Controls.Add(this.pnlOvrvw);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -872,5 +885,6 @@
         private DateTimePicker dateOvrvwNetStart;
         private ScottPlot.FormsPlot chrtOvrvwBudget;
         private DateTimePicker dateOvrvwBudget;
+        private Button btnAccResetDb;
     }
 }
