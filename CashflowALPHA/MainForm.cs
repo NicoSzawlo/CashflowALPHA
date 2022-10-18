@@ -125,8 +125,29 @@ namespace CashflowALPHA
         }
 
         private void dateOvrvwBudget_ValueChanged(object sender, EventArgs e)
+        
         {
-            OverviewViewModel.InitBudgetGraph(chrtOvrvwBudget, dateOvrvwBudget.Value);
+            if (checkOvrvwInOutActive.Checked)
+            {
+                OverviewViewModel.InitIOGraph(chrtOvrvwBudget, dateOvrvwBudget.Value);
+            }
+            else
+            {
+                OverviewViewModel.InitBudgetGraph(chrtOvrvwBudget, dateOvrvwBudget.Value);
+
+            }
+        }
+        private void checkOvrvwInOutActive_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkOvrvwInOutActive.Checked)
+            {
+                OverviewViewModel.InitIOGraph(chrtOvrvwBudget, dateOvrvwBudget.Value);
+            }
+            else
+            {
+                OverviewViewModel.InitBudgetGraph(chrtOvrvwBudget, dateOvrvwBudget.Value);
+
+            }
         }
 
         //TRANSACTIONTYPES PANEL
@@ -182,6 +203,8 @@ namespace CashflowALPHA
         {
             Startup();
         }
+
+        
 
 
         //Temp testing area

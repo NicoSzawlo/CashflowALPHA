@@ -37,6 +37,7 @@
             this.navtbnInv = new System.Windows.Forms.Button();
             this.navbtnSpare = new System.Windows.Forms.Button();
             this.pnlAcc = new System.Windows.Forms.Panel();
+            this.btnAccResetDb = new System.Windows.Forms.Button();
             this.btnAccUpdate = new System.Windows.Forms.Button();
             this.comboAccType = new System.Windows.Forms.ComboBox();
             this.txtAccBalance = new System.Windows.Forms.TextBox();
@@ -52,6 +53,7 @@
             this.lblAccBic = new System.Windows.Forms.Label();
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.pnlOvrvw = new System.Windows.Forms.Panel();
+            this.checkOvrvwInOutActive = new System.Windows.Forms.CheckBox();
             this.dateOvrvwBudget = new System.Windows.Forms.DateTimePicker();
             this.chrtOvrvwBudget = new ScottPlot.FormsPlot();
             this.dateOvrvwNetEnd = new System.Windows.Forms.DateTimePicker();
@@ -88,7 +90,6 @@
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
-            this.btnAccResetDb = new System.Windows.Forms.Button();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -230,6 +231,17 @@
             this.pnlAcc.Name = "pnlAcc";
             this.pnlAcc.Size = new System.Drawing.Size(1098, 901);
             this.pnlAcc.TabIndex = 1;
+            // 
+            // btnAccResetDb
+            // 
+            this.btnAccResetDb.Location = new System.Drawing.Point(837, 274);
+            this.btnAccResetDb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAccResetDb.Name = "btnAccResetDb";
+            this.btnAccResetDb.Size = new System.Drawing.Size(145, 43);
+            this.btnAccResetDb.TabIndex = 15;
+            this.btnAccResetDb.Text = "RESET DATABASE";
+            this.btnAccResetDb.UseVisualStyleBackColor = true;
+            this.btnAccResetDb.Click += new System.EventHandler(this.btnAccResetDb_Click);
             // 
             // btnAccUpdate
             // 
@@ -378,6 +390,7 @@
             // pnlOvrvw
             // 
             this.pnlOvrvw.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlOvrvw.Controls.Add(this.checkOvrvwInOutActive);
             this.pnlOvrvw.Controls.Add(this.dateOvrvwBudget);
             this.pnlOvrvw.Controls.Add(this.chrtOvrvwBudget);
             this.pnlOvrvw.Controls.Add(this.dateOvrvwNetEnd);
@@ -389,9 +402,20 @@
             this.pnlOvrvw.Size = new System.Drawing.Size(1098, 901);
             this.pnlOvrvw.TabIndex = 2;
             // 
+            // checkOvrvwInOutActive
+            // 
+            this.checkOvrvwInOutActive.AutoSize = true;
+            this.checkOvrvwInOutActive.Location = new System.Drawing.Point(469, 867);
+            this.checkOvrvwInOutActive.Name = "checkOvrvwInOutActive";
+            this.checkOvrvwInOutActive.Size = new System.Drawing.Size(163, 19);
+            this.checkOvrvwInOutActive.TabIndex = 22;
+            this.checkOvrvwInOutActive.Text = "Budget / Income-Expense";
+            this.checkOvrvwInOutActive.UseVisualStyleBackColor = true;
+            this.checkOvrvwInOutActive.CheckStateChanged += new System.EventHandler(this.checkOvrvwInOutActive_CheckStateChanged);
+            // 
             // dateOvrvwBudget
             // 
-            this.dateOvrvwBudget.Location = new System.Drawing.Point(145, 852);
+            this.dateOvrvwBudget.Location = new System.Drawing.Point(450, 839);
             this.dateOvrvwBudget.Name = "dateOvrvwBudget";
             this.dateOvrvwBudget.Size = new System.Drawing.Size(200, 23);
             this.dateOvrvwBudget.TabIndex = 21;
@@ -778,17 +802,6 @@
             this.dgvTrx.TabIndex = 1;
             this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
             // 
-            // btnAccResetDb
-            // 
-            this.btnAccResetDb.Location = new System.Drawing.Point(837, 274);
-            this.btnAccResetDb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAccResetDb.Name = "btnAccResetDb";
-            this.btnAccResetDb.Size = new System.Drawing.Size(145, 43);
-            this.btnAccResetDb.TabIndex = 15;
-            this.btnAccResetDb.Text = "RESET DATABASE";
-            this.btnAccResetDb.UseVisualStyleBackColor = true;
-            this.btnAccResetDb.Click += new System.EventHandler(this.btnAccResetDb_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -796,11 +809,11 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1124, 979);
             this.Controls.Add(this.pnl_nav);
+            this.Controls.Add(this.pnlOvrvw);
             this.Controls.Add(this.pnlAcc);
             this.Controls.Add(this.pnlPartners);
             this.Controls.Add(this.pnlBudgets);
             this.Controls.Add(this.pnlTrx);
-            this.Controls.Add(this.pnlOvrvw);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -810,6 +823,7 @@
             this.pnlAcc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).EndInit();
             this.pnlOvrvw.ResumeLayout(false);
+            this.pnlOvrvw.PerformLayout();
             this.pnlPartners.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartnerTypes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartners)).EndInit();
@@ -886,5 +900,6 @@
         private ScottPlot.FormsPlot chrtOvrvwBudget;
         private DateTimePicker dateOvrvwBudget;
         private Button btnAccResetDb;
+        private CheckBox checkOvrvwInOutActive;
     }
 }

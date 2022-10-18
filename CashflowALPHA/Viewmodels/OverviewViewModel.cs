@@ -103,6 +103,8 @@ namespace CashflowALPHA.Viewmodels
 
         //CATEGORY GRAPH
         //##############################################################
+
+        //Initialise Budget Graph
         public static void InitBudgetGraph(ScottPlot.FormsPlot plot, DateTime month)
         {
             //Reset the plot
@@ -129,6 +131,48 @@ namespace CashflowALPHA.Viewmodels
             plot.Plot.SetAxisLimits(yMin: 0);
             //Set values above bars
             bar.ShowValuesAboveBars = true;
+
+            plot.Refresh();
+        }
+
+        //Initialise Income/Expense Graph
+        public static void InitIOGraph(ScottPlot.FormsPlot plot, DateTime month)
+        {
+            //Reset the plot
+            plot.Reset();
+
+            //Init lists and arrays for scotplot
+            List<Budget> bdgtList = Budget.GetInOutForMonth(month);
+            double[] budgets = new double[bdgtList.Count];
+            double[] positions = new double[bdgtList.Count];
+            string[] labels = new string[bdgtList.Count];
+            Color[] colors = new Color[bdgtList.Count];
+            colors[0] = Color.Green;
+            colors[1] = Color.Red;
+            //fill arrays with list content
+            for (int i = 0; i < bdgtList.Count; i++)
+            {
+                budgets[i] = Convert.ToDouble(bdgtList[i].TotalSpending);
+                labels[i] = bdgtList[i].TransactionType.Name;
+                positions[i] = i;
+            }
+            //Income bar
+            var barIn = plot.Plot.AddBar(new double[] { budgets[0] },new double[] { positions[0]}, Color.Green);
+            barIn.Orientation = ScottPlot.Orientation.Horizontal;
+            //Set values above bars
+            barIn.ShowValuesAboveBars = true;
+
+            //Expense bar
+            var barout = plot.Plot.AddBar(new double[] { budgets[1] }, new double[] { positions[1] }, Color.Red);
+            barout.Orientation = ScottPlot.Orientation.Horizontal;
+            //Set values above bars
+            barout.ShowValuesAboveBars = true;
+
+            //SEt Labels for the plot
+            plot.Plot.YTicks(positions, labels);
+            //set axis limit
+            plot.Plot.SetAxisLimits(xMin: 0);
+            
 
             plot.Refresh();
         }
