@@ -14,7 +14,7 @@ namespace CashflowALPHA
     public class AccountsViewModel
     {
         //Opens file dialog and reads file
-        public static async void OpenFD( string initDir, string filter, string accname)
+        public static async void OpenFD( string initDir, string filter, string accname, WaitCallback callback)
         {
             string filepath;
             OpenFileDialog ofd = new OpenFileDialog();
@@ -23,7 +23,7 @@ namespace CashflowALPHA
             ofd.ShowDialog();
             filepath = ofd.FileName;
 
-            await Task.Run(() => ProcessStmtFile(filepath, accname));
+            await Task.Run(() => ProcessStmtFile(filepath, accname, callback));
             
         }
 
@@ -93,7 +93,7 @@ namespace CashflowALPHA
         }
 
         //Method for processing statement file asynchronously
-        private static async Task ProcessStmtFile(string filepath, string accname)
+        private static async Task ProcessStmtFile(string filepath, string accname, WaitCallback callback)
         {
             DataTable dt = CsvProcessor.CsvToTable(filepath);
             
@@ -113,7 +113,7 @@ namespace CashflowALPHA
             //    //Placeholder for recalculating account value after adding transactions
             //    acc.Balance = CalcAccValueDifference(trx);
             //}
-            await Task.Run(() => Transaction.InsertObjectListDbAsync(trx, accname));
+            await Task.Run(() => Transaction.InsertObjectListDbAsync(trx, accname, callback));
             //Account.UpdateObjectAsync(acc);
         }
 

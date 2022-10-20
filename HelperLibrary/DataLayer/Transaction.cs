@@ -120,8 +120,13 @@ namespace HelperLibrary.DataLayer
 
 
         //Insert object list into database
-        public static async void InsertObjectListDbAsync(List<Transaction> list, string accname)
+        public static async void InsertObjectListDbAsync(List<Transaction> list, string accname, WaitCallback callback)
         {
+            if(callback != null)
+            {
+                callback.Invoke(null);
+            }
+
             Account accentry = Account.GetObjectDb(accname);
             foreach( Transaction t in list)
             {

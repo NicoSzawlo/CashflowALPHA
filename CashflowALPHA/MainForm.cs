@@ -60,7 +60,7 @@ namespace CashflowALPHA
         private void btnAccAddStmt_Click(object sender, EventArgs e)
         {
             
-            AccountsViewModel.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*", dgvAccounts.CurrentRow.Cells[0].Value.ToString());
+            AccountsViewModel.OpenFD("F:\\Nicos Dateien\\Finanzen\\Kontoauszüge", "csv files (*.csv)|*.csv|All files (*.*)|*.*", dgvAccounts.CurrentRow.Cells[0].Value.ToString(), testupdate);
             
             PartnersViewModel.LoadPartnersTableAsync(dgvPartners);
             TransactionsViewModel.LoadTrxTableAsync(dgvTrx);
@@ -209,6 +209,15 @@ namespace CashflowALPHA
 
         //Temp testing area
 
+        public void testupdate(object o)
+        {
+            this.Invoke(testupdate_gui);
+        }
 
+        private void testupdate_gui()
+        {
+            // this is in the gui thread
+            MessageBox.Show("Hurensohn");
+        }
     }
 }
