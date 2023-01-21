@@ -88,6 +88,27 @@ namespace HelperLibrary
             return result;
 
         }
+        public static DataTable SelectWhereNotOrderBy(string item, string table, string where, string isnot, string orderby)
+        {
+            DataTable result = new DataTable();
+            MySqlCommand cmd = Connect();
+            cmd.CommandText = "SELECT " + item + " FROM " + table + " WHERE " + where + "!=" + isnot + " ORDER BY " + orderby +";";
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(result);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Disconnect(cmd);
+            return result;
+
+        }
 
         //Transactions table
         //#######################################################

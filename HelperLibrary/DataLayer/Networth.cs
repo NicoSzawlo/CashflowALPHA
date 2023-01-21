@@ -30,9 +30,8 @@ namespace HelperLibrary.DataLayer
                     DateList.Add( new Networth { Date = date});
                 }
 
-                //Get Account value and set day one value
-                Account acc = Account.GetObjectDb("Sparkasse");
-                DateList[DateList.Count - 1].Capital = (decimal)acc.Balance;
+                //Get current liquid networth
+                DateList[DateList.Count - 1].Capital = Account.GetNetworth();
 
                 //Calculate networth from transactions
                 for(int i = DateList.Count-1; i >= 0; i--)

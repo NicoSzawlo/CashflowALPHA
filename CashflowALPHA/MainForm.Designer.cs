@@ -411,6 +411,7 @@
             this.checkOvrvwInOutActive.TabIndex = 22;
             this.checkOvrvwInOutActive.Text = "Budget / Income-Expense";
             this.checkOvrvwInOutActive.UseVisualStyleBackColor = true;
+            this.checkOvrvwInOutActive.CheckedChanged += new System.EventHandler(this.checkOvrvwInOutActive_CheckedChanged);
             this.checkOvrvwInOutActive.CheckStateChanged += new System.EventHandler(this.checkOvrvwInOutActive_CheckStateChanged);
             // 
             // dateOvrvwBudget
@@ -439,7 +440,7 @@
             // 
             // dateOvrvwNetStart
             // 
-            this.dateOvrvwNetStart.Location = new System.Drawing.Point(54, 407);
+            this.dateOvrvwNetStart.Location = new System.Drawing.Point(18, 407);
             this.dateOvrvwNetStart.Name = "dateOvrvwNetStart";
             this.dateOvrvwNetStart.Size = new System.Drawing.Size(200, 23);
             this.dateOvrvwNetStart.TabIndex = 18;

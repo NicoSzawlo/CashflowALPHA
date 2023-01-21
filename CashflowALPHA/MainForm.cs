@@ -204,7 +204,12 @@ namespace CashflowALPHA
             Startup();
         }
 
-        
+        private void checkOvrvwInOutActive_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
 
 
         //Temp testing area

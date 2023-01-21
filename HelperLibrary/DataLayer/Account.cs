@@ -100,5 +100,16 @@ namespace HelperLibrary.DataLayer
         {
             await Task.Run(() => MySqlHandler.UpdateAccount(acc));
         }
+
+        public static decimal GetNetworth()
+        {
+            decimal networth = 0;
+            DataTable accdt = MySqlHandler.SelectOrderBySync("*", "tab_accounts","acc_id");
+            foreach (DataRow dr in accdt.Rows)
+            {
+                networth += decimal.Parse(dr["acc_balance"].ToString());
+            }
+            return networth;
+        }
     }
 }

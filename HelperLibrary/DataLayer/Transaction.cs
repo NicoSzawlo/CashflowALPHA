@@ -109,6 +109,15 @@ namespace HelperLibrary.DataLayer
             return list;
         }
 
+        public static List<Transaction> GetObjectListAccDb()
+        {
+            List<Transaction> list = new List<Transaction>();
+            DataTable trxdt = MySqlHandler.SelectWhereNotOrderBy("*", "tab_trx", "trx_trxtype_id", "9", "trx_date");
+            list = DbToList(trxdt);
+
+            return list;
+        }
+
         //Pull objectlist from Statementfile Datatable
         public static List<Transaction> GetObjectListStmt(DataTable stmt, string accname)
         {
@@ -148,8 +157,8 @@ namespace HelperLibrary.DataLayer
         private static List<Transaction> FileToList(DataTable stmt, Account acc)
         {
             List<Transaction> list = new List<Transaction>();
-            
 
+            int countercheck = 0;
             foreach (DataRow dr in stmt.Rows)
             {
                 Partner partn = new Partner();
