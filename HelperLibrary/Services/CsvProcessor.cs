@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelperLibrary
+namespace HelperLibrary.Services
 {
     public class CsvProcessor
     {
@@ -28,7 +28,7 @@ namespace HelperLibrary
             bool header = true;
 
             lines = content.Split(linebreak);
-            if (lines[lines.Length-1] != "")
+            if (lines[lines.Length - 1] != "")
             {
 
             }
@@ -55,7 +55,7 @@ namespace HelperLibrary
 
             foreach (string line in lines)
             {
-                if(line != "")
+                if (line != "")
                 {
                     templine = TrimSemicolon(line);
                     columns = templine.Split(separator);
@@ -64,7 +64,7 @@ namespace HelperLibrary
 
                     dt.Rows.Add(columns);
                 }
-                
+
             }
 
             return dt;
