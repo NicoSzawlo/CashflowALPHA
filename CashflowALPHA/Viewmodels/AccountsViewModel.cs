@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using HelperLibrary;
 using HelperLibrary.DataLayer;
 using HelperLibrary.Services;
@@ -118,6 +119,7 @@ namespace CashflowALPHA
             //Account.UpdateObjectAsync(acc);
         }
 
+        //Load contents of dropdown menu for account types
         public static async void InitAccTypeCombobox(ComboBox type)
         {
             //Load Account type Table for Combobox
@@ -134,6 +136,7 @@ namespace CashflowALPHA
             }
         }
 
+        //Attempt to calculate new account value based on new statement file
         public static decimal CalcAccValueDifference(List<Transaction> trxlist)
         {
             decimal difference = 0;
@@ -146,6 +149,27 @@ namespace CashflowALPHA
             return difference;
         }
 
+        public static DataGridView InitializeDgvCsvMap(DataGridView dataGridView)
+        {
+            DataGridViewTextBoxColumn colTags = new DataGridViewTextBoxColumn();
+            DataGridViewComboBoxColumn colCsv = new DataGridViewComboBoxColumn();
+
+            colTags.Name = "Tags";
+            colTags.ReadOnly = true;
+
+            colCsv.Name = "CsvColumns";
+            colCsv.DataSource = CsvMapper.LoadCsvColumns(CsvProcessor.CsvToTable("F:\\Nicos Dateien\\Finanzen\\Flatex Kontoauszüge\\Depotumsaetze_20230129.csv"));
+
+            dataGridView.DataSource = CsvMapper.InitializeDataTable();
+            dataGridView.Columns["CsvFileColumn"].Width = 0;
+            dataGridView.Columns["CsvFileColumn"].Resizable = DataGridViewTriState.False;
+            dataGridView.Columns["CsvFileColumn"].SortMode= DataGridViewColumnSortMode.NotSortable;
+            dataGridView.Columns.Add(colCsv);
+
+            return dataGridView;
+        }
+
+        //Reset database function to wipe all data
         public static void ResetDatabase()
         {
             MySqlHandler.ResetTrxTable();

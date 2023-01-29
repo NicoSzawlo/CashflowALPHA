@@ -8,5 +8,6 @@ namespace CashflowALPHA.Viewmodels
 {
     public class InvestmentsViewModel
     {
+
     }
 }

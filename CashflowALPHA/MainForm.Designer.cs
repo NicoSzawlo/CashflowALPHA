@@ -90,6 +90,10 @@
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
+            this.lblAccCsvMap = new System.Windows.Forms.Label();
+            this.lblAccCsvMapAccName = new System.Windows.Forms.Label();
+            this.dgvAccCsvMap = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -101,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionTypes)).BeginInit();
             this.pnlTrx.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrx)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccCsvMap)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_nav
@@ -211,6 +216,10 @@
             // pnlAcc
             // 
             this.pnlAcc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlAcc.Controls.Add(this.button1);
+            this.pnlAcc.Controls.Add(this.dgvAccCsvMap);
+            this.pnlAcc.Controls.Add(this.lblAccCsvMapAccName);
+            this.pnlAcc.Controls.Add(this.lblAccCsvMap);
             this.pnlAcc.Controls.Add(this.btnAccResetDb);
             this.pnlAcc.Controls.Add(this.btnAccUpdate);
             this.pnlAcc.Controls.Add(this.comboAccType);
@@ -234,7 +243,7 @@
             // 
             // btnAccResetDb
             // 
-            this.btnAccResetDb.Location = new System.Drawing.Point(837, 274);
+            this.btnAccResetDb.Location = new System.Drawing.Point(848, 233);
             this.btnAccResetDb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAccResetDb.Name = "btnAccResetDb";
             this.btnAccResetDb.Size = new System.Drawing.Size(145, 43);
@@ -245,7 +254,7 @@
             // 
             // btnAccUpdate
             // 
-            this.btnAccUpdate.Location = new System.Drawing.Point(687, 322);
+            this.btnAccUpdate.Location = new System.Drawing.Point(848, 92);
             this.btnAccUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAccUpdate.Name = "btnAccUpdate";
             this.btnAccUpdate.Size = new System.Drawing.Size(145, 43);
@@ -258,7 +267,7 @@
             // 
             this.comboAccType.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.comboAccType.FormattingEnabled = true;
-            this.comboAccType.Location = new System.Drawing.Point(627, 170);
+            this.comboAccType.Location = new System.Drawing.Point(369, 101);
             this.comboAccType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboAccType.Name = "comboAccType";
             this.comboAccType.Size = new System.Drawing.Size(189, 33);
@@ -267,7 +276,7 @@
             // txtAccBalance
             // 
             this.txtAccBalance.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtAccBalance.Location = new System.Drawing.Point(627, 234);
+            this.txtAccBalance.Location = new System.Drawing.Point(601, 102);
             this.txtAccBalance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAccBalance.Name = "txtAccBalance";
             this.txtAccBalance.Size = new System.Drawing.Size(189, 33);
@@ -276,7 +285,7 @@
             // txtAccBic
             // 
             this.txtAccBic.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtAccBic.Location = new System.Drawing.Point(862, 103);
+            this.txtAccBic.Location = new System.Drawing.Point(828, 36);
             this.txtAccBic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAccBic.Name = "txtAccBic";
             this.txtAccBic.Size = new System.Drawing.Size(189, 33);
@@ -285,7 +294,7 @@
             // txtAccIban
             // 
             this.txtAccIban.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtAccIban.Location = new System.Drawing.Point(627, 103);
+            this.txtAccIban.Location = new System.Drawing.Point(601, 36);
             this.txtAccIban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAccIban.Name = "txtAccIban";
             this.txtAccIban.Size = new System.Drawing.Size(189, 33);
@@ -294,7 +303,7 @@
             // txtAccName
             // 
             this.txtAccName.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtAccName.Location = new System.Drawing.Point(627, 39);
+            this.txtAccName.Location = new System.Drawing.Point(369, 36);
             this.txtAccName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAccName.Name = "txtAccName";
             this.txtAccName.Size = new System.Drawing.Size(189, 33);
@@ -304,7 +313,7 @@
             // 
             this.lblAccName.AutoSize = true;
             this.lblAccName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAccName.Location = new System.Drawing.Point(603, 8);
+            this.lblAccName.Location = new System.Drawing.Point(345, 5);
             this.lblAccName.Name = "lblAccName";
             this.lblAccName.Size = new System.Drawing.Size(83, 30);
             this.lblAccName.TabIndex = 4;
@@ -314,7 +323,7 @@
             // 
             this.lblAccBalance.AutoSize = true;
             this.lblAccBalance.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAccBalance.Location = new System.Drawing.Point(603, 203);
+            this.lblAccBalance.Location = new System.Drawing.Point(577, 71);
             this.lblAccBalance.Name = "lblAccBalance";
             this.lblAccBalance.Size = new System.Drawing.Size(94, 30);
             this.lblAccBalance.TabIndex = 8;
@@ -324,7 +333,7 @@
             // 
             this.lblAccIban.AutoSize = true;
             this.lblAccIban.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAccIban.Location = new System.Drawing.Point(603, 72);
+            this.lblAccIban.Location = new System.Drawing.Point(577, 5);
             this.lblAccIban.Name = "lblAccIban";
             this.lblAccIban.Size = new System.Drawing.Size(220, 30);
             this.lblAccIban.TabIndex = 5;
@@ -332,7 +341,7 @@
             // 
             // btnAccAdd
             // 
-            this.btnAccAdd.Location = new System.Drawing.Point(687, 274);
+            this.btnAccAdd.Location = new System.Drawing.Point(848, 139);
             this.btnAccAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAccAdd.Name = "btnAccAdd";
             this.btnAccAdd.Size = new System.Drawing.Size(145, 43);
@@ -345,7 +354,7 @@
             // 
             this.lblAccType.AutoSize = true;
             this.lblAccType.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAccType.Location = new System.Drawing.Point(603, 140);
+            this.lblAccType.Location = new System.Drawing.Point(345, 71);
             this.lblAccType.Name = "lblAccType";
             this.lblAccType.Size = new System.Drawing.Size(153, 30);
             this.lblAccType.TabIndex = 7;
@@ -353,7 +362,7 @@
             // 
             // btnAccAddStmt
             // 
-            this.btnAccAddStmt.Location = new System.Drawing.Point(837, 322);
+            this.btnAccAddStmt.Location = new System.Drawing.Point(848, 186);
             this.btnAccAddStmt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAccAddStmt.Name = "btnAccAddStmt";
             this.btnAccAddStmt.Size = new System.Drawing.Size(145, 43);
@@ -366,7 +375,7 @@
             // 
             this.lblAccBic.AutoSize = true;
             this.lblAccBic.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAccBic.Location = new System.Drawing.Point(837, 72);
+            this.lblAccBic.Location = new System.Drawing.Point(803, 5);
             this.lblAccBic.Name = "lblAccBic";
             this.lblAccBic.Size = new System.Drawing.Size(58, 30);
             this.lblAccBic.TabIndex = 6;
@@ -383,7 +392,7 @@
             this.dgvAccounts.Name = "dgvAccounts";
             this.dgvAccounts.ReadOnly = true;
             this.dgvAccounts.RowTemplate.Height = 29;
-            this.dgvAccounts.Size = new System.Drawing.Size(553, 868);
+            this.dgvAccounts.Size = new System.Drawing.Size(326, 868);
             this.dgvAccounts.TabIndex = 0;
             this.dgvAccounts.SelectionChanged += new System.EventHandler(this.dgvAccounts_SelectionChanged);
             // 
@@ -803,6 +812,45 @@
             this.dgvTrx.TabIndex = 1;
             this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
             // 
+            // lblAccCsvMap
+            // 
+            this.lblAccCsvMap.AutoSize = true;
+            this.lblAccCsvMap.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAccCsvMap.Location = new System.Drawing.Point(369, 199);
+            this.lblAccCsvMap.Name = "lblAccCsvMap";
+            this.lblAccCsvMap.Size = new System.Drawing.Size(211, 30);
+            this.lblAccCsvMap.TabIndex = 17;
+            this.lblAccCsvMap.Text = "Statement .csv Map:";
+            // 
+            // lblAccCsvMapAccName
+            // 
+            this.lblAccCsvMapAccName.AutoSize = true;
+            this.lblAccCsvMapAccName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAccCsvMapAccName.Location = new System.Drawing.Point(577, 199);
+            this.lblAccCsvMapAccName.Name = "lblAccCsvMapAccName";
+            this.lblAccCsvMapAccName.Size = new System.Drawing.Size(240, 30);
+            this.lblAccCsvMapAccName.TabIndex = 18;
+            this.lblAccCsvMapAccName.Text = "*Name of selected acc*";
+            // 
+            // dgvAccCsvMap
+            // 
+            this.dgvAccCsvMap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAccCsvMap.Location = new System.Drawing.Point(369, 233);
+            this.dgvAccCsvMap.Name = "dgvAccCsvMap";
+            this.dgvAccCsvMap.RowTemplate.Height = 25;
+            this.dgvAccCsvMap.Size = new System.Drawing.Size(421, 649);
+            this.dgvAccCsvMap.TabIndex = 19;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(911, 345);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -810,11 +858,11 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1124, 979);
             this.Controls.Add(this.pnl_nav);
-            this.Controls.Add(this.pnlOvrvw);
             this.Controls.Add(this.pnlAcc);
             this.Controls.Add(this.pnlPartners);
             this.Controls.Add(this.pnlBudgets);
             this.Controls.Add(this.pnlTrx);
+            this.Controls.Add(this.pnlOvrvw);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -834,6 +882,7 @@
             this.pnlTrx.ResumeLayout(false);
             this.pnlTrx.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrx)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccCsvMap)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -902,5 +951,9 @@
         private DateTimePicker dateOvrvwBudget;
         private Button btnAccResetDb;
         private CheckBox checkOvrvwInOutActive;
+        private Label lblAccCsvMapAccName;
+        private Label lblAccCsvMap;
+        private DataGridView dgvAccCsvMap;
+        private Button button1;
     }
 }
