@@ -37,6 +37,10 @@
             this.navtbnInv = new System.Windows.Forms.Button();
             this.navbtnSpare = new System.Windows.Forms.Button();
             this.pnlAcc = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dgvAccCsvMap = new System.Windows.Forms.DataGridView();
+            this.lblAccCsvMapAccName = new System.Windows.Forms.Label();
+            this.lblAccCsvMap = new System.Windows.Forms.Label();
             this.btnAccResetDb = new System.Windows.Forms.Button();
             this.btnAccUpdate = new System.Windows.Forms.Button();
             this.comboAccType = new System.Windows.Forms.ComboBox();
@@ -90,12 +94,10 @@
             this.lblTrxType = new System.Windows.Forms.Label();
             this.lblTrxCurrency = new System.Windows.Forms.Label();
             this.dgvTrx = new System.Windows.Forms.DataGridView();
-            this.lblAccCsvMap = new System.Windows.Forms.Label();
-            this.lblAccCsvMapAccName = new System.Windows.Forms.Label();
-            this.dgvAccCsvMap = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAccLoadExmplStmt = new System.Windows.Forms.Button();
             this.pnl_nav.SuspendLayout();
             this.pnlAcc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccCsvMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
             this.pnlOvrvw.SuspendLayout();
             this.pnlPartners.SuspendLayout();
@@ -105,7 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionTypes)).BeginInit();
             this.pnlTrx.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrx)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccCsvMap)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_nav
@@ -216,6 +217,7 @@
             // pnlAcc
             // 
             this.pnlAcc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlAcc.Controls.Add(this.btnAccLoadExmplStmt);
             this.pnlAcc.Controls.Add(this.button1);
             this.pnlAcc.Controls.Add(this.dgvAccCsvMap);
             this.pnlAcc.Controls.Add(this.lblAccCsvMapAccName);
@@ -240,6 +242,46 @@
             this.pnlAcc.Name = "pnlAcc";
             this.pnlAcc.Size = new System.Drawing.Size(1098, 901);
             this.pnlAcc.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(911, 345);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dgvAccCsvMap
+            // 
+            this.dgvAccCsvMap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAccCsvMap.Location = new System.Drawing.Point(369, 233);
+            this.dgvAccCsvMap.Name = "dgvAccCsvMap";
+            this.dgvAccCsvMap.RowTemplate.Height = 25;
+            this.dgvAccCsvMap.Size = new System.Drawing.Size(302, 310);
+            this.dgvAccCsvMap.TabIndex = 19;
+            this.dgvAccCsvMap.SelectionChanged += new System.EventHandler(this.dgvAccCsvMap_SelectionChanged);
+            // 
+            // lblAccCsvMapAccName
+            // 
+            this.lblAccCsvMapAccName.AutoSize = true;
+            this.lblAccCsvMapAccName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAccCsvMapAccName.Location = new System.Drawing.Point(577, 199);
+            this.lblAccCsvMapAccName.Name = "lblAccCsvMapAccName";
+            this.lblAccCsvMapAccName.Size = new System.Drawing.Size(240, 30);
+            this.lblAccCsvMapAccName.TabIndex = 18;
+            this.lblAccCsvMapAccName.Text = "*Name of selected acc*";
+            // 
+            // lblAccCsvMap
+            // 
+            this.lblAccCsvMap.AutoSize = true;
+            this.lblAccCsvMap.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAccCsvMap.Location = new System.Drawing.Point(369, 199);
+            this.lblAccCsvMap.Name = "lblAccCsvMap";
+            this.lblAccCsvMap.Size = new System.Drawing.Size(211, 30);
+            this.lblAccCsvMap.TabIndex = 17;
+            this.lblAccCsvMap.Text = "Statement .csv Map:";
             // 
             // btnAccResetDb
             // 
@@ -812,44 +854,15 @@
             this.dgvTrx.TabIndex = 1;
             this.dgvTrx.SelectionChanged += new System.EventHandler(this.dgvTrx_SelectionChanged);
             // 
-            // lblAccCsvMap
+            // btnAccLoadExmplStmt
             // 
-            this.lblAccCsvMap.AutoSize = true;
-            this.lblAccCsvMap.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAccCsvMap.Location = new System.Drawing.Point(369, 199);
-            this.lblAccCsvMap.Name = "lblAccCsvMap";
-            this.lblAccCsvMap.Size = new System.Drawing.Size(211, 30);
-            this.lblAccCsvMap.TabIndex = 17;
-            this.lblAccCsvMap.Text = "Statement .csv Map:";
-            // 
-            // lblAccCsvMapAccName
-            // 
-            this.lblAccCsvMapAccName.AutoSize = true;
-            this.lblAccCsvMapAccName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAccCsvMapAccName.Location = new System.Drawing.Point(577, 199);
-            this.lblAccCsvMapAccName.Name = "lblAccCsvMapAccName";
-            this.lblAccCsvMapAccName.Size = new System.Drawing.Size(240, 30);
-            this.lblAccCsvMapAccName.TabIndex = 18;
-            this.lblAccCsvMapAccName.Text = "*Name of selected acc*";
-            // 
-            // dgvAccCsvMap
-            // 
-            this.dgvAccCsvMap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAccCsvMap.Location = new System.Drawing.Point(369, 233);
-            this.dgvAccCsvMap.Name = "dgvAccCsvMap";
-            this.dgvAccCsvMap.RowTemplate.Height = 25;
-            this.dgvAccCsvMap.Size = new System.Drawing.Size(421, 649);
-            this.dgvAccCsvMap.TabIndex = 19;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(911, 345);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAccLoadExmplStmt.Location = new System.Drawing.Point(369, 548);
+            this.btnAccLoadExmplStmt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAccLoadExmplStmt.Name = "btnAccLoadExmplStmt";
+            this.btnAccLoadExmplStmt.Size = new System.Drawing.Size(302, 43);
+            this.btnAccLoadExmplStmt.TabIndex = 21;
+            this.btnAccLoadExmplStmt.Text = "LOAD EXMAPLE STATEMENT\r\nFOR MAPPING";
+            this.btnAccLoadExmplStmt.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -870,6 +883,7 @@
             this.pnl_nav.ResumeLayout(false);
             this.pnlAcc.ResumeLayout(false);
             this.pnlAcc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccCsvMap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).EndInit();
             this.pnlOvrvw.ResumeLayout(false);
             this.pnlOvrvw.PerformLayout();
@@ -882,7 +896,6 @@
             this.pnlTrx.ResumeLayout(false);
             this.pnlTrx.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrx)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccCsvMap)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -955,5 +968,6 @@
         private Label lblAccCsvMap;
         private DataGridView dgvAccCsvMap;
         private Button button1;
+        private Button btnAccLoadExmplStmt;
     }
 }

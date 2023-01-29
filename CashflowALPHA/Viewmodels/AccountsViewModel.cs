@@ -168,6 +168,25 @@ namespace CashflowALPHA
 
             return dataGridView;
         }
+        public static DataGridView LoadAccDgvCsvMap(DataGridView dataGridView)
+        {
+            DataGridViewTextBoxColumn colTags = new DataGridViewTextBoxColumn();
+            DataGridViewComboBoxColumn colCsv = new DataGridViewComboBoxColumn();
+
+            colTags.Name = "Tags";
+            colTags.ReadOnly = true;
+
+            colCsv.Name = "CsvColumns";
+            colCsv.DataSource = CsvMapper.LoadCsvColumns(CsvProcessor.CsvToTable("F:\\Nicos Dateien\\Finanzen\\Flatex Kontoauszüge\\Depotumsaetze_20230129.csv"));
+
+            dataGridView.DataSource = CsvMapper.InitializeDataTable();
+            dataGridView.Columns["CsvFileColumn"].Width = 0;
+            dataGridView.Columns["CsvFileColumn"].Resizable = DataGridViewTriState.False;
+            dataGridView.Columns["CsvFileColumn"].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView.Columns.Add(colCsv);
+
+            return dataGridView;
+        }
 
         //Reset database function to wipe all data
         public static void ResetDatabase()

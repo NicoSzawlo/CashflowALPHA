@@ -97,6 +97,11 @@ namespace CashflowALPHA
             }
             
         }
+        private void dgvAccCsvMap_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
+
         //Init routine for accounts panel
         private void Startup()
         {
