@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `cashflow_alpha` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `cashflow_alpha`;
 -- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: cashflow_alpha
@@ -34,7 +32,7 @@ CREATE TABLE `tab_accounts` (
   PRIMARY KEY (`acc_id`),
   KEY `sk_type_idx` (`acc_acctype_id`),
   CONSTRAINT `sk_acc_acctype` FOREIGN KEY (`acc_acctype_id`) REFERENCES `tab_acctypes` (`acctype_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Contains registered user account information';
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Contains registered user account information';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,20 +50,39 @@ CREATE TABLE `tab_acctypes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tab_investments`
+-- Table structure for table `tab_assets`
 --
 
-DROP TABLE IF EXISTS `tab_investments`;
+DROP TABLE IF EXISTS `tab_assets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tab_investments` (
+CREATE TABLE `tab_assets` (
+  `asset_id` int NOT NULL AUTO_INCREMENT,
+  `asset_isin` varchar(12) DEFAULT NULL,
+  `asset_ident` varchar(45) DEFAULT NULL,
+  `asset_ticker` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`asset_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tab_invtrx`
+--
+
+DROP TABLE IF EXISTS `tab_invtrx`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tab_invtrx` (
   `inv_id` int NOT NULL AUTO_INCREMENT,
   `inv_amount` decimal(10,0) DEFAULT NULL,
-  `inv_costaverage` decimal(10,0) DEFAULT NULL,
-  `inv_value` decimal(10,0) DEFAULT NULL,
-  `inv_isin` varchar(45) DEFAULT NULL,
-  `inv_acc` int DEFAULT NULL,
-  PRIMARY KEY (`inv_id`)
+  `inv_buyprice` decimal(10,0) DEFAULT NULL,
+  `inv_asset_id` int DEFAULT NULL,
+  `inv_acc_id` int DEFAULT NULL,
+  PRIMARY KEY (`inv_id`),
+  KEY `sk_inv_asset_idx` (`inv_asset_id`),
+  KEY `sk_inv_acc_idx` (`inv_acc_id`),
+  CONSTRAINT `sk_inv_acc` FOREIGN KEY (`inv_acc_id`) REFERENCES `tab_accounts` (`acc_id`),
+  CONSTRAINT `sk_inv_asset` FOREIGN KEY (`inv_asset_id`) REFERENCES `tab_assets` (`asset_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Contains information to investment positions';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,7 +103,7 @@ CREATE TABLE `tab_partners` (
   PRIMARY KEY (`partn_id`),
   KEY `sk_partner_trxtype_idx` (`partn_trxtype_id`),
   CONSTRAINT `sk_partner_trxtype` FOREIGN KEY (`partn_trxtype_id`) REFERENCES `tab_trxtypes` (`trxtype_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=662 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=736 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,10 +130,10 @@ CREATE TABLE `tab_trx` (
   KEY `sk_type_idx` (`trx_trxtype_id`),
   KEY `sk_invpos_idx` (`trx_invpos_id`),
   CONSTRAINT `sk_trx_acc` FOREIGN KEY (`trx_acc_id`) REFERENCES `tab_accounts` (`acc_id`),
-  CONSTRAINT `sk_trx_invpos` FOREIGN KEY (`trx_invpos_id`) REFERENCES `tab_investments` (`inv_id`),
+  CONSTRAINT `sk_trx_invpos` FOREIGN KEY (`trx_invpos_id`) REFERENCES `tab_invtrx` (`inv_id`),
   CONSTRAINT `sk_trx_partner` FOREIGN KEY (`trx_partn_id`) REFERENCES `tab_partners` (`partn_id`),
   CONSTRAINT `sk_trx_type` FOREIGN KEY (`trx_trxtype_id`) REFERENCES `tab_trxtypes` (`trxtype_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2492 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='A table of all registered transactions';
+) ENGINE=InnoDB AUTO_INCREMENT=5861 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='A table of all registered transactions';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +148,7 @@ CREATE TABLE `tab_trxtypes` (
   `trxtype_name` varchar(45) DEFAULT NULL,
   `trxtype_budget` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`trxtype_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Contains types of transactions and budgets';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Contains types of transactions and budgets';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,6 +163,21 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `Name`,
  1 AS `Type`,
  1 AS `Balance`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_investments`
+--
+
+DROP TABLE IF EXISTS `view_investments`;
+/*!50001 DROP VIEW IF EXISTS `view_investments`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_investments` AS SELECT 
+ 1 AS `Asset`,
+ 1 AS `Amount`,
+ 1 AS `Price`,
+ 1 AS `Account`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -205,6 +237,24 @@ SET character_set_client = @saved_cs_client;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `view_accounts` AS select `tab_accounts`.`acc_name` AS `Name`,`tab_acctypes`.`acctype_name` AS `Type`,`tab_accounts`.`acc_balance` AS `Balance` from (`tab_accounts` join `tab_acctypes`) where (`tab_accounts`.`acc_acctype_id` = `tab_acctypes`.`acctype_id`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_investments`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_investments`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_investments` AS select `tab_assets`.`asset_ticker` AS `Asset`,`tab_invtrx`.`inv_amount` AS `Amount`,`tab_invtrx`.`inv_buyprice` AS `Price`,`tab_accounts`.`acc_name` AS `Account` from ((`tab_invtrx` left join `tab_accounts` on((`tab_accounts`.`acc_id` = `tab_invtrx`.`inv_acc_id`))) left join `tab_assets` on((`tab_assets`.`asset_id` = `tab_invtrx`.`inv_asset_id`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -272,4 +322,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-11 17:07:12
+-- Dump completed on 2023-01-29 20:28:44
