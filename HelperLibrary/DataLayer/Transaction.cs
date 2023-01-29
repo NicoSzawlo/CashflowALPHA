@@ -109,7 +109,7 @@ namespace HelperLibrary.DataLayer
             return list;
         }
 
-        public static List<Transaction> GetObjectListAccDb()
+        public static List<Transaction> GetObjectListDbNoOwntransfer()
         {
             List<Transaction> list = new List<Transaction>();
             DataTable trxdt = MySqlHandler.SelectWhereNotOrderBy("*", "tab_trx", "trx_trxtype_id", "9", "trx_date");

@@ -16,7 +16,7 @@ namespace HelperLibrary.DataLayer
         public static List<Budget> GetBudgetsForMonth(DateTime month)
         {
             List<Budget> bdgtlist = InitBudgetlist();
-            List<Transaction> trxlist = Transaction.GetObjectListDb();
+            List<Transaction> trxlist = Transaction.GetObjectListDbNoOwntransfer();
             DateTime fromDate = GetFirstOfMonth(month);
             DateTime toDate = GetEndOfMonth(month);
 
@@ -45,7 +45,7 @@ namespace HelperLibrary.DataLayer
         public static List<Budget> GetInOutForMonth(DateTime month)
         {
             List<Budget> ioList = InitIOList();
-            List<Transaction> trxlist = Transaction.GetObjectListAccDb();
+            List<Transaction> trxlist = Transaction.GetObjectListDbNoOwntransfer();
             DateTime fromDate = GetFirstOfMonth(month);
             DateTime toDate = GetEndOfMonth(month);
 
