@@ -9,6 +9,7 @@ namespace HelperLibrary.DataLayer
 {
     public class CsvMapCashAcc
     {
+        public string? AccountName { get; set; }
         public string? PartnerName { get; set; }
         public string? PartnerIban { get; set; }
         public string? PartnerBic { get; set; }

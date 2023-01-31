@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -414,7 +415,15 @@ namespace HelperLibrary
         {
             MySqlConnection conn = new MySqlConnection(connStr);
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.Connection.Open();
+            try
+            {
+                cmd.Connection.Open();
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            
             return cmd;
         }
 

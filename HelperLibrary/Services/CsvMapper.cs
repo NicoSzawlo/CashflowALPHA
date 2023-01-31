@@ -76,18 +76,33 @@ namespace HelperLibrary.Services
                         break;
                 }
             }
-            string jsonString = JsonSerializer.Serialize(map);
-            string filePath = ".\\" + acc.Name + "CsvMap.json";
-            File.Delete(filePath);
-            File.WriteAllText(filePath, jsonString);
+            map.AccountName = acc.Name;
+            SaveMaplistFile(map);
         }
 
-        public static CsvMapCashAcc LoadMap(DataTable dt, Account acc)
+        public static List<CsvMapCashAcc> LoadMapList()
         {
-            CsvMapCashAcc map = new CsvMapCashAcc();
-            string filePath = ".\\" + acc.Name + "CsvMap.json";
-            map = JsonSerializer.Deserialize<CsvMapCashAcc>(filePath);
-            return map;
+            string filePath = ".\\CsvMapCashAcc.json";
+            List<CsvMapCashAcc> mapList = JsonSerializer.Deserialize<List<CsvMapCashAcc>>(filePath);
+            return mapList;
+        }
+
+        private static void SaveMaplistFile(CsvMapCashAcc newMap)
+        {
+            string filePath = ".\\CsvMapCashAcc.json";
+
+            List<CsvMapCashAcc> mapList = LoadMapList();
+            for(int i = 0; i < mapList.Count; i++)
+            {
+                if (mapList[i].AccountName == newMap.AccountName)
+                {
+                    mapList[i] = newMap;
+                }
+            }
+            string jsonString = JsonSerializer.Serialize(mapList);
+            
+            File.Delete(filePath);
+            File.WriteAllText(filePath, jsonString);
         }
     }
 }
